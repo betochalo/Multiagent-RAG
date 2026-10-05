@@ -1,0 +1,79 @@
+{
+  "subtask": "s3_curva_de_aprendizaje",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "split": {
+    "test_size": 0.3,
+    "stratify": true,
+    "random_state": 42,
+    "n_train": 398,
+    "n_test": 171,
+    "train_class_counts": {
+      "0": 148,
+      "1": 250
+    },
+    "test_class_counts": {
+      "0": 64,
+      "1": 107
+    }
+  },
+  "fracciones": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "tamanos_entrenamiento": [
+    20,
+    40,
+    100,
+    199,
+    398
+  ],
+  "tabla_exactitudes": [
+    {
+      "fraccion": 0.05,
+      "n_entrenamiento": 20,
+      "exactitud_gaussian_nb": 0.9415204678362573,
+      "exactitud_regresion_logistica": 0.9298245614035088
+    },
+    {
+      "fraccion": 0.1,
+      "n_entrenamiento": 40,
+      "exactitud_gaussian_nb": 0.9415204678362573,
+      "exactitud_regresion_logistica": 0.935672514619883
+    },
+    {
+      "fraccion": 0.25,
+      "n_entrenamiento": 100,
+      "exactitud_gaussian_nb": 0.935672514619883,
+      "exactitud_regresion_logistica": 0.9415204678362573
+    },
+    {
+      "fraccion": 0.5,
+      "n_entrenamiento": 199,
+      "exactitud_gaussian_nb": 0.9239766081871345,
+      "exactitud_regresion_logistica": 0.9766081871345029
+    },
+    {
+      "fraccion": 1.0,
+      "n_entrenamiento": 398,
+      "exactitud_gaussian_nb": 0.935672514619883,
+      "exactitud_regresion_logistica": 0.9883040935672515
+    }
+  ],
+  "exactitud_gaussian_nb": [
+    0.9415204678362573,
+    0.9415204678362573,
+    0.935672514619883,
+    0.9239766081871345,
+    0.935672514619883
+  ],
+  "exactitud_regresion_logistica": [
+    0.9298245614035088,
+    0.935672514619883,
+    0.9415204678362573,
+    0.9766081871345029,
+    0.9883040935672515
+  ]
+}

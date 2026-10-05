@@ -1,0 +1,51 @@
+{
+  "control": "Control de Lectura 3 - verificación numérica de gradientes",
+  "funcion_f": "w**3 - 2*w",
+  "candidato_gA": "3*w**2 - 2",
+  "candidato_gB": "3*w - 2",
+  "metodo": "diferencia central: (f(w+h) - f(w-h)) / (2*h)",
+  "w": 2.0,
+  "pasos_h": [
+    0.1,
+    1e-05,
+    1e-16
+  ],
+  "casos": [
+    {
+      "h": 0.1,
+      "aproximacion": 10.010000000000007,
+      "gA": 10.0,
+      "gB": 4.0,
+      "disc_gA": 0.010000000000006892,
+      "disc_gB": 6.010000000000007,
+      "w_mas_h": 2.1,
+      "w_menos_h": 1.9,
+      "igualdad_w_mas_h": false,
+      "igualdad_w_menos_h": false
+    },
+    {
+      "h": 1e-05,
+      "aproximacion": 10.000000000198739,
+      "gA": 10.0,
+      "gB": 4.0,
+      "disc_gA": 1.9873880319210002e-10,
+      "disc_gB": 6.000000000198739,
+      "w_mas_h": 2.00001,
+      "w_menos_h": 1.99999,
+      "igualdad_w_mas_h": false,
+      "igualdad_w_menos_h": false
+    },
+    {
+      "h": 1e-16,
+      "aproximacion": 0.0,
+      "gA": 10.0,
+      "gB": 4.0,
+      "disc_gA": 10.0,
+      "disc_gB": 4.0,
+      "w_mas_h": 2.0,
+      "w_menos_h": 2.0,
+      "igualdad_w_mas_h": true,
+      "igualdad_w_menos_h": true
+    }
+  ]
+}

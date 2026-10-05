@@ -1,0 +1,40 @@
+{
+  "tfidf_baseline": {
+    "hit_at_1": 0.8333333333333334,
+    "hit_at_3": 0.8333333333333334,
+    "mrr": 0.8611111111111112,
+    "rango_del_relevante_por_consulta": {
+      "q1": 1.0,
+      "q2": 1.0,
+      "q3": 1.0,
+      "q4": 1.0,
+      "q5": 6.0,
+      "q6": 1.0
+    }
+  },
+  "lsa": {
+    "hit_at_1": 0.6666666666666666,
+    "hit_at_3": 0.8333333333333334,
+    "mrr": 0.75,
+    "rango_del_relevante_por_consulta": {
+      "q1": 1.0,
+      "q2": 1.0,
+      "q3": 1.0,
+      "q4": 3.0,
+      "q5": 6.0,
+      "q6": 1.0
+    }
+  },
+  "lsa_config": {
+    "n_components": 4,
+    "random_state": 0,
+    "normalizacion_latente": "l2"
+  },
+  "lsa_varianza_explicada_por_componente": [
+    0.034211619796853276,
+    0.12657480443196817,
+    0.11600387824885837,
+    0.11855186843101549
+  ],
+  "lsa_varianza_explicada_total": 0.39534217090869533
+}

@@ -1,0 +1,170 @@
+{
+  "descripcion": "Control de Lectura 2: sigma_i(X)^2 (SVD directa) vs lambda_i(X.T @ X) para X = [[1, 1+sep], [1, 1-sep]] en tres casos de separacion y precision numerica",
+  "prediccion_P1": "P1 (prediccion previa a la ejecucion): el caso B (separacion=1e-4, np.float32) es el que tendra mayor dificultad para conservar el valor pequeno. Al formar G = X.T @ X en float32, el unico rastro de la direccion pequena es el termino 2*separacion^2 = 2e-8 en la posicion (2,2), que es menor que la mitad del ulp de 2.0 en float32 (~1.19e-7): G colapsa a [[2,2],[2,2]] (rango 1) y el menor autovalor se pierde. La SVD directa trabaja sobre X, cuyas columnas todavia se distinguen en float32 (1e-4 equivale a ~840 ulps), por lo que deberia conservar sigma_min^2 del orden de 1e-8.",
+  "tolerancia_relativa_coincidencia": 0.01,
+  "casos": {
+    "A": {
+      "caso": "A",
+      "separacion": 0.01,
+      "separacion_str": "1e-02",
+      "tipo": "float32",
+      "X": [
+        [
+          1.0,
+          1.0099999904632568
+        ],
+        [
+          1.0,
+          0.9900000095367432
+        ]
+      ],
+      "valores_singulares_desc": [
+        2.0000250339508057,
+        0.009999865666031837
+      ],
+      "sigma2_svd_desc": [
+        4.000100135803223,
+        9.999731264542788e-05
+      ],
+      "G_XtX": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.000200033187866
+        ]
+      ],
+      "autovalores_XtX_desc": [
+        4.000100135803223,
+        0.00010001409100368619
+      ],
+      "menor_sigma2_svd": 9.999731264542788e-05,
+      "menor_lambda_XtX": 0.00010001409100368619,
+      "diferencia_relativa": 0.00016775994352324398,
+      "coinciden": true
+    },
+    "B": {
+      "caso": "B",
+      "separacion": 0.0001,
+      "separacion_str": "1e-04",
+      "tipo": "float32",
+      "X": [
+        [
+          1.0,
+          1.000100016593933
+        ],
+        [
+          1.0,
+          0.9998999834060669
+        ]
+      ],
+      "valores_singulares_desc": [
+        2.0,
+        0.00010001659393310547
+      ],
+      "sigma2_svd_desc": [
+        4.0,
+        1.000331906197971e-08
+      ],
+      "G_XtX": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.0
+        ]
+      ],
+      "autovalores_XtX_desc": [
+        4.0,
+        0.0
+      ],
+      "menor_sigma2_svd": 1.000331906197971e-08,
+      "menor_lambda_XtX": 0.0,
+      "diferencia_relativa": 1.0,
+      "coinciden": false
+    },
+    "C": {
+      "caso": "C",
+      "separacion": 0.0001,
+      "separacion_str": "1e-04",
+      "tipo": "float64",
+      "X": [
+        [
+          1.0,
+          1.0001
+        ],
+        [
+          1.0,
+          0.9999
+        ]
+      ],
+      "valores_singulares_desc": [
+        2.0000000024999998,
+        9.999999987490938e-05
+      ],
+      "sigma2_svd_desc": [
+        4.000000009999999,
+        9.999999974981876e-09
+      ],
+      "G_XtX": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.00000002
+        ]
+      ],
+      "autovalores_XtX_desc": [
+        4.00000001,
+        9.99999993922529e-09
+      ],
+      "menor_sigma2_svd": 9.999999974981876e-09,
+      "menor_lambda_XtX": 9.99999993922529e-09,
+      "diferencia_relativa": 3.575658605912275e-09,
+      "coinciden": true
+    }
+  },
+  "tabla_comparativa": [
+    {
+      "Caso": "A",
+      "separacion": "1e-02",
+      "tipo": "float32",
+      "Menor sigma^2 (SVD)": 9.999731264542788e-05,
+      "Menor lambda(X^T X)": 0.00010001409100368619,
+      "Diferencia relativa": 0.00016775994352324398,
+      "Coinciden?": "Si"
+    },
+    {
+      "Caso": "B",
+      "separacion": "1e-04",
+      "tipo": "float32",
+      "Menor sigma^2 (SVD)": 1.000331906197971e-08,
+      "Menor lambda(X^T X)": 0.0,
+      "Diferencia relativa": 1.0,
+      "Coinciden?": "No"
+    },
+    {
+      "Caso": "C",
+      "separacion": "1e-04",
+      "tipo": "float64",
+      "Menor sigma^2 (SVD)": 9.999999974981876e-09,
+      "Menor lambda(X^T X)": 9.99999993922529e-09,
+      "Diferencia relativa": 3.575658605912275e-09,
+      "Coinciden?": "Si"
+    }
+  ],
+  "verificacion_patron_esperado": {
+    "A_ambos_menores_del_orden_1e-4": true,
+    "B_lambda_min_colapsa_a_cero_en_float32": true,
+    "B_sigma2_min_svd_del_orden_1e-8": true,
+    "C_ambos_menores_del_orden_1e-8": true,
+    "C_coinciden": true,
+    "patron_esperado_confirmado": true
+  }
+}

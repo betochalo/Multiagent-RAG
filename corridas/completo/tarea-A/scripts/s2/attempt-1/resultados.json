@@ -1,0 +1,37 @@
+{
+  "split": {
+    "test_size": 0.3,
+    "stratify": "y",
+    "random_state": 42,
+    "n_train_examples": 398,
+    "n_test_examples": 171,
+    "n_attributes": 30
+  },
+  "scaler": {
+    "type": "StandardScaler",
+    "fit_on": "train_only",
+    "train_mean_first3": [
+      14.093846733668359,
+      19.34153266331657,
+      91.69894472361804
+    ],
+    "train_std_first3": [
+      3.4851709335853864,
+      4.494799777284616,
+      24.033630664269026
+    ]
+  },
+  "test_metrics": {
+    "gaussian_nb": {
+      "model": "Naive Bayes gaussiano",
+      "accuracy": 0.935672514619883,
+      "f1_macro": 0.9306543778801843
+    },
+    "logistic_regression": {
+      "model": "Regresión logística",
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383
+    }
+  },
+  "markdown_table": "| Modelo | Accuracy (prueba) | F1 macro (prueba) |\n|---|---|---|\n| Naive Bayes gaussiano | 0.9357 | 0.9307 |\n| Regresión logística | 0.9883 | 0.9875 |"
+}

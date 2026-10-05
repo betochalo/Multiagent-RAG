@@ -1,0 +1,82 @@
+{
+  "logits": {
+    "t0": 2.0,
+    "t1": 1.0,
+    "t2": 0.5,
+    "t3": 0.2,
+    "t4": -1.0,
+    "t5": -3.0
+  },
+  "temperatura": 1.0,
+  "p_top_p": 0.9,
+  "softmax_T_1.0": {
+    "t0": 0.5516226378718239,
+    "t1": 0.2029306277578035,
+    "t2": 0.12308364752983937,
+    "t3": 0.09118260875807133,
+    "t4": 0.02746367398498595,
+    "t5": 0.003716804097476065
+  },
+  "softmax_T_1.0_4dec": {
+    "t0": 0.5516,
+    "t1": 0.2029,
+    "t2": 0.1231,
+    "t3": 0.0912,
+    "t4": 0.0275,
+    "t5": 0.0037
+  },
+  "orden_descendente": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probabilidades_ordenadas_4dec": {
+    "t0": 0.5516,
+    "t1": 0.2029,
+    "t2": 0.1231,
+    "t3": 0.0912,
+    "t4": 0.0275,
+    "t5": 0.0037
+  },
+  "probabilidad_acumulada_4dec": {
+    "t0": 0.5516,
+    "t1": 0.7546,
+    "t2": 0.8776,
+    "t3": 0.9688,
+    "t4": 0.9963,
+    "t5": 1.0
+  },
+  "tokens_sobrevivientes": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "num_tokens_conservados": 4,
+  "probabilidad_acumulada_nucleo": 0.968819521917538,
+  "probabilidad_acumulada_nucleo_4dec": 0.9688,
+  "distribucion_renormalizada": {
+    "t0": 0.5694,
+    "t1": 0.2095,
+    "t2": 0.127,
+    "t3": 0.0941
+  },
+  "distribucion_renormalizada_precisa": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "suma_distribucion_renormalizada": 1.0,
+  "distribucion_tras_top_p_vocabulario_completo": {
+    "t0": 0.5694,
+    "t1": 0.2095,
+    "t2": 0.127,
+    "t3": 0.0941,
+    "t4": 0.0,
+    "t5": 0.0
+  }
+}

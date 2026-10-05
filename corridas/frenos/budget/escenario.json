@@ -1,0 +1,46 @@
+{
+  "brake": "budget",
+  "description": "Each programmer call costs 6 000 tokens against a budget of 20 000 with 8 000 reserved for the writer: after s2 the queue stops, the rest is skipped and the writer still delivers.",
+  "overrides": {
+    "token_budget": 20000,
+    "writer_reserve_tokens": 8000
+  },
+  "result": {
+    "status": "parcial",
+    "entregables": [
+      "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/corridas/frenos/budget/reporte.md"
+    ],
+    "subtareas": [
+      {
+        "id": "s1",
+        "tipo": "code",
+        "status": "approved",
+        "intentos": 1
+      },
+      {
+        "id": "s2",
+        "tipo": "code",
+        "status": "approved",
+        "intentos": 1
+      },
+      {
+        "id": "s3",
+        "tipo": "text",
+        "status": "skipped",
+        "intentos": 0
+      },
+      {
+        "id": "s4",
+        "tipo": "text",
+        "status": "skipped",
+        "intentos": 0
+      }
+    ],
+    "usage": {
+      "tokens_entrada": 8620,
+      "tokens_salida": 8270
+    },
+    "model": "scripted",
+    "trace": "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/corridas/frenos/budget/traza.jsonl"
+  }
+}

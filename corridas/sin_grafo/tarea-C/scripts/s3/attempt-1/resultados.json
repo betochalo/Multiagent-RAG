@@ -1,0 +1,1109 @@
+{
+  "subtarea": "s3 - Analisis de fallos por consulta (Parte 3)",
+  "config": {
+    "corpus": "d01-d10 (textos literales del enunciado)",
+    "num_documentos": 10,
+    "num_consultas": 6,
+    "juicios_de_relevancia": {
+      "q1": "d04",
+      "q2": "d03",
+      "q3": "d08",
+      "q4": "d05",
+      "q5": "d09",
+      "q6": "d02"
+    },
+    "vectorizer": "TfidfVectorizer (parametros por defecto)",
+    "tam_vocabulario": 105,
+    "lsa": "TruncatedSVD(n_components=4, random_state=0)",
+    "varianza_explicada_lsa": 0.39534217090869533,
+    "definicion_de_fallo": "rank del relevante > 3 (fuera del top 3)"
+  },
+  "rank_relevante_por_consulta": {
+    "TF-IDF": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 1,
+      "q5": 6,
+      "q6": 1
+    },
+    "LSA": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 3,
+      "q5": 6,
+      "q6": 1
+    }
+  },
+  "consultas_falladas": {
+    "TF-IDF": [
+      {
+        "consulta": "q5",
+        "relevante": "d09",
+        "rank_relevante": 6
+      }
+    ],
+    "LSA": [
+      {
+        "consulta": "q5",
+        "relevante": "d09",
+        "rank_relevante": 6
+      }
+    ]
+  },
+  "metricas_recomputadas": {
+    "TF-IDF": {
+      "hit_at_1": 0.8333333333333334,
+      "hit_at_3": 0.8333333333333334,
+      "mrr": 0.8611111111111112
+    },
+    "LSA": {
+      "hit_at_1": 0.6666666666666666,
+      "hit_at_3": 0.8333333333333334,
+      "mrr": 0.75
+    }
+  },
+  "terminos_compartidos_consulta_relevante": {
+    "q1": {
+      "relevante": "d04",
+      "tokens_consulta": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "qué",
+        "ranking",
+        "términos"
+      ],
+      "tokens_documento": [
+        "bm25",
+        "de",
+        "del",
+        "documento",
+        "es",
+        "frecuencia",
+        "función",
+        "la",
+        "longitud",
+        "léxica",
+        "pondera",
+        "que",
+        "ranking",
+        "términos",
+        "una"
+      ],
+      "terminos_compartidos": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "num_terminos_compartidos": 8,
+      "compartidos_presentes_en_vocabulario_tfidf": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ]
+    },
+    "q2": {
+      "relevante": "d03",
+      "tokens_consulta": [
+        "al",
+        "añaden",
+        "cómo",
+        "fragmentos",
+        "prompt",
+        "recuperados",
+        "se"
+      ],
+      "tokens_documento": [
+        "al",
+        "aumentada",
+        "añade",
+        "busca",
+        "con",
+        "del",
+        "fragmentos",
+        "generación",
+        "la",
+        "los",
+        "modelo",
+        "prompt",
+        "recuperación",
+        "relevantes"
+      ],
+      "terminos_compartidos": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "num_terminos_compartidos": 3,
+      "compartidos_presentes_en_vocabulario_tfidf": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ]
+    },
+    "q3": {
+      "relevante": "d08",
+      "tokens_consulta": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "qué",
+        "rango",
+        "técnica"
+      ],
+      "tokens_documento": [
+        "ajuste",
+        "bajo",
+        "con",
+        "congela",
+        "de",
+        "el",
+        "entrena",
+        "fino",
+        "lora",
+        "los",
+        "matrices",
+        "originales",
+        "pesos",
+        "rango"
+      ],
+      "terminos_compartidos": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "num_terminos_compartidos": 5,
+      "compartidos_presentes_en_vocabulario_tfidf": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ]
+    },
+    "q4": {
+      "relevante": "d05",
+      "tokens_consulta": [
+        "compara",
+        "cómo",
+        "de",
+        "dos",
+        "la",
+        "orientación",
+        "se",
+        "texto",
+        "vectores"
+      ],
+      "tokens_documento": [
+        "como",
+        "compara",
+        "coseno",
+        "densos",
+        "embeddings",
+        "la",
+        "los",
+        "orientación",
+        "representan",
+        "similitud",
+        "su",
+        "textos",
+        "vectores"
+      ],
+      "terminos_compartidos": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "num_terminos_compartidos": 4,
+      "compartidos_presentes_en_vocabulario_tfidf": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ]
+    },
+    "q5": {
+      "relevante": "d09",
+      "tokens_consulta": [
+        "al",
+        "determinista",
+        "el",
+        "elegir",
+        "hace",
+        "la",
+        "modelo",
+        "más",
+        "palabra",
+        "que",
+        "qué",
+        "sea",
+        "siguiente"
+      ],
+      "tokens_documento": [
+        "antes",
+        "bajos",
+        "concentran",
+        "del",
+        "la",
+        "logits",
+        "los",
+        "probabilidad",
+        "reescala",
+        "softmax",
+        "temperatura",
+        "valores"
+      ],
+      "terminos_compartidos": [
+        "la"
+      ],
+      "num_terminos_compartidos": 1,
+      "compartidos_presentes_en_vocabulario_tfidf": [
+        "la"
+      ]
+    },
+    "q6": {
+      "relevante": "d02",
+      "tokens_consulta": [
+        "arquitectura",
+        "autoatención",
+        "capas",
+        "combina",
+        "con",
+        "feed",
+        "forward",
+        "qué"
+      ],
+      "tokens_documento": [
+        "apilan",
+        "autoatención",
+        "capas",
+        "con",
+        "conexiones",
+        "de",
+        "feed",
+        "forward",
+        "los",
+        "normalización",
+        "redes",
+        "residuales",
+        "transformadores"
+      ],
+      "terminos_compartidos": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ],
+      "num_terminos_compartidos": 5,
+      "compartidos_presentes_en_vocabulario_tfidf": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ]
+    }
+  },
+  "detalle_por_metodo": {
+    "TF-IDF": {
+      "metodo": "TF-IDF",
+      "metricas": {
+        "hit_at_1": 0.8333333333333334,
+        "hit_at_3": 0.8333333333333334,
+        "mrr": 0.8611111111111112
+      },
+      "por_consulta": {
+        "q1": {
+          "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+          "relevante": "d04",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.6890762406943802,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d04",
+              "similitud": 0.6890762406943802
+            },
+            {
+              "pos": 2,
+              "doc": "d01",
+              "similitud": 0.24104429689047813
+            },
+            {
+              "pos": 3,
+              "doc": "d06",
+              "similitud": 0.17176219526377373
+            },
+            {
+              "pos": 4,
+              "doc": "d10",
+              "similitud": 0.14558189772995922
+            },
+            {
+              "pos": 5,
+              "doc": "d02",
+              "similitud": 0.07453421603164366
+            },
+            {
+              "pos": 6,
+              "doc": "d08",
+              "similitud": 0.07361653787213339
+            },
+            {
+              "pos": 7,
+              "doc": "d09",
+              "similitud": 0.06091203978803966
+            },
+            {
+              "pos": 8,
+              "doc": "d05",
+              "similitud": 0.0304178302412077
+            },
+            {
+              "pos": 9,
+              "doc": "d03",
+              "similitud": 0.030168272064907867
+            },
+            {
+              "pos": 10,
+              "doc": "d07",
+              "similitud": 0.0
+            }
+          ]
+        },
+        "q2": {
+          "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+          "relevante": "d03",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.5174387367568429,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d03",
+              "similitud": 0.5174387367568429
+            },
+            {
+              "pos": 2,
+              "doc": "d01",
+              "similitud": 0.0
+            },
+            {
+              "pos": 3,
+              "doc": "d02",
+              "similitud": 0.0
+            },
+            {
+              "pos": 4,
+              "doc": "d04",
+              "similitud": 0.0
+            },
+            {
+              "pos": 5,
+              "doc": "d05",
+              "similitud": 0.0
+            },
+            {
+              "pos": 6,
+              "doc": "d06",
+              "similitud": 0.0
+            },
+            {
+              "pos": 7,
+              "doc": "d07",
+              "similitud": 0.0
+            },
+            {
+              "pos": 8,
+              "doc": "d08",
+              "similitud": 0.0
+            },
+            {
+              "pos": 9,
+              "doc": "d09",
+              "similitud": 0.0
+            },
+            {
+              "pos": 10,
+              "doc": "d10",
+              "similitud": 0.0
+            }
+          ]
+        },
+        "q3": {
+          "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+          "relevante": "d08",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.5604292724229949,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d08",
+              "similitud": 0.5604292724229949
+            },
+            {
+              "pos": 2,
+              "doc": "d06",
+              "similitud": 0.12298847552390194
+            },
+            {
+              "pos": 3,
+              "doc": "d04",
+              "similitud": 0.08065431281941934
+            },
+            {
+              "pos": 4,
+              "doc": "d01",
+              "similitud": 0.06381465584320169
+            },
+            {
+              "pos": 5,
+              "doc": "d10",
+              "similitud": 0.0494078249415492
+            },
+            {
+              "pos": 6,
+              "doc": "d02",
+              "similitud": 0.045968561989839445
+            },
+            {
+              "pos": 7,
+              "doc": "d03",
+              "similitud": 0.0
+            },
+            {
+              "pos": 8,
+              "doc": "d05",
+              "similitud": 0.0
+            },
+            {
+              "pos": 9,
+              "doc": "d07",
+              "similitud": 0.0
+            },
+            {
+              "pos": 10,
+              "doc": "d09",
+              "similitud": 0.0
+            }
+          ]
+        },
+        "q4": {
+          "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+          "relevante": "d05",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.4569245353145955,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d05",
+              "similitud": 0.4569245353145955
+            },
+            {
+              "pos": 2,
+              "doc": "d01",
+              "similitud": 0.24754993848068024
+            },
+            {
+              "pos": 3,
+              "doc": "d04",
+              "similitud": 0.24252131947498234
+            },
+            {
+              "pos": 4,
+              "doc": "d10",
+              "similitud": 0.19166293170642723
+            },
+            {
+              "pos": 5,
+              "doc": "d02",
+              "similitud": 0.09812652932690284
+            },
+            {
+              "pos": 6,
+              "doc": "d08",
+              "similitud": 0.09691837852548282
+            },
+            {
+              "pos": 7,
+              "doc": "d09",
+              "similitud": 0.08019252602167252
+            },
+            {
+              "pos": 8,
+              "doc": "d03",
+              "similitud": 0.039717434369503
+            },
+            {
+              "pos": 9,
+              "doc": "d06",
+              "similitud": 0.0
+            },
+            {
+              "pos": 10,
+              "doc": "d07",
+              "similitud": 0.0
+            }
+          ]
+        },
+        "q5": {
+          "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+          "relevante": "d09",
+          "rank_relevante": 6,
+          "similitud_relevante": 0.07900232923856973,
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "reciprocal_rank": 0.16666666666666666,
+          "falla_top3": true,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d03",
+              "similitud": 0.3106758887220715
+            },
+            {
+              "pos": 2,
+              "doc": "d06",
+              "similitud": 0.20085134590621823
+            },
+            {
+              "pos": 3,
+              "doc": "d04",
+              "similitud": 0.18955976285205217
+            },
+            {
+              "pos": 4,
+              "doc": "d01",
+              "similitud": 0.16230333908296432
+            },
+            {
+              "pos": 5,
+              "doc": "d10",
+              "similitud": 0.08491551831191196
+            },
+            {
+              "pos": 6,
+              "doc": "d09",
+              "similitud": 0.07900232923856973
+            },
+            {
+              "pos": 7,
+              "doc": "d08",
+              "similitud": 0.0748861092010969
+            },
+            {
+              "pos": 8,
+              "doc": "d05",
+              "similitud": 0.0394516330072182
+            },
+            {
+              "pos": 9,
+              "doc": "d02",
+              "similitud": 0.0
+            },
+            {
+              "pos": 10,
+              "doc": "d07",
+              "similitud": 0.0
+            }
+          ]
+        },
+        "q6": {
+          "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+          "relevante": "d02",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.5674153888326815,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d02",
+              "similitud": 0.5674153888326815
+            },
+            {
+              "pos": 2,
+              "doc": "d06",
+              "similitud": 0.16635706514893972
+            },
+            {
+              "pos": 3,
+              "doc": "d03",
+              "similitud": 0.04553295699284448
+            },
+            {
+              "pos": 4,
+              "doc": "d08",
+              "similitud": 0.045402589103718784
+            },
+            {
+              "pos": 5,
+              "doc": "d01",
+              "similitud": 0.03190732792160084
+            },
+            {
+              "pos": 6,
+              "doc": "d04",
+              "similitud": 0.0
+            },
+            {
+              "pos": 7,
+              "doc": "d05",
+              "similitud": 0.0
+            },
+            {
+              "pos": 8,
+              "doc": "d07",
+              "similitud": 0.0
+            },
+            {
+              "pos": 9,
+              "doc": "d09",
+              "similitud": 0.0
+            },
+            {
+              "pos": 10,
+              "doc": "d10",
+              "similitud": 0.0
+            }
+          ]
+        }
+      },
+      "consultas_falladas": [
+        {
+          "consulta": "q5",
+          "relevante": "d09",
+          "rank_relevante": 6
+        }
+      ],
+      "num_consultas_falladas": 1
+    },
+    "LSA": {
+      "metodo": "LSA",
+      "metricas": {
+        "hit_at_1": 0.6666666666666666,
+        "hit_at_3": 0.8333333333333334,
+        "mrr": 0.75
+      },
+      "por_consulta": {
+        "q1": {
+          "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+          "relevante": "d04",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.9542338764603773,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d04",
+              "similitud": 0.9542338764603773
+            },
+            {
+              "pos": 2,
+              "doc": "d01",
+              "similitud": 0.9261673642870467
+            },
+            {
+              "pos": 3,
+              "doc": "d06",
+              "similitud": 0.6302861368690815
+            },
+            {
+              "pos": 4,
+              "doc": "d10",
+              "similitud": 0.5834748914843834
+            },
+            {
+              "pos": 5,
+              "doc": "d09",
+              "similitud": 0.5060238963860739
+            },
+            {
+              "pos": 6,
+              "doc": "d05",
+              "similitud": 0.4657521761946783
+            },
+            {
+              "pos": 7,
+              "doc": "d03",
+              "similitud": 0.37388789812767936
+            },
+            {
+              "pos": 8,
+              "doc": "d08",
+              "similitud": 0.3245207546801595
+            },
+            {
+              "pos": 9,
+              "doc": "d07",
+              "similitud": 0.19343780781776565
+            },
+            {
+              "pos": 10,
+              "doc": "d02",
+              "similitud": 0.0030220873496788893
+            }
+          ]
+        },
+        "q2": {
+          "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+          "relevante": "d03",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.9753616198616087,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d03",
+              "similitud": 0.9753616198616087
+            },
+            {
+              "pos": 2,
+              "doc": "d07",
+              "similitud": 0.8023847351500059
+            },
+            {
+              "pos": 3,
+              "doc": "d09",
+              "similitud": 0.47086791359665203
+            },
+            {
+              "pos": 4,
+              "doc": "d02",
+              "similitud": 0.4022930576303041
+            },
+            {
+              "pos": 5,
+              "doc": "d04",
+              "similitud": 0.38269812995796804
+            },
+            {
+              "pos": 6,
+              "doc": "d10",
+              "similitud": 0.2942380763214501
+            },
+            {
+              "pos": 7,
+              "doc": "d08",
+              "similitud": 0.14626163623898786
+            },
+            {
+              "pos": 8,
+              "doc": "d01",
+              "similitud": 0.03374106389120009
+            },
+            {
+              "pos": 9,
+              "doc": "d05",
+              "similitud": -0.16002038909687297
+            },
+            {
+              "pos": 10,
+              "doc": "d06",
+              "similitud": -0.2613656916909557
+            }
+          ]
+        },
+        "q3": {
+          "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+          "relevante": "d08",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.9746239272656917,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d08",
+              "similitud": 0.9746239272656917
+            },
+            {
+              "pos": 2,
+              "doc": "d02",
+              "similitud": 0.7665154388303942
+            },
+            {
+              "pos": 3,
+              "doc": "d06",
+              "similitud": 0.5606217883245711
+            },
+            {
+              "pos": 4,
+              "doc": "d10",
+              "similitud": 0.41330397888067416
+            },
+            {
+              "pos": 5,
+              "doc": "d01",
+              "similitud": 0.35434335823323476
+            },
+            {
+              "pos": 6,
+              "doc": "d04",
+              "similitud": 0.22438785854469448
+            },
+            {
+              "pos": 7,
+              "doc": "d03",
+              "similitud": 0.14820782499222948
+            },
+            {
+              "pos": 8,
+              "doc": "d05",
+              "similitud": -0.1329764311094453
+            },
+            {
+              "pos": 9,
+              "doc": "d07",
+              "similitud": -0.13599590950411974
+            },
+            {
+              "pos": 10,
+              "doc": "d09",
+              "similitud": -0.1735393373877528
+            }
+          ]
+        },
+        "q4": {
+          "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+          "relevante": "d05",
+          "rank_relevante": 3,
+          "similitud_relevante": 0.8984217134139745,
+          "hit_at_1": false,
+          "hit_at_3": true,
+          "reciprocal_rank": 0.3333333333333333,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d01",
+              "similitud": 0.9219618094000126
+            },
+            {
+              "pos": 2,
+              "doc": "d10",
+              "similitud": 0.9205569108925551
+            },
+            {
+              "pos": 3,
+              "doc": "d05",
+              "similitud": 0.8984217134139745
+            },
+            {
+              "pos": 4,
+              "doc": "d09",
+              "similitud": 0.8201270985637508
+            },
+            {
+              "pos": 5,
+              "doc": "d04",
+              "similitud": 0.7523786823059023
+            },
+            {
+              "pos": 6,
+              "doc": "d03",
+              "similitud": 0.28754150993752653
+            },
+            {
+              "pos": 7,
+              "doc": "d08",
+              "similitud": 0.26950027576973756
+            },
+            {
+              "pos": 8,
+              "doc": "d02",
+              "similitud": 0.12236796902644502
+            },
+            {
+              "pos": 9,
+              "doc": "d06",
+              "similitud": 0.05001260690762395
+            },
+            {
+              "pos": 10,
+              "doc": "d07",
+              "similitud": -0.2581150056915103
+            }
+          ]
+        },
+        "q5": {
+          "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+          "relevante": "d09",
+          "rank_relevante": 6,
+          "similitud_relevante": 0.4998855168034817,
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "reciprocal_rank": 0.16666666666666666,
+          "falla_top3": true,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d04",
+              "similitud": 0.9427359534682029
+            },
+            {
+              "pos": 2,
+              "doc": "d01",
+              "similitud": 0.8066012329018126
+            },
+            {
+              "pos": 3,
+              "doc": "d03",
+              "similitud": 0.6140509840251352
+            },
+            {
+              "pos": 4,
+              "doc": "d06",
+              "similitud": 0.5655795641518955
+            },
+            {
+              "pos": 5,
+              "doc": "d10",
+              "similitud": 0.5629897534965798
+            },
+            {
+              "pos": 6,
+              "doc": "d09",
+              "similitud": 0.4998855168034817
+            },
+            {
+              "pos": 7,
+              "doc": "d07",
+              "similitud": 0.4337516103914688
+            },
+            {
+              "pos": 8,
+              "doc": "d08",
+              "similitud": 0.4046979346963287
+            },
+            {
+              "pos": 9,
+              "doc": "d05",
+              "similitud": 0.27377533039462815
+            },
+            {
+              "pos": 10,
+              "doc": "d02",
+              "similitud": 0.17339640145553714
+            }
+          ]
+        },
+        "q6": {
+          "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+          "relevante": "d02",
+          "rank_relevante": 1,
+          "similitud_relevante": 0.9530957100505448,
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "reciprocal_rank": 1.0,
+          "falla_top3": false,
+          "ranking": [
+            {
+              "pos": 1,
+              "doc": "d02",
+              "similitud": 0.9530957100505448
+            },
+            {
+              "pos": 2,
+              "doc": "d08",
+              "similitud": 0.9523406024377644
+            },
+            {
+              "pos": 3,
+              "doc": "d10",
+              "similitud": 0.34842799295196997
+            },
+            {
+              "pos": 4,
+              "doc": "d03",
+              "similitud": 0.3301561141049837
+            },
+            {
+              "pos": 5,
+              "doc": "d06",
+              "similitud": 0.21635859777818808
+            },
+            {
+              "pos": 6,
+              "doc": "d01",
+              "similitud": 0.04002492044137359
+            },
+            {
+              "pos": 7,
+              "doc": "d07",
+              "similitud": 0.00519430109323769
+            },
+            {
+              "pos": 8,
+              "doc": "d04",
+              "similitud": -0.011801219300027801
+            },
+            {
+              "pos": 9,
+              "doc": "d09",
+              "similitud": -0.1871841946211961
+            },
+            {
+              "pos": 10,
+              "doc": "d05",
+              "similitud": -0.3256721709816622
+            }
+          ]
+        }
+      },
+      "consultas_falladas": [
+        {
+          "consulta": "q5",
+          "relevante": "d09",
+          "rank_relevante": 6
+        }
+      ],
+      "num_consultas_falladas": 1
+    }
+  }
+}

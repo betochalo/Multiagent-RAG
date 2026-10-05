@@ -1,0 +1,1364 @@
+{
+  "subtarea": "s3 - Parte 3: análisis por consulta",
+  "config": {
+    "corpus": [
+      "d01",
+      "d02",
+      "d03",
+      "d04",
+      "d05",
+      "d06",
+      "d07",
+      "d08",
+      "d09",
+      "d10"
+    ],
+    "consultas": {
+      "q1": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "q2": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "q3": "¿Qué técnica entrena matrices de bajo rango?",
+      "q4": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "q5": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "q6": "¿Qué arquitectura combina autoatención con capas feed-forward?"
+    },
+    "relevantes": {
+      "q1": "d04",
+      "q2": "d03",
+      "q3": "d08",
+      "q4": "d05",
+      "q5": "d09",
+      "q6": "d02"
+    },
+    "vectorizador": "TfidfVectorizer (parámetros por defecto), ajustado solo con el corpus",
+    "lsa": "TruncatedSVD(n_components=4, random_state=0) sobre la matriz TF-IDF",
+    "n_documentos": 10,
+    "n_consultas": 6,
+    "n_vocabulario_tfidf": 105,
+    "n_componentes_lsa": 4,
+    "varianza_explicada_lsa": 0.39534217090869533,
+    "criterio_fallo": "el documento relevante queda fuera del top 3"
+  },
+  "consultas_falladas": {
+    "tfidf": [
+      "q5"
+    ],
+    "lsa": [
+      "q5"
+    ]
+  },
+  "tfidf": {
+    "consultas_falladas": [
+      "q5"
+    ],
+    "por_consulta": {
+      "q1": {
+        "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+        "relevante": "d04",
+        "terminos_compartidos": [
+          "de",
+          "frecuencia",
+          "función",
+          "la",
+          "léxica",
+          "pondera",
+          "ranking",
+          "términos"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "de",
+          "frecuencia",
+          "función",
+          "la",
+          "léxica",
+          "pondera",
+          "ranking",
+          "términos"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d04",
+            "similitud_coseno": 0.6890762406943802
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.24104429689047813
+          },
+          {
+            "pos": 3,
+            "doc": "d06",
+            "similitud_coseno": 0.17176219526377373
+          },
+          {
+            "pos": 4,
+            "doc": "d10",
+            "similitud_coseno": 0.14558189772995922
+          },
+          {
+            "pos": 5,
+            "doc": "d02",
+            "similitud_coseno": 0.07453421603164366
+          },
+          {
+            "pos": 6,
+            "doc": "d08",
+            "similitud_coseno": 0.07361653787213339
+          },
+          {
+            "pos": 7,
+            "doc": "d09",
+            "similitud_coseno": 0.06091203978803966
+          },
+          {
+            "pos": 8,
+            "doc": "d05",
+            "similitud_coseno": 0.0304178302412077
+          },
+          {
+            "pos": 9,
+            "doc": "d03",
+            "similitud_coseno": 0.030168272064907867
+          },
+          {
+            "pos": 10,
+            "doc": "d07",
+            "similitud_coseno": 0.0
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d04",
+            "similitud_coseno": 0.6890762406943802
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.24104429689047813
+          },
+          {
+            "pos": 3,
+            "doc": "d06",
+            "similitud_coseno": 0.17176219526377373
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      },
+      "q2": {
+        "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+        "relevante": "d03",
+        "terminos_compartidos": [
+          "al",
+          "fragmentos",
+          "prompt"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "al",
+          "fragmentos",
+          "prompt"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "añaden",
+          "cómo",
+          "recuperados",
+          "se"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d03",
+            "similitud_coseno": 0.5174387367568429
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 3,
+            "doc": "d02",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 4,
+            "doc": "d04",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 5,
+            "doc": "d05",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 6,
+            "doc": "d06",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 7,
+            "doc": "d07",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 8,
+            "doc": "d08",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 9,
+            "doc": "d09",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 10,
+            "doc": "d10",
+            "similitud_coseno": 0.0
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d03",
+            "similitud_coseno": 0.5174387367568429
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 3,
+            "doc": "d02",
+            "similitud_coseno": 0.0
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      },
+      "q3": {
+        "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+        "relevante": "d08",
+        "terminos_compartidos": [
+          "bajo",
+          "de",
+          "entrena",
+          "matrices",
+          "rango"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "bajo",
+          "de",
+          "entrena",
+          "matrices",
+          "rango"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "técnica"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d08",
+            "similitud_coseno": 0.5604292724229949
+          },
+          {
+            "pos": 2,
+            "doc": "d06",
+            "similitud_coseno": 0.12298847552390194
+          },
+          {
+            "pos": 3,
+            "doc": "d04",
+            "similitud_coseno": 0.08065431281941934
+          },
+          {
+            "pos": 4,
+            "doc": "d01",
+            "similitud_coseno": 0.06381465584320169
+          },
+          {
+            "pos": 5,
+            "doc": "d10",
+            "similitud_coseno": 0.0494078249415492
+          },
+          {
+            "pos": 6,
+            "doc": "d02",
+            "similitud_coseno": 0.045968561989839445
+          },
+          {
+            "pos": 7,
+            "doc": "d03",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 8,
+            "doc": "d05",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 9,
+            "doc": "d07",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 10,
+            "doc": "d09",
+            "similitud_coseno": 0.0
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d08",
+            "similitud_coseno": 0.5604292724229949
+          },
+          {
+            "pos": 2,
+            "doc": "d06",
+            "similitud_coseno": 0.12298847552390194
+          },
+          {
+            "pos": 3,
+            "doc": "d04",
+            "similitud_coseno": 0.08065431281941934
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      },
+      "q4": {
+        "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+        "relevante": "d05",
+        "terminos_compartidos": [
+          "compara",
+          "la",
+          "orientación",
+          "vectores"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "compara",
+          "la",
+          "orientación",
+          "vectores"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "cómo",
+          "dos",
+          "se",
+          "texto"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d05",
+            "similitud_coseno": 0.4569245353145955
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.24754993848068024
+          },
+          {
+            "pos": 3,
+            "doc": "d04",
+            "similitud_coseno": 0.24252131947498234
+          },
+          {
+            "pos": 4,
+            "doc": "d10",
+            "similitud_coseno": 0.19166293170642723
+          },
+          {
+            "pos": 5,
+            "doc": "d02",
+            "similitud_coseno": 0.09812652932690284
+          },
+          {
+            "pos": 6,
+            "doc": "d08",
+            "similitud_coseno": 0.09691837852548282
+          },
+          {
+            "pos": 7,
+            "doc": "d09",
+            "similitud_coseno": 0.08019252602167252
+          },
+          {
+            "pos": 8,
+            "doc": "d03",
+            "similitud_coseno": 0.039717434369503
+          },
+          {
+            "pos": 9,
+            "doc": "d06",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 10,
+            "doc": "d07",
+            "similitud_coseno": 0.0
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d05",
+            "similitud_coseno": 0.4569245353145955
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.24754993848068024
+          },
+          {
+            "pos": 3,
+            "doc": "d04",
+            "similitud_coseno": 0.24252131947498234
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      },
+      "q5": {
+        "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "relevante": "d09",
+        "terminos_compartidos": [
+          "la"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "la"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "determinista",
+          "elegir",
+          "hace",
+          "más",
+          "palabra",
+          "sea",
+          "siguiente"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d03",
+            "similitud_coseno": 0.3106758887220715
+          },
+          {
+            "pos": 2,
+            "doc": "d06",
+            "similitud_coseno": 0.20085134590621823
+          },
+          {
+            "pos": 3,
+            "doc": "d04",
+            "similitud_coseno": 0.18955976285205217
+          },
+          {
+            "pos": 4,
+            "doc": "d01",
+            "similitud_coseno": 0.16230333908296432
+          },
+          {
+            "pos": 5,
+            "doc": "d10",
+            "similitud_coseno": 0.08491551831191196
+          },
+          {
+            "pos": 6,
+            "doc": "d09",
+            "similitud_coseno": 0.07900232923856973
+          },
+          {
+            "pos": 7,
+            "doc": "d08",
+            "similitud_coseno": 0.0748861092010969
+          },
+          {
+            "pos": 8,
+            "doc": "d05",
+            "similitud_coseno": 0.0394516330072182
+          },
+          {
+            "pos": 9,
+            "doc": "d02",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 10,
+            "doc": "d07",
+            "similitud_coseno": 0.0
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d03",
+            "similitud_coseno": 0.3106758887220715
+          },
+          {
+            "pos": 2,
+            "doc": "d06",
+            "similitud_coseno": 0.20085134590621823
+          },
+          {
+            "pos": 3,
+            "doc": "d04",
+            "similitud_coseno": 0.18955976285205217
+          }
+        ],
+        "rank_relevante": 6,
+        "fallo_top3": true
+      },
+      "q6": {
+        "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+        "relevante": "d02",
+        "terminos_compartidos": [
+          "autoatención",
+          "capas",
+          "con",
+          "feed",
+          "forward"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "autoatención",
+          "capas",
+          "con",
+          "feed",
+          "forward"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "arquitectura",
+          "combina"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d02",
+            "similitud_coseno": 0.5674153888326815
+          },
+          {
+            "pos": 2,
+            "doc": "d06",
+            "similitud_coseno": 0.16635706514893972
+          },
+          {
+            "pos": 3,
+            "doc": "d03",
+            "similitud_coseno": 0.04553295699284448
+          },
+          {
+            "pos": 4,
+            "doc": "d08",
+            "similitud_coseno": 0.045402589103718784
+          },
+          {
+            "pos": 5,
+            "doc": "d01",
+            "similitud_coseno": 0.03190732792160084
+          },
+          {
+            "pos": 6,
+            "doc": "d04",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 7,
+            "doc": "d05",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 8,
+            "doc": "d07",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 9,
+            "doc": "d09",
+            "similitud_coseno": 0.0
+          },
+          {
+            "pos": 10,
+            "doc": "d10",
+            "similitud_coseno": 0.0
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d02",
+            "similitud_coseno": 0.5674153888326815
+          },
+          {
+            "pos": 2,
+            "doc": "d06",
+            "similitud_coseno": 0.16635706514893972
+          },
+          {
+            "pos": 3,
+            "doc": "d03",
+            "similitud_coseno": 0.04553295699284448
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      }
+    }
+  },
+  "lsa": {
+    "consultas_falladas": [
+      "q5"
+    ],
+    "por_consulta": {
+      "q1": {
+        "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+        "relevante": "d04",
+        "terminos_compartidos": [
+          "de",
+          "frecuencia",
+          "función",
+          "la",
+          "léxica",
+          "pondera",
+          "ranking",
+          "términos"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "de",
+          "frecuencia",
+          "función",
+          "la",
+          "léxica",
+          "pondera",
+          "ranking",
+          "términos"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d04",
+            "similitud_coseno": 0.9542338764603773
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.9261673642870467
+          },
+          {
+            "pos": 3,
+            "doc": "d06",
+            "similitud_coseno": 0.6302861368690815
+          },
+          {
+            "pos": 4,
+            "doc": "d10",
+            "similitud_coseno": 0.5834748914843834
+          },
+          {
+            "pos": 5,
+            "doc": "d09",
+            "similitud_coseno": 0.5060238963860739
+          },
+          {
+            "pos": 6,
+            "doc": "d05",
+            "similitud_coseno": 0.4657521761946783
+          },
+          {
+            "pos": 7,
+            "doc": "d03",
+            "similitud_coseno": 0.37388789812767936
+          },
+          {
+            "pos": 8,
+            "doc": "d08",
+            "similitud_coseno": 0.3245207546801595
+          },
+          {
+            "pos": 9,
+            "doc": "d07",
+            "similitud_coseno": 0.19343780781776565
+          },
+          {
+            "pos": 10,
+            "doc": "d02",
+            "similitud_coseno": 0.0030220873496788893
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d04",
+            "similitud_coseno": 0.9542338764603773
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.9261673642870467
+          },
+          {
+            "pos": 3,
+            "doc": "d06",
+            "similitud_coseno": 0.6302861368690815
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      },
+      "q2": {
+        "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+        "relevante": "d03",
+        "terminos_compartidos": [
+          "al",
+          "fragmentos",
+          "prompt"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "al",
+          "fragmentos",
+          "prompt"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "añaden",
+          "cómo",
+          "recuperados",
+          "se"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d03",
+            "similitud_coseno": 0.9753616198616087
+          },
+          {
+            "pos": 2,
+            "doc": "d07",
+            "similitud_coseno": 0.8023847351500059
+          },
+          {
+            "pos": 3,
+            "doc": "d09",
+            "similitud_coseno": 0.47086791359665203
+          },
+          {
+            "pos": 4,
+            "doc": "d02",
+            "similitud_coseno": 0.4022930576303041
+          },
+          {
+            "pos": 5,
+            "doc": "d04",
+            "similitud_coseno": 0.38269812995796804
+          },
+          {
+            "pos": 6,
+            "doc": "d10",
+            "similitud_coseno": 0.2942380763214501
+          },
+          {
+            "pos": 7,
+            "doc": "d08",
+            "similitud_coseno": 0.14626163623898786
+          },
+          {
+            "pos": 8,
+            "doc": "d01",
+            "similitud_coseno": 0.03374106389120009
+          },
+          {
+            "pos": 9,
+            "doc": "d05",
+            "similitud_coseno": -0.16002038909687297
+          },
+          {
+            "pos": 10,
+            "doc": "d06",
+            "similitud_coseno": -0.2613656916909557
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d03",
+            "similitud_coseno": 0.9753616198616087
+          },
+          {
+            "pos": 2,
+            "doc": "d07",
+            "similitud_coseno": 0.8023847351500059
+          },
+          {
+            "pos": 3,
+            "doc": "d09",
+            "similitud_coseno": 0.47086791359665203
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      },
+      "q3": {
+        "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+        "relevante": "d08",
+        "terminos_compartidos": [
+          "bajo",
+          "de",
+          "entrena",
+          "matrices",
+          "rango"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "bajo",
+          "de",
+          "entrena",
+          "matrices",
+          "rango"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "técnica"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d08",
+            "similitud_coseno": 0.9746239272656917
+          },
+          {
+            "pos": 2,
+            "doc": "d02",
+            "similitud_coseno": 0.7665154388303942
+          },
+          {
+            "pos": 3,
+            "doc": "d06",
+            "similitud_coseno": 0.5606217883245711
+          },
+          {
+            "pos": 4,
+            "doc": "d10",
+            "similitud_coseno": 0.41330397888067416
+          },
+          {
+            "pos": 5,
+            "doc": "d01",
+            "similitud_coseno": 0.35434335823323476
+          },
+          {
+            "pos": 6,
+            "doc": "d04",
+            "similitud_coseno": 0.22438785854469448
+          },
+          {
+            "pos": 7,
+            "doc": "d03",
+            "similitud_coseno": 0.14820782499222948
+          },
+          {
+            "pos": 8,
+            "doc": "d05",
+            "similitud_coseno": -0.1329764311094453
+          },
+          {
+            "pos": 9,
+            "doc": "d07",
+            "similitud_coseno": -0.13599590950411974
+          },
+          {
+            "pos": 10,
+            "doc": "d09",
+            "similitud_coseno": -0.1735393373877528
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d08",
+            "similitud_coseno": 0.9746239272656917
+          },
+          {
+            "pos": 2,
+            "doc": "d02",
+            "similitud_coseno": 0.7665154388303942
+          },
+          {
+            "pos": 3,
+            "doc": "d06",
+            "similitud_coseno": 0.5606217883245711
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      },
+      "q4": {
+        "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+        "relevante": "d05",
+        "terminos_compartidos": [
+          "compara",
+          "la",
+          "orientación",
+          "vectores"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "compara",
+          "la",
+          "orientación",
+          "vectores"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "cómo",
+          "dos",
+          "se",
+          "texto"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d01",
+            "similitud_coseno": 0.9219618094000126
+          },
+          {
+            "pos": 2,
+            "doc": "d10",
+            "similitud_coseno": 0.9205569108925551
+          },
+          {
+            "pos": 3,
+            "doc": "d05",
+            "similitud_coseno": 0.8984217134139745
+          },
+          {
+            "pos": 4,
+            "doc": "d09",
+            "similitud_coseno": 0.8201270985637508
+          },
+          {
+            "pos": 5,
+            "doc": "d04",
+            "similitud_coseno": 0.7523786823059023
+          },
+          {
+            "pos": 6,
+            "doc": "d03",
+            "similitud_coseno": 0.28754150993752653
+          },
+          {
+            "pos": 7,
+            "doc": "d08",
+            "similitud_coseno": 0.26950027576973756
+          },
+          {
+            "pos": 8,
+            "doc": "d02",
+            "similitud_coseno": 0.12236796902644502
+          },
+          {
+            "pos": 9,
+            "doc": "d06",
+            "similitud_coseno": 0.05001260690762395
+          },
+          {
+            "pos": 10,
+            "doc": "d07",
+            "similitud_coseno": -0.2581150056915103
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d01",
+            "similitud_coseno": 0.9219618094000126
+          },
+          {
+            "pos": 2,
+            "doc": "d10",
+            "similitud_coseno": 0.9205569108925551
+          },
+          {
+            "pos": 3,
+            "doc": "d05",
+            "similitud_coseno": 0.8984217134139745
+          }
+        ],
+        "rank_relevante": 3,
+        "fallo_top3": false
+      },
+      "q5": {
+        "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "relevante": "d09",
+        "terminos_compartidos": [
+          "la"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "la"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "determinista",
+          "elegir",
+          "hace",
+          "más",
+          "palabra",
+          "sea",
+          "siguiente"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d04",
+            "similitud_coseno": 0.9427359534682029
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.8066012329018126
+          },
+          {
+            "pos": 3,
+            "doc": "d03",
+            "similitud_coseno": 0.6140509840251352
+          },
+          {
+            "pos": 4,
+            "doc": "d06",
+            "similitud_coseno": 0.5655795641518955
+          },
+          {
+            "pos": 5,
+            "doc": "d10",
+            "similitud_coseno": 0.5629897534965798
+          },
+          {
+            "pos": 6,
+            "doc": "d09",
+            "similitud_coseno": 0.4998855168034817
+          },
+          {
+            "pos": 7,
+            "doc": "d07",
+            "similitud_coseno": 0.4337516103914688
+          },
+          {
+            "pos": 8,
+            "doc": "d08",
+            "similitud_coseno": 0.4046979346963287
+          },
+          {
+            "pos": 9,
+            "doc": "d05",
+            "similitud_coseno": 0.27377533039462815
+          },
+          {
+            "pos": 10,
+            "doc": "d02",
+            "similitud_coseno": 0.17339640145553714
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d04",
+            "similitud_coseno": 0.9427359534682029
+          },
+          {
+            "pos": 2,
+            "doc": "d01",
+            "similitud_coseno": 0.8066012329018126
+          },
+          {
+            "pos": 3,
+            "doc": "d03",
+            "similitud_coseno": 0.6140509840251352
+          }
+        ],
+        "rank_relevante": 6,
+        "fallo_top3": true
+      },
+      "q6": {
+        "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+        "relevante": "d02",
+        "terminos_compartidos": [
+          "autoatención",
+          "capas",
+          "con",
+          "feed",
+          "forward"
+        ],
+        "terminos_compartidos_en_vocabulario_tfidf": [
+          "autoatención",
+          "capas",
+          "con",
+          "feed",
+          "forward"
+        ],
+        "terminos_compartidos_fuera_de_vocabulario": [],
+        "terminos_consulta_fuera_de_vocabulario": [
+          "arquitectura",
+          "combina"
+        ],
+        "terminos_documento_relevante_fuera_de_vocabulario": [],
+        "ranking_completo": [
+          {
+            "pos": 1,
+            "doc": "d02",
+            "similitud_coseno": 0.9530957100505448
+          },
+          {
+            "pos": 2,
+            "doc": "d08",
+            "similitud_coseno": 0.9523406024377644
+          },
+          {
+            "pos": 3,
+            "doc": "d10",
+            "similitud_coseno": 0.34842799295196997
+          },
+          {
+            "pos": 4,
+            "doc": "d03",
+            "similitud_coseno": 0.3301561141049837
+          },
+          {
+            "pos": 5,
+            "doc": "d06",
+            "similitud_coseno": 0.21635859777818808
+          },
+          {
+            "pos": 6,
+            "doc": "d01",
+            "similitud_coseno": 0.04002492044137359
+          },
+          {
+            "pos": 7,
+            "doc": "d07",
+            "similitud_coseno": 0.00519430109323769
+          },
+          {
+            "pos": 8,
+            "doc": "d04",
+            "similitud_coseno": -0.011801219300027801
+          },
+          {
+            "pos": 9,
+            "doc": "d09",
+            "similitud_coseno": -0.1871841946211961
+          },
+          {
+            "pos": 10,
+            "doc": "d05",
+            "similitud_coseno": -0.3256721709816622
+          }
+        ],
+        "top3": [
+          {
+            "pos": 1,
+            "doc": "d02",
+            "similitud_coseno": 0.9530957100505448
+          },
+          {
+            "pos": 2,
+            "doc": "d08",
+            "similitud_coseno": 0.9523406024377644
+          },
+          {
+            "pos": 3,
+            "doc": "d10",
+            "similitud_coseno": 0.34842799295196997
+          }
+        ],
+        "rank_relevante": 1,
+        "fallo_top3": false
+      }
+    }
+  },
+  "tabla_por_consulta": [
+    {
+      "consulta": "q1",
+      "texto_consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "terminos_compartidos": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "terminos_compartidos_en_vocabulario": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "terminos_compartidos_fuera_de_vocabulario": [],
+      "terminos_consulta_fuera_de_vocabulario": [],
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    },
+    {
+      "consulta": "q2",
+      "texto_consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "terminos_compartidos": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "terminos_compartidos_en_vocabulario": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "terminos_compartidos_fuera_de_vocabulario": [],
+      "terminos_consulta_fuera_de_vocabulario": [
+        "añaden",
+        "cómo",
+        "recuperados",
+        "se"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    },
+    {
+      "consulta": "q3",
+      "texto_consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "terminos_compartidos": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "terminos_compartidos_en_vocabulario": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "terminos_compartidos_fuera_de_vocabulario": [],
+      "terminos_consulta_fuera_de_vocabulario": [
+        "técnica"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    },
+    {
+      "consulta": "q4",
+      "texto_consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "terminos_compartidos": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "terminos_compartidos_en_vocabulario": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "terminos_compartidos_fuera_de_vocabulario": [],
+      "terminos_consulta_fuera_de_vocabulario": [
+        "cómo",
+        "dos",
+        "se",
+        "texto"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 3,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    },
+    {
+      "consulta": "q5",
+      "texto_consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "terminos_compartidos": [
+        "la"
+      ],
+      "terminos_compartidos_en_vocabulario": [
+        "la"
+      ],
+      "terminos_compartidos_fuera_de_vocabulario": [],
+      "terminos_consulta_fuera_de_vocabulario": [
+        "determinista",
+        "elegir",
+        "hace",
+        "más",
+        "palabra",
+        "sea",
+        "siguiente"
+      ],
+      "rank_tfidf": 6,
+      "rank_lsa": 6,
+      "fallo_tfidf": true,
+      "fallo_lsa": true
+    },
+    {
+      "consulta": "q6",
+      "texto_consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "terminos_compartidos": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ],
+      "terminos_compartidos_en_vocabulario": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ],
+      "terminos_compartidos_fuera_de_vocabulario": [],
+      "terminos_consulta_fuera_de_vocabulario": [
+        "arquitectura",
+        "combina"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    }
+  ]
+}

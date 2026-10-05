@@ -1,0 +1,109 @@
+{
+  "deliverable": {
+    "format": "ipynb",
+    "filename": "notebook.ipynb",
+    "sections": [
+      "preambulo",
+      "condicionamiento-numerico-y-estabilidad",
+      "contexto",
+      "tareas",
+      "preguntas-de-interpretacion",
+      "entrega"
+    ],
+    "max_words": null,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "text",
+      "section": "preambulo",
+      "depends_on": [],
+      "description": "Redactar el encabezado del notebook: titulo 'Control de Lectura 2 - Condicionamiento numerico y estabilidad' y una linea de presentacion con duracion (20 minutos), modalidad (individual) y entrega (script .py o notebook .ipynb). Breve, en espanol.",
+      "criteria": [
+        "Incluye el titulo del control",
+        "Menciona duracion 20 minutos, modalidad individual y formato de entrega",
+        "Texto breve en espanol"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "text",
+      "section": "condicionamiento-numerico-y-estabilidad",
+      "depends_on": [],
+      "description": "Redactar el objetivo de la actividad: analizar experimentalmente como la similitud entre columnas de una matriz y la precision numerica afectan la conservacion de una direccion pequena, distinguiendo el condicionamiento del problema de la estabilidad del procedimiento de calculo. Recordar la igualdad exacta sigma_i^2(X) = lambda_i(X^T X) vista en M05 y anticipar que, con precision finita, dos procedimientos matematicamente equivalentes (SVD directa vs. formar X.T @ X y calcular autovalores) pueden conservar de forma distinta una cantidad muy pequena.",
+      "criteria": [
+        "Enuncia el objetivo experimental (similitud de columnas y precision numerica frente a una direccion pequena)",
+        "Escribe la igualdad sigma_i^2(X) = lambda_i(X^T X)",
+        "Distingue condicionamiento del problema vs. estabilidad del procedimiento"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "text",
+      "section": "contexto",
+      "depends_on": [],
+      "description": "Redactar el contexto: una computadora almacena numeros con precision finita, por lo que dos procedimientos matematicamente equivalentes pueden conservar de manera diferente una cantidad muy pequena; en este control se compara la SVD directa con el procedimiento que primero forma X.T @ X. Describir la matriz de prueba 2x2, X = [[1, 1+separacion], [1, 1-separacion]], y explicar que al disminuir 'separacion' las columnas se vuelven casi iguales y la segunda direccion resulta mas dificil de distinguir. Anunciar los tres casos: A (separacion=1e-2, np.float32), B (separacion=1e-4, np.float32) y C (separacion=1e-4, np.float64).",
+      "criteria": [
+        "Explica por que la precision finita puede hacer que procedimientos equivalentes difieran",
+        "Describe la matriz X = [[1, 1+separacion],[1, 1-separacion]] y el efecto de reducir 'separacion'",
+        "Lista los casos A, B y C con su separacion y tipo numerico"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s4",
+      "type": "code",
+      "section": "tareas",
+      "depends_on": [],
+      "description": "Escribir desde cero un script de Python que importe NumPy (sin codigo inicial proporcionado) y ejecute el experimento completo. Para cada caso - A: separacion=1e-2 con dtype np.float32; B: separacion=1e-4 con dtype np.float32; C: separacion=1e-4 con dtype np.float64 - construir la matriz X = np.array([[1.0, 1.0+separacion],[1.0, 1.0-separacion]], dtype=<tipo del caso>). Procedimiento 1: valores singulares con np.linalg.svd(X, compute_uv=False) y elevarlos al cuadrado (quedan de mayor a menor). Procedimiento 2: formar G = X.T @ X en el dtype del caso, calcular autovalores con np.linalg.eigvalsh(G) y ordenarlos de mayor a menor. Imprimir para cada caso el menor valor de cada secuencia (ultimo tras ordenar) con al menos diez cifras significativas o en notacion cientifica (p. ej. f'{v:.10e}'), y construir la tabla comparativa con columnas: Caso, separacion, tipo, Menor sigma^2 (SVD), Menor lambda(X^T X), Coinciden? (comparar con tolerancia relativa o reportar la diferencia relativa). Imprimir tambien los espectros completos (sigma^2 y lambda) de cada caso. Patron esperado: en A ambos menores son del orden de 1e-4; en B el menor lambda(X^T X) en float32 colapsa a 0 mientras el menor sigma^2(SVD) es del orden de 1e-8; en C ambos son del orden de 1e-8 y coinciden.",
+      "criteria": [
+        "El script importa solo NumPy y se ejecuta sin errores",
+        "Construye X = [[1, 1+sep],[1, 1-sep]] con np.float32 en A y B y np.float64 en C, con separaciones 1e-2 (A) y 1e-4 (B, C)",
+        "Usa np.linalg.svd(X, compute_uv=False) elevado al cuadrado y np.linalg.eigvalsh(X.T @ X) ordenado de mayor a menor",
+        "Imprime los menores valores con al menos 10 cifras significativas o notacion cientifica",
+        "Presenta la tabla comparativa completa con la columna 'Coinciden?'",
+        "Se observa el patron: en B lambda_min(X^T X) es 0 en float32 mientras sigma_min^2(SVD) es del orden de 1e-8; en C ambos son del orden de 1e-8 y coinciden; en A ambos son del orden de 1e-4"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s5",
+      "type": "text",
+      "section": "preguntas-de-interpretacion",
+      "depends_on": [
+        "s4"
+      ],
+      "description": "Redactar en espanol, con palabras propias y citando valores concretos de la tabla del experimento, las respuestas a P1-P5, cada una claramente identificada. P1: primero la prediccion registrada antes de ejecutar (que caso tendra mayor dificultad para conservar el valor pequeno y por que; se anticipa B por combinar la separacion mas pequena con float32) y despues si los resultados la respaldan (si: en B lambda_min(X^T X)=0 mientras sigma_min^2(SVD) es del orden de 1e-8). P2: comparar A y B - que cambio en las columnas (de separacion 1e-2 a 1e-4, casi identicas) y que ocurrio con el menor valor de la SVD directa (cae de orden 1e-4 a orden 1e-8, escala con separacion^2); explicar que esto evidencia el condicionamiento del problema, independiente del procedimiento. P3: comparar B y C - misma separacion nominal, distinto tipo numerico; en float32 el procedimiento que forma X.T @ X pierde la direccion pequena (lambda_min=0 porque 2+2e-8 se redondea a 2), mientras que en float64 ambos procedimientos coinciden (orden 1e-8); explicar que esto evidencia la (in)estabilidad del procedimiento, no del problema. P4: rechazar la afirmacion del estudiante - el cero en B es un artefacto del redondeo en float32 al formar X.T @ X, no prueba de rango 1; la SVD directa sobre la misma X en float32 aun encuentra sigma_min^2 de orden 1e-8 (sigma_min ~ 1e-4 > 0) y en float64 ambos procedimientos coinciden; recomendar np.linalg.svd directamente sobre X (sin formar X^T X) para detectar direcciones pequenas. P5: dos conclusiones breves: (a) el condicionamiento se observa cuando al reducir la separacion de 1e-2 a 1e-4 el menor valor cae a orden 1e-8 y ambos procedimientos en float64 coinciden (propiedad del problema); (b) la estabilidad del procedimiento se observa cuando, con la misma matriz B, los dos procedimientos difieren en float32 (X^T X da 0, SVD da orden 1e-8) y coinciden en float64 (propiedad del procedimiento).",
+      "criteria": [
+        "Responde P1-P5, cada respuesta identificada claramente",
+        "P1 contiene la prediccion previa (sin citar resultados) y la verificacion posterior con valores de la tabla",
+        "Cita valores numericos concretos de la tabla (p. ej. lambda_min=0 en B, sigma_min^2 de orden 1e-8, coincidencia en C)",
+        "P2 explica el cambio en las columnas y su relacion con el condicionamiento",
+        "P3 identifica que procedimiento pierde la direccion en float32 y que pasa en float64, ligandolo a la estabilidad",
+        "P4 acepta o rechaza la afirmacion con evidencia y recomienda un procedimiento (SVD directa)",
+        "P5 completa las dos conclusiones (a) condicionamiento y (b) estabilidad",
+        "Redactado en espanol, con palabras propias y sin definiciones genericas sin evidencia"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s6",
+      "type": "text",
+      "section": "entrega",
+      "depends_on": [
+        "s4",
+        "s5"
+      ],
+      "description": "Redactar la seccion de cierre 'Entrega': una lista breve que confirme que el notebook (i) se ejecuta sin errores de principio a fin, (ii) contiene los resultados de los casos A, B y C con la tabla comparativa completa, y (iii) incluye las respuestas P1 a P5 identificadas claramente y respaldadas con evidencia numerica de la tabla.",
+      "criteria": [
+        "Lista los tres requisitos de la entrega y confirma cada uno",
+        "Menciona explicitamente los casos A, B y C, la tabla comparativa y las respuestas P1-P5",
+        "Texto breve en espanol"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

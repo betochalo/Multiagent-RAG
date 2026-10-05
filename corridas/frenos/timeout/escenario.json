@@ -1,0 +1,45 @@
+{
+  "brake": "timeout",
+  "description": "The first script of s1 never ends: the sandbox kills its process group after 3 s and the critic sends it back; the second attempt passes.",
+  "overrides": {
+    "sandbox_timeout_s": 3
+  },
+  "result": {
+    "status": "parcial",
+    "entregables": [
+      "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/corridas/frenos/timeout/reporte.md"
+    ],
+    "subtareas": [
+      {
+        "id": "s1",
+        "tipo": "code",
+        "status": "approved",
+        "intentos": 2
+      },
+      {
+        "id": "s2",
+        "tipo": "code",
+        "status": "failed",
+        "intentos": 3
+      },
+      {
+        "id": "s3",
+        "tipo": "text",
+        "status": "done",
+        "intentos": 0
+      },
+      {
+        "id": "s4",
+        "tipo": "text",
+        "status": "done",
+        "intentos": 0
+      }
+    ],
+    "usage": {
+      "tokens_entrada": 4120,
+      "tokens_salida": 4270
+    },
+    "model": "scripted",
+    "trace": "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/corridas/frenos/timeout/traza.jsonl"
+  }
+}

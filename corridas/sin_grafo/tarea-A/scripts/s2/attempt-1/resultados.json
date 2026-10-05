@@ -1,0 +1,89 @@
+{
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "part1_split_recomputed": {
+    "test_size_parameter": 0.3,
+    "stratify": true,
+    "random_state": 42,
+    "n_total_examples": 569,
+    "n_attributes": 30,
+    "class_counts_full": {
+      "malignant": 212,
+      "benign": 357
+    },
+    "n_train": 398,
+    "n_test": 171,
+    "train_class_counts": {
+      "malignant": 148,
+      "benign": 250
+    },
+    "test_class_counts": {
+      "malignant": 64,
+      "benign": 107
+    }
+  },
+  "standardization": {
+    "scaler": "StandardScaler",
+    "fit_on": "train_only",
+    "transform_applied_to": [
+      "train",
+      "test"
+    ],
+    "n_features_scaled": 30
+  },
+  "models": {
+    "gaussian_nb": {
+      "model": "GaussianNB",
+      "accuracy": 0.935672514619883,
+      "f1_macro": 0.9306543778801843,
+      "confusion_matrix_test": {
+        "labels": [
+          "malignant",
+          "benign"
+        ],
+        "matrix": [
+          [
+            57,
+            7
+          ],
+          [
+            4,
+            103
+          ]
+        ]
+      }
+    },
+    "logistic_regression": {
+      "model": "LogisticRegression(max_iter=1000, random_state=42)",
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383,
+      "confusion_matrix_test": {
+        "labels": [
+          "malignant",
+          "benign"
+        ],
+        "matrix": [
+          [
+            63,
+            1
+          ],
+          [
+            1,
+            106
+          ]
+        ]
+      }
+    }
+  },
+  "table_test": [
+    {
+      "model": "GaussianNB",
+      "accuracy": 0.935672514619883,
+      "f1_macro": 0.9306543778801843
+    },
+    {
+      "model": "LogisticRegression(max_iter=1000, random_state=42)",
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383
+    }
+  ]
+}

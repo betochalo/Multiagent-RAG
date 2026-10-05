@@ -1,0 +1,21 @@
+{
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "division": {
+    "test_size": 0.3,
+    "stratify": "y",
+    "random_state": 42,
+    "n_entrenamiento": 398,
+    "n_prueba": 171
+  },
+  "estandarizacion": "StandardScaler ajustado solo con el conjunto de entrenamiento",
+  "metricas_prueba": {
+    "GaussianNB (generativo)": {
+      "accuracy": 0.935672514619883,
+      "f1_macro": 0.9306543778801843
+    },
+    "LogisticRegression (discriminativo)": {
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383
+    }
+  }
+}

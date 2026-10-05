@@ -1,0 +1,613 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {
+    "source": "tarea-a-generativo-discriminativo.pdf"
+  },
+  "nodes": [
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Tarea A — Generativo contra discriminativo con pocos datos",
+      "level": 0,
+      "page": 1,
+      "text": "MMIA 6013 · Tarea de práctica para el solver del Taller 03 v2 Entrega: un reporte en Markdown (reporte.md), con el código que lo produce.\n\nNg y Jordan (2002) mostraron que un clasificador generativo puede alcanzar su error asintótico con menos ejemplos que su par discriminativo, aunque ese error asintótico sea mayor. Esta tarea lo comprueba sobre datos reales.",
+      "order": 0,
+      "id": "preambulo"
+    },
+    {
+      "kind": "section",
+      "section_kind": "parte",
+      "number": "1",
+      "title": "Parte 1 — Datos",
+      "level": 1,
+      "page": 1,
+      "text": "Carga el conjunto Breast Cancer Wisconsin (Diagnostic) que trae scikit-learn (sklearn.datasets.load_breast_cancer). Reporta cuántos ejemplos, cuántos atributos y cuántos casos de cada clase tiene. Divide los datos en entrenamiento y prueba, 70 % y 30 %, estratificando por la clase, con random_state=42. Esa división es la única que se usa en toda la tarea: el conjunto de prueba no se toca para ajustar nada.",
+      "order": 1,
+      "id": "parte-1"
+    },
+    {
+      "kind": "section",
+      "section_kind": "parte",
+      "number": "2",
+      "title": "Parte 2 — Dos clasificadores",
+      "level": 1,
+      "page": 1,
+      "text": "Entrena un Naive Bayes gaussiano y una regresión logística (con los atributos estandarizados; el escalador se ajusta solo con el entrenamiento). Reporta la exactitud (accuracy) y el F1 macro de cada uno sobre el conjunto de prueba, en una tabla.",
+      "order": 2,
+      "id": "parte-2"
+    },
+    {
+      "kind": "section",
+      "section_kind": "parte",
+      "number": "3",
+      "title": "Parte 3 — La curva de aprendizaje",
+      "level": 1,
+      "page": 1,
+      "text": "Sobre la misma división de la Parte 1, entrena los dos modelos con el 5 %, 10 %, 25 %, 50 % y 100 % del entrenamiento (submuestras estratificadas, random_state=42) y evalúa cada uno siempre sobre el mismo conjunto de prueba. Dibuja la exactitud contra el número de ejemplos de entrenamiento, con una curva por modelo, y guarda la figura como PNG.",
+      "order": 3,
+      "id": "parte-3"
+    },
+    {
+      "kind": "section",
+      "section_kind": "parte",
+      "number": "4",
+      "title": "Parte 4 — Discusión",
+      "level": 1,
+      "page": 1,
+      "text": "Explica, con tus cifras, si se observa el cruce que predicen Ng y Jordan: en qué tamaño de entrenamiento conviene cada modelo y por qué. Relaciónalo con el sesgo y la varianza de un modelo generativo frente a uno discriminativo.",
+      "order": 4,
+      "id": "parte-4"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "El reporte",
+      "level": 1,
+      "page": 1,
+      "text": "Un reporte.md con estas secciones, en este orden: Introducción, Metodología, Resultados (con la tabla de la Parte 2 y la figura de la Parte 3), Discusión y Conclusiones. Máximo 1 200 palabras. Toda cifra del reporte tiene que salir de la ejecución del código entregado.",
+      "order": 5,
+      "id": "el-reporte"
+    },
+    {
+      "kind": "note_section",
+      "title": "Notas Teóricas — Semana 1: Transformers y Foundation Models",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#1"
+    },
+    {
+      "kind": "note_section",
+      "title": "1. Sesión histórica: IA antes de los LLMs (20 min)",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#2"
+    },
+    {
+      "kind": "note_section",
+      "title": "Línea de tiempo",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#3"
+    },
+    {
+      "kind": "note_section",
+      "title": "Conexión con el curso anterior",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#4"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.1 La pregunta generativa",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#6"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.2 Teorema de Bayes como motor de inferencia",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#7"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.3 Naive Bayes — el modelo generativo mínimo",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#8"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.4 Gaussian Mixture Models — variables latentes",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#9"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.5 Hidden Markov Models — generación secuencial",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#10"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.6 Variational Autoencoder — el puente al espacio latente continuo",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#11"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.7 Del VAE al LLM autorregresivo",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#12"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.1 El problema que resolvió",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#14"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.2 Mecanismo de atención",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#15"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.3 Multi-head attention",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#16"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.4 Estructura completa de un bloque transformer",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#17"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.5 Positional encoding",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#18"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.6 Encoder vs. Decoder",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#19"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.1 Pretraining",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#21"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.2 Supervised Fine-Tuning (SFT)",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#22"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.3 RLHF — Reinforcement Learning from Human Feedback",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#23"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.4 DPO — Direct Preference Optimization",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#24"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.5 Constitutional AI (Anthropic)",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#25"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.6 Inference: temperatura y sampling",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#26"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.1 In-context learning",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#28"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.2 Chain-of-Thought",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#29"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.3 Structured outputs",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#30"
+    },
+    {
+      "kind": "note_section",
+      "title": "6. Notas del Lab 01",
+      "source": "s1-transformers-y-foundation-models.md",
+      "id": "nota:s1-transformers-y-foundation-models.md#31"
+    },
+    {
+      "kind": "note_section",
+      "title": "1. Por qué RAG existe",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#2"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.1 Qué son",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#4"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.2 Cómo se entrenan",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#5"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.3 Similitud semántica",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#6"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.1 El problema de escala",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#8"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.2 HNSW — Hierarchical Navigable Small World",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#9"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.3 IVF — Inverted File Index",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#10"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.4 Stack recomendado",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#11"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.1 Por qué importa el chunking",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#13"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.2 Estrategias",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#14"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.3 Regla práctica",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#15"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.1 BM25 (Sparse Retrieval)",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#17"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.2 Dense Retrieval",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#18"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.3 Hybrid Search",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#19"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.4 Reranking",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#20"
+    },
+    {
+      "kind": "note_section",
+      "title": "6.1 Métricas de retrieval",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#22"
+    },
+    {
+      "kind": "note_section",
+      "title": "6.2 Métricas de generación (RAGAS)",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#23"
+    },
+    {
+      "kind": "note_section",
+      "title": "6.3 GraphRAG",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#24"
+    },
+    {
+      "kind": "note_section",
+      "title": "7. Notas del Lab 02",
+      "source": "s2-rag-y-vector-search.md",
+      "id": "nota:s2-rag-y-vector-search.md#25"
+    },
+    {
+      "kind": "note_section",
+      "title": "1.1 Agentes clásicos (Russel & Norvig)",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#3"
+    },
+    {
+      "kind": "note_section",
+      "title": "1.2 El agente LLM en la taxonomía clásica",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#4"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.1 Qué es",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#6"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.2 Ciclo de tool use",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#7"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.3 Model Context Protocol (MCP)",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#8"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.1 ReAct (Reason + Act)",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#10"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.2 Plan-and-Execute",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#11"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.3 Reflexion",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#12"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.1 Por qué multi-agente",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#14"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.2 Supervisor Pattern",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#15"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.3 LangGraph",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#16"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.4 Hand-offs",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#17"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.1 Loops infinitos",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#19"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.2 Costos descontrolados",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#20"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.3 Herramientas peligrosas",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#21"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.4 Prompt injection en herramientas",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#22"
+    },
+    {
+      "kind": "note_section",
+      "title": "6. Conexión con MSDS 6020 (Ética)",
+      "source": "s3-agentes.md",
+      "id": "nota:s3-agentes.md#23"
+    },
+    {
+      "kind": "note_section",
+      "title": "1. Por qué LLMOps es diferente a MLOps",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#2"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.1 Golden Sets",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#4"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.2 LLM-as-Judge",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#5"
+    },
+    {
+      "kind": "note_section",
+      "title": "2.3 RAGAS para RAG",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#6"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.1 Por qué es no negociable",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#8"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.2 Modelo de trazabilidad",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#9"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.3 Langfuse",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#10"
+    },
+    {
+      "kind": "note_section",
+      "title": "3.4 Prompt Versioning",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#11"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.1 Input validation",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#13"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.2 Output validation",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#14"
+    },
+    {
+      "kind": "note_section",
+      "title": "4.3 Costo y latencia",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#15"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.1 Por qué no full fine-tuning",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#17"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.2 LoRA — Low-Rank Adaptation",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#18"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.3 QLoRA — Quantization + LoRA",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#19"
+    },
+    {
+      "kind": "note_section",
+      "title": "5.4 Árbol de decisión: ¿cuándo usar qué?",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#20"
+    },
+    {
+      "kind": "note_section",
+      "title": "6.1 Señales a monitorear",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#22"
+    },
+    {
+      "kind": "note_section",
+      "title": "6.2 Drift de calidad",
+      "source": "s4-llmops-y-finetuning.md",
+      "id": "nota:s4-llmops-y-finetuning.md#23"
+    }
+  ],
+  "edges": [
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "parte-1",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "parte-2",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "reference",
+      "evidence": "Sobre la misma división de la Parte 1, entrena los dos modelos con el 5 %, 10",
+      "source": "parte-3",
+      "target": "parte-1"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "parte-3",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "parte-4",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "reference",
+      "evidence": "dología, Resultados (con la tabla de la Parte 2 y la figura de la Parte 3), Discusión y",
+      "source": "el-reporte",
+      "target": "parte-2"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "reference",
+      "evidence": "a tabla de la Parte 2 y la figura de la Parte 3), Discusión y Conclusiones. Máximo 1 20",
+      "source": "el-reporte",
+      "target": "parte-3"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "el-reporte",
+      "target": "preambulo"
+    }
+  ]
+}

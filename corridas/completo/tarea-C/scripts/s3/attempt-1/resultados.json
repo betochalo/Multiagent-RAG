@@ -1,0 +1,316 @@
+{
+  "tarea": "Tarea C - Parte 3: análisis por consulta (fallo = relevante fuera del top 3)",
+  "config": {
+    "num_documentos": 10,
+    "num_consultas": 6,
+    "tfidf": "TfidfVectorizer() con parámetros por defecto + cosine_similarity",
+    "lsa": "TruncatedSVD(n_components=4, random_state=0) fit sobre el corpus + normalize(norm='l2') + coseno",
+    "criterio_fallo": "rank del documento relevante > 3"
+  },
+  "tabla_por_consulta": [
+    {
+      "consulta": "q1",
+      "relevante": "d04",
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    },
+    {
+      "consulta": "q2",
+      "relevante": "d03",
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    },
+    {
+      "consulta": "q3",
+      "relevante": "d08",
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    },
+    {
+      "consulta": "q4",
+      "relevante": "d05",
+      "rank_tfidf": 1,
+      "rank_lsa": 3,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    },
+    {
+      "consulta": "q5",
+      "relevante": "d09",
+      "rank_tfidf": 6,
+      "rank_lsa": 6,
+      "fallo_tfidf": true,
+      "fallo_lsa": true
+    },
+    {
+      "consulta": "q6",
+      "relevante": "d02",
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false
+    }
+  ],
+  "por_consulta": {
+    "q1": {
+      "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "sim_tfidf_relevante": 0.6890762406943802,
+      "sim_lsa_relevante": 0.9542338764603774,
+      "top3_tfidf": [
+        "d04",
+        "d01",
+        "d06"
+      ],
+      "top3_lsa": [
+        "d04",
+        "d01",
+        "d06"
+      ],
+      "num_terminos_compartidos": 8,
+      "terminos_compartidos": [
+        {
+          "termino": "de",
+          "df": 5
+        },
+        {
+          "termino": "frecuencia",
+          "df": 1
+        },
+        {
+          "termino": "función",
+          "df": 2
+        },
+        {
+          "termino": "la",
+          "df": 6
+        },
+        {
+          "termino": "léxica",
+          "df": 1
+        },
+        {
+          "termino": "pondera",
+          "df": 2
+        },
+        {
+          "termino": "ranking",
+          "df": 1
+        },
+        {
+          "termino": "términos",
+          "df": 1
+        }
+      ]
+    },
+    "q2": {
+      "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "sim_tfidf_relevante": 0.5174387367568429,
+      "sim_lsa_relevante": 0.9753616198616091,
+      "top3_tfidf": [
+        "d03",
+        "d01",
+        "d02"
+      ],
+      "top3_lsa": [
+        "d03",
+        "d07",
+        "d09"
+      ],
+      "num_terminos_compartidos": 3,
+      "terminos_compartidos": [
+        {
+          "termino": "al",
+          "df": 1
+        },
+        {
+          "termino": "fragmentos",
+          "df": 1
+        },
+        {
+          "termino": "prompt",
+          "df": 1
+        }
+      ]
+    },
+    "q3": {
+      "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "sim_tfidf_relevante": 0.5604292724229949,
+      "sim_lsa_relevante": 0.9746239272656918,
+      "top3_tfidf": [
+        "d08",
+        "d06",
+        "d04"
+      ],
+      "top3_lsa": [
+        "d08",
+        "d02",
+        "d06"
+      ],
+      "num_terminos_compartidos": 5,
+      "terminos_compartidos": [
+        {
+          "termino": "bajo",
+          "df": 1
+        },
+        {
+          "termino": "de",
+          "df": 5
+        },
+        {
+          "termino": "entrena",
+          "df": 1
+        },
+        {
+          "termino": "matrices",
+          "df": 1
+        },
+        {
+          "termino": "rango",
+          "df": 1
+        }
+      ]
+    },
+    "q4": {
+      "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "rank_tfidf": 1,
+      "rank_lsa": 3,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "sim_tfidf_relevante": 0.4569245353145955,
+      "sim_lsa_relevante": 0.8984217134139745,
+      "top3_tfidf": [
+        "d05",
+        "d01",
+        "d04"
+      ],
+      "top3_lsa": [
+        "d01",
+        "d10",
+        "d05"
+      ],
+      "num_terminos_compartidos": 4,
+      "terminos_compartidos": [
+        {
+          "termino": "compara",
+          "df": 1
+        },
+        {
+          "termino": "la",
+          "df": 6
+        },
+        {
+          "termino": "orientación",
+          "df": 1
+        },
+        {
+          "termino": "vectores",
+          "df": 1
+        }
+      ]
+    },
+    "q5": {
+      "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "rank_tfidf": 6,
+      "rank_lsa": 6,
+      "fallo_tfidf": true,
+      "fallo_lsa": true,
+      "sim_tfidf_relevante": 0.07900232923856973,
+      "sim_lsa_relevante": 0.4998855168034818,
+      "top3_tfidf": [
+        "d03",
+        "d06",
+        "d04"
+      ],
+      "top3_lsa": [
+        "d04",
+        "d01",
+        "d03"
+      ],
+      "num_terminos_compartidos": 1,
+      "terminos_compartidos": [
+        {
+          "termino": "la",
+          "df": 6
+        }
+      ]
+    },
+    "q6": {
+      "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "sim_tfidf_relevante": 0.5674153888326815,
+      "sim_lsa_relevante": 0.9530957100505448,
+      "top3_tfidf": [
+        "d02",
+        "d06",
+        "d03"
+      ],
+      "top3_lsa": [
+        "d02",
+        "d08",
+        "d10"
+      ],
+      "num_terminos_compartidos": 5,
+      "terminos_compartidos": [
+        {
+          "termino": "autoatención",
+          "df": 1
+        },
+        {
+          "termino": "capas",
+          "df": 1
+        },
+        {
+          "termino": "con",
+          "df": 5
+        },
+        {
+          "termino": "feed",
+          "df": 1
+        },
+        {
+          "termino": "forward",
+          "df": 1
+        }
+      ]
+    }
+  },
+  "resumen": {
+    "consultas_falla_tfidf": [
+      "q5"
+    ],
+    "consultas_falla_lsa": [
+      "q5"
+    ],
+    "num_fallos_tfidf": 1,
+    "num_fallos_lsa": 1,
+    "hit_at_3_tfidf": 0.8333333333333334,
+    "hit_at_3_lsa": 0.8333333333333334
+  }
+}

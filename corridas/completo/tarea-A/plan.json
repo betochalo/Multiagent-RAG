@@ -1,0 +1,83 @@
+{
+  "deliverable": {
+    "format": "md",
+    "filename": "reporte.md",
+    "sections": [
+      "Introducción",
+      "Metodología",
+      "Resultados",
+      "Discusión",
+      "Conclusiones"
+    ],
+    "max_words": 1200,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "code",
+      "section": "parte-1",
+      "depends_on": [],
+      "description": "Carga el conjunto Breast Cancer Wisconsin (Diagnostic) con sklearn.datasets.load_breast_cancer. Reporta: número total de ejemplos, número de atributos y número de casos de cada clase (maligno y benigno). Luego divide los datos en entrenamiento y prueba 70 %/30 % con train_test_split, estratificando por la clase y con random_state=42. Reporta también cuántos ejemplos quedan en el entrenamiento y en la prueba y cuántos de cada clase en cada conjunto. Esta definición de la división (test_size=0.3, stratify=y, random_state=42) es la que se reutiliza en toda la tarea.",
+      "criteria": [
+        "Usa sklearn.datasets.load_breast_cancer",
+        "Reporta el número total de ejemplos y de atributos",
+        "Reporta el conteo de casos por clase en el dataset completo",
+        "División 70 %/30 % con stratify por clase y random_state=42",
+        "Reporta tamaños y composición por clase de entrenamiento y prueba"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "code",
+      "section": "parte-2",
+      "depends_on": [
+        "s1"
+      ],
+      "description": "Recomputa localmente la división de la Parte 1: load_breast_cancer, train_test_split con test_size=0.3, stratify=y, random_state=42. Estandariza los atributos con StandardScaler ajustado únicamente con el conjunto de entrenamiento (el mismo escalador transforma la prueba; nunca se ajusta con la prueba). Entrena un GaussianNB y una regresión logística (LogisticRegression con max_iter suficiente, p. ej. 1000) sobre los datos estandarizados. Evalúa ambos modelos sobre el conjunto de prueba y reporta accuracy y F1 macro de cada uno en una tabla (por ejemplo con pandas o una tabla Markdown impresa).",
+      "criteria": [
+        "Recomputa la división con test_size=0.3, stratify=y, random_state=42",
+        "El StandardScaler se ajusta solo con el entrenamiento",
+        "Entrena GaussianNB y LogisticRegression",
+        "Reporta accuracy y F1 macro de ambos modelos sobre el conjunto de prueba",
+        "Presenta los resultados en una tabla"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "code",
+      "section": "parte-3",
+      "depends_on": [
+        "s1"
+      ],
+      "description": "Recomputa localmente la división de la Parte 1: load_breast_cancer, train_test_split con test_size=0.3, stratify=y, random_state=42. Para cada fracción de entrenamiento en [0.05, 0.10, 0.25, 0.50, 1.00], toma una submuestra estratificada por clase del conjunto de entrenamiento con random_state=42, entrena un GaussianNB y una regresión logística (con StandardScaler ajustado solo con esa submuestra) y evalúa la accuracy de cada uno siempre sobre el mismo conjunto de prueba completo. Reporta la accuracy de cada modelo para cada tamaño de entrenamiento (número de ejemplos usados) y dibuja la exactitud contra el número de ejemplos de entrenamiento, con una curva por modelo (etiquetas, leyenda y marcadores), guardando la figura como PNG (p. ej. curva_aprendizaje.png).",
+      "criteria": [
+        "Recomputa la división con test_size=0.3, stratify=y, random_state=42",
+        "Usa fracciones 5 %, 10 %, 25 %, 50 % y 100 % del entrenamiento con submuestras estratificadas y random_state=42",
+        "Evalúa ambos modelos siempre sobre el mismo conjunto de prueba",
+        "Reporta la accuracy de cada modelo en cada tamaño de entrenamiento",
+        "Genera una figura con una curva por modelo (accuracy vs. número de ejemplos de entrenamiento) y la guarda como PNG"
+      ],
+      "expects_figure": true
+    },
+    {
+      "id": "s4",
+      "type": "text",
+      "section": "parte-4",
+      "depends_on": [
+        "s2",
+        "s3"
+      ],
+      "description": "Escribe la discusión (prosa, en español) sobre si se observa el cruce que predicen Ng y Jordan (2002) con las cifras obtenidas: usa la tabla de accuracy/F1 macro de la Parte 2 y las accuracies por tamaño de entrenamiento de la Parte 3 para señalar en qué tamaños de entrenamiento conviene cada modelo (GaussianNB vs. regresión logística) y con qué margen. Explica por qué el modelo generativo (Naive Bayes gaussiano) puede alcanzar su error asintótico con menos ejemplos aunque su error asintótico sea mayor, relacionándolo con el sesgo (supuesto de independencia condicional) y la varianza de un modelo generativo frente a uno discriminativo. Toda cifra citada debe provenir de los resultados de s2 y s3.",
+      "criteria": [
+        "Cita cifras concretas de accuracy/F1 de la Parte 2 y de la curva de la Parte 3",
+        "Indica en qué tamaños de entrenamiento conviene cada modelo",
+        "Explica si se observa o no el cruce predicho por Ng y Jordan",
+        "Relaciona el comportamiento con el sesgo y la varianza de modelos generativos vs. discriminativos"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

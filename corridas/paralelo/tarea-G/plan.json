@@ -1,0 +1,65 @@
+{
+  "deliverable": {
+    "format": "ipynb",
+    "filename": "notebook.ipynb",
+    "sections": [
+      "tareas",
+      "preguntas-de-interpretacion",
+      "entrega"
+    ],
+    "max_words": null,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "code",
+      "section": "tareas",
+      "depends_on": [],
+      "description": "Script único de evidencia numérica del Control de Lectura 3 (sin gráficos). Datos: f(w) = w**3 - 2*w; candidatos a derivada gA(w) = 3*w**2 - 2 y gB(w) = 3*w - 2; punto de evaluación w = 2.0; pasos h = 1e-1, 1e-5 y 1e-16 (en ese orden). Implemente diferencia_central(f, w, h) devolviendo la diferencia central (f(w + h) - f(w - h)) / (2 * h); dentro de esta función NO use la derivada analítica ni los candidatos. Para cada caso, con aritmética float de Python y sin redondear cálculos intermedios, calcule: aproximacion = diferencia_central(f, w, h); los candidatos gA(w) y gB(w); las discrepancias absolutas abs(aproximacion - gA(w)) y abs(aproximacion - gB(w)); los puntos perturbados w + h y w - h mostrando su valor exacto (repr) y su igualdad real con w (w + h == w y w - h == w, como booleanos). Imprima en stdout una tabla legible con toda la evidencia de los tres casos (conservar los tres, incluido el caso degenerado h = 1e-16) y guarde resultados_control_3.csv (UTF-8, separador coma) con columnas: h, aproximacion, gA, gB, disc_gA, disc_gB, w_mas_h, w_menos_h, igualdad_w_mas_h, igualdad_w_menos_h.",
+      "criteria": [
+        "diferencia_central(f, w, h) devuelve (f(w+h) - f(w-h)) / (2*h) y no usa la derivada analítica ni los candidatos",
+        "define f(w) = w**3 - 2*w, gA(w) = 3*w**2 - 2 y gB(w) = 3*w - 2, y evalúa en w = 2.0 con h = 1e-1, 1e-5 y 1e-16 usando float de Python sin redondear cálculos",
+        "reporta por caso: aproximación, gA(2.0) = 10.0, gB(2.0) = 4.0, discrepancias absolutas frente a ambos candidatos, puntos perturbados w+h y w-h y sus igualdades reales (w+h == w, w-h == w)",
+        "h = 1e-1: aproximación ≈ 10.01, disc vs gA ≈ 0.01, disc vs gB ≈ 6.01, con w+h = 2.1 y w-h = 1.9 distintos de w",
+        "h = 1e-5: aproximación ≈ 10 (desviación ≤ 1e-9), disc vs gA < 1e-9 y disc vs gB ≈ 6.0",
+        "h = 1e-16: w+h == w y w-h == w son True (ambos exactamente 2.0), aproximación 0.0, disc vs gA = 10.0 y disc vs gB = 4.0",
+        "guarda resultados_control_3.csv con una fila por caso y las columnas indicadas"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "text",
+      "section": "preguntas-de-interpretacion",
+      "depends_on": [
+        "s1"
+      ],
+      "description": "Redacte en español, en prosa concisa, las respuestas P0–P3. P0 debe presentarse como predicción registrada ANTES de ejecutar (sin citar los números calculados; en el notebook puede ubicarse antes de la evidencia, etiquetada 'Predicción (antes de ejecutar)'), y se conserva aunque la evidencia luego la corrija: explique que al verificar un gradiente se comparan el valor del candidato gA(w) o gB(w) en w con la aproximación numérica de f'(w) obtenida por diferencia central (f(w+h)-f(w-h))/(2h), y que un h menor no siempre mejora porque reduce el error de truncamiento O(h²) pero amplifica el efecto del redondeo de punto flotante (cancelación catastrófica en f(w+h)-f(w-h)). P1: identifique el candidato respaldado por la fila fiable (gA) citando de s1 el caso h = 1e-5, su aproximación y ambas discrepancias. P2: compare el menor h (1e-16) con el intermedio (1e-5) citando aproximaciones y puntos perturbados (con h = 1e-16, w+h y w-h valen exactamente 2.0, igualdad real True, y la aproximación cae a 0.0); explique la causa (1e-16 está por debajo del épsilon de máquina relativo a 2, la perturbación se absorbe al redondear) y contraste con la predicción de P0. P3: argumente que coincidir en w = 2 no demuestra corrección para cualquier entrada y proponga otra comprobación concreta SIN programarla (p. ej., repetir la verificación en otros puntos como w = -1, 0, 1, 3 o en varios puntos aleatorios y comparar las discrepancias).",
+      "criteria": [
+        "P0 se redacta como predicción a priori sin citar los números calculados, indica las dos cantidades comparadas (candidato vs aproximación por diferencia central) y sostiene que un h menor no siempre mejora (truncamiento vs redondeo/cancelación)",
+        "P1 elige gA y cita h = 1e-5 con su aproximación y ambas discrepancias tomadas de s1",
+        "P2 compara h = 1e-16 con h = 1e-5 citando aproximaciones y puntos perturbados (w+h = w-h = 2.0 exactos, igualdad True) y explica la absorción por la precisión float, contrastando con P0",
+        "P3 sostiene que un solo punto no prueba corrección general y propone una comprobación adicional concreta sin programarla",
+        "todas las cifras citadas coinciden con los resultados de s1"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "text",
+      "section": "entrega",
+      "depends_on": [
+        "s1",
+        "s2"
+      ],
+      "description": "Redacte la nota de cierre de la entrega del Control de Lectura 3: nombre del control y de la función implementada (diferencia_central, método de diferencias centrales), lista de lo entregado (notebook ejecutado con la función completada, la evidencia de los tres casos w = 2.0 con h = 1e-1, 1e-5 y 1e-16, las respuestas P0–P3 y el archivo resultados_control_3.csv generado por el código) y estado de la entrega (completa, o señalando explícitamente qué quedó pendiente si algo faltara).",
+      "criteria": [
+        "menciona la función diferencia_central y los tres casos evaluados (w = 2.0 con h = 1e-1, 1e-5, 1e-16)",
+        "lista resultados_control_3.csv entre los artefactos entregados",
+        "declara el estado de la entrega (completa o qué quedó pendiente)"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

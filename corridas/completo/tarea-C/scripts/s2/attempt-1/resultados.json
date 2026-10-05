@@ -1,0 +1,846 @@
+{
+  "tarea": "Tarea C - Parte 2: recuperación léxica (TF-IDF) vs semántica latente (LSA)",
+  "config": {
+    "num_documentos": 10,
+    "num_consultas": 6,
+    "tfidf": "TfidfVectorizer() con parámetros por defecto + cosine_similarity",
+    "lsa": "TruncatedSVD(n_components=4, random_state=0) fit sobre la matriz TF-IDF del corpus y transform sobre las consultas; normalize(norm='l2') de documentos y consultas antes de la similitud coseno"
+  },
+  "corpus": [
+    {
+      "id": "d01",
+      "texto": "El mecanismo de atención pondera cada token según su similitud con la consulta; la atención escalada divide por la raíz de la dimensión."
+    },
+    {
+      "id": "d02",
+      "texto": "Los transformadores apilan capas de autoatención y redes feed-forward, con conexiones residuales y normalización."
+    },
+    {
+      "id": "d03",
+      "texto": "La recuperación aumentada con generación busca fragmentos relevantes y los añade al prompt del modelo."
+    },
+    {
+      "id": "d04",
+      "texto": "BM25 es una función de ranking léxica que pondera la frecuencia de términos y la longitud del documento."
+    },
+    {
+      "id": "d05",
+      "texto": "Los embeddings densos representan textos como vectores; la similitud coseno compara su orientación."
+    },
+    {
+      "id": "d06",
+      "texto": "Un agente con herramientas decide en cada paso qué función llamar y observa el resultado."
+    },
+    {
+      "id": "d07",
+      "texto": "ReAct intercala razonamiento y acciones; Reflexion añade una autocrítica verbal entre intentos."
+    },
+    {
+      "id": "d08",
+      "texto": "El ajuste fino con LoRA entrena matrices de bajo rango y congela los pesos originales."
+    },
+    {
+      "id": "d09",
+      "texto": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad."
+    },
+    {
+      "id": "d10",
+      "texto": "La cuantización reduce la precisión de los pesos a 8 o 4 bits para ahorrar memoria."
+    }
+  ],
+  "consultas": [
+    {
+      "id": "q1",
+      "texto": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04"
+    },
+    {
+      "id": "q2",
+      "texto": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03"
+    },
+    {
+      "id": "q3",
+      "texto": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08"
+    },
+    {
+      "id": "q4",
+      "texto": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05"
+    },
+    {
+      "id": "q5",
+      "texto": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09"
+    },
+    {
+      "id": "q6",
+      "texto": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02"
+    }
+  ],
+  "tabla_comparativa": [
+    {
+      "metodo": "TF-IDF",
+      "hit_at_1": 0.8333333333333334,
+      "hit_at_3": 0.8333333333333334,
+      "mrr": 0.8611111111111112
+    },
+    {
+      "metodo": "LSA (SVD 4)",
+      "hit_at_1": 0.6666666666666666,
+      "hit_at_3": 0.8333333333333334,
+      "mrr": 0.75
+    }
+  ],
+  "tfidf": {
+    "metricas": {
+      "hit_at_1": 0.8333333333333334,
+      "hit_at_3": 0.8333333333333334,
+      "mrr": 0.8611111111111112
+    },
+    "por_consulta": {
+      "q1": {
+        "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+        "relevante": "d04",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d04",
+            "similitud": 0.6890762406943802
+          },
+          {
+            "pos": 2,
+            "id": "d01",
+            "similitud": 0.24104429689047813
+          },
+          {
+            "pos": 3,
+            "id": "d06",
+            "similitud": 0.17176219526377373
+          },
+          {
+            "pos": 4,
+            "id": "d10",
+            "similitud": 0.14558189772995922
+          },
+          {
+            "pos": 5,
+            "id": "d02",
+            "similitud": 0.07453421603164366
+          },
+          {
+            "pos": 6,
+            "id": "d08",
+            "similitud": 0.07361653787213339
+          },
+          {
+            "pos": 7,
+            "id": "d09",
+            "similitud": 0.06091203978803966
+          },
+          {
+            "pos": 8,
+            "id": "d05",
+            "similitud": 0.0304178302412077
+          },
+          {
+            "pos": 9,
+            "id": "d03",
+            "similitud": 0.030168272064907867
+          },
+          {
+            "pos": 10,
+            "id": "d07",
+            "similitud": 0.0
+          }
+        ]
+      },
+      "q2": {
+        "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+        "relevante": "d03",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d03",
+            "similitud": 0.5174387367568429
+          },
+          {
+            "pos": 2,
+            "id": "d01",
+            "similitud": 0.0
+          },
+          {
+            "pos": 3,
+            "id": "d02",
+            "similitud": 0.0
+          },
+          {
+            "pos": 4,
+            "id": "d04",
+            "similitud": 0.0
+          },
+          {
+            "pos": 5,
+            "id": "d05",
+            "similitud": 0.0
+          },
+          {
+            "pos": 6,
+            "id": "d06",
+            "similitud": 0.0
+          },
+          {
+            "pos": 7,
+            "id": "d07",
+            "similitud": 0.0
+          },
+          {
+            "pos": 8,
+            "id": "d08",
+            "similitud": 0.0
+          },
+          {
+            "pos": 9,
+            "id": "d09",
+            "similitud": 0.0
+          },
+          {
+            "pos": 10,
+            "id": "d10",
+            "similitud": 0.0
+          }
+        ]
+      },
+      "q3": {
+        "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+        "relevante": "d08",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d08",
+            "similitud": 0.5604292724229949
+          },
+          {
+            "pos": 2,
+            "id": "d06",
+            "similitud": 0.12298847552390194
+          },
+          {
+            "pos": 3,
+            "id": "d04",
+            "similitud": 0.08065431281941934
+          },
+          {
+            "pos": 4,
+            "id": "d01",
+            "similitud": 0.06381465584320169
+          },
+          {
+            "pos": 5,
+            "id": "d10",
+            "similitud": 0.0494078249415492
+          },
+          {
+            "pos": 6,
+            "id": "d02",
+            "similitud": 0.045968561989839445
+          },
+          {
+            "pos": 7,
+            "id": "d03",
+            "similitud": 0.0
+          },
+          {
+            "pos": 8,
+            "id": "d05",
+            "similitud": 0.0
+          },
+          {
+            "pos": 9,
+            "id": "d07",
+            "similitud": 0.0
+          },
+          {
+            "pos": 10,
+            "id": "d09",
+            "similitud": 0.0
+          }
+        ]
+      },
+      "q4": {
+        "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+        "relevante": "d05",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d05",
+            "similitud": 0.4569245353145955
+          },
+          {
+            "pos": 2,
+            "id": "d01",
+            "similitud": 0.24754993848068024
+          },
+          {
+            "pos": 3,
+            "id": "d04",
+            "similitud": 0.24252131947498234
+          },
+          {
+            "pos": 4,
+            "id": "d10",
+            "similitud": 0.19166293170642723
+          },
+          {
+            "pos": 5,
+            "id": "d02",
+            "similitud": 0.09812652932690284
+          },
+          {
+            "pos": 6,
+            "id": "d08",
+            "similitud": 0.09691837852548282
+          },
+          {
+            "pos": 7,
+            "id": "d09",
+            "similitud": 0.08019252602167252
+          },
+          {
+            "pos": 8,
+            "id": "d03",
+            "similitud": 0.039717434369503
+          },
+          {
+            "pos": 9,
+            "id": "d06",
+            "similitud": 0.0
+          },
+          {
+            "pos": 10,
+            "id": "d07",
+            "similitud": 0.0
+          }
+        ]
+      },
+      "q5": {
+        "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "relevante": "d09",
+        "rank_relevante": 6,
+        "hit_at_1": 0.0,
+        "hit_at_3": 0.0,
+        "reciprocal_rank": 0.16666666666666666,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d03",
+            "similitud": 0.3106758887220715
+          },
+          {
+            "pos": 2,
+            "id": "d06",
+            "similitud": 0.20085134590621823
+          },
+          {
+            "pos": 3,
+            "id": "d04",
+            "similitud": 0.18955976285205217
+          },
+          {
+            "pos": 4,
+            "id": "d01",
+            "similitud": 0.16230333908296432
+          },
+          {
+            "pos": 5,
+            "id": "d10",
+            "similitud": 0.08491551831191196
+          },
+          {
+            "pos": 6,
+            "id": "d09",
+            "similitud": 0.07900232923856973
+          },
+          {
+            "pos": 7,
+            "id": "d08",
+            "similitud": 0.0748861092010969
+          },
+          {
+            "pos": 8,
+            "id": "d05",
+            "similitud": 0.0394516330072182
+          },
+          {
+            "pos": 9,
+            "id": "d02",
+            "similitud": 0.0
+          },
+          {
+            "pos": 10,
+            "id": "d07",
+            "similitud": 0.0
+          }
+        ]
+      },
+      "q6": {
+        "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+        "relevante": "d02",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d02",
+            "similitud": 0.5674153888326815
+          },
+          {
+            "pos": 2,
+            "id": "d06",
+            "similitud": 0.16635706514893972
+          },
+          {
+            "pos": 3,
+            "id": "d03",
+            "similitud": 0.04553295699284448
+          },
+          {
+            "pos": 4,
+            "id": "d08",
+            "similitud": 0.045402589103718784
+          },
+          {
+            "pos": 5,
+            "id": "d01",
+            "similitud": 0.03190732792160084
+          },
+          {
+            "pos": 6,
+            "id": "d04",
+            "similitud": 0.0
+          },
+          {
+            "pos": 7,
+            "id": "d05",
+            "similitud": 0.0
+          },
+          {
+            "pos": 8,
+            "id": "d07",
+            "similitud": 0.0
+          },
+          {
+            "pos": 9,
+            "id": "d09",
+            "similitud": 0.0
+          },
+          {
+            "pos": 10,
+            "id": "d10",
+            "similitud": 0.0
+          }
+        ]
+      }
+    }
+  },
+  "lsa": {
+    "metricas": {
+      "hit_at_1": 0.6666666666666666,
+      "hit_at_3": 0.8333333333333334,
+      "mrr": 0.75
+    },
+    "por_consulta": {
+      "q1": {
+        "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+        "relevante": "d04",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d04",
+            "similitud": 0.9542338764603774
+          },
+          {
+            "pos": 2,
+            "id": "d01",
+            "similitud": 0.9261673642870468
+          },
+          {
+            "pos": 3,
+            "id": "d06",
+            "similitud": 0.6302861368690816
+          },
+          {
+            "pos": 4,
+            "id": "d10",
+            "similitud": 0.5834748914843835
+          },
+          {
+            "pos": 5,
+            "id": "d09",
+            "similitud": 0.506023896386074
+          },
+          {
+            "pos": 6,
+            "id": "d05",
+            "similitud": 0.4657521761946783
+          },
+          {
+            "pos": 7,
+            "id": "d03",
+            "similitud": 0.3738878981276794
+          },
+          {
+            "pos": 8,
+            "id": "d08",
+            "similitud": 0.32452075468015956
+          },
+          {
+            "pos": 9,
+            "id": "d07",
+            "similitud": 0.19343780781776568
+          },
+          {
+            "pos": 10,
+            "id": "d02",
+            "similitud": 0.003022087349678848
+          }
+        ]
+      },
+      "q2": {
+        "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+        "relevante": "d03",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d03",
+            "similitud": 0.9753616198616091
+          },
+          {
+            "pos": 2,
+            "id": "d07",
+            "similitud": 0.802384735150006
+          },
+          {
+            "pos": 3,
+            "id": "d09",
+            "similitud": 0.4708679135966521
+          },
+          {
+            "pos": 4,
+            "id": "d02",
+            "similitud": 0.40229305763030415
+          },
+          {
+            "pos": 5,
+            "id": "d04",
+            "similitud": 0.38269812995796815
+          },
+          {
+            "pos": 6,
+            "id": "d10",
+            "similitud": 0.29423807632145016
+          },
+          {
+            "pos": 7,
+            "id": "d08",
+            "similitud": 0.14626163623898786
+          },
+          {
+            "pos": 8,
+            "id": "d01",
+            "similitud": 0.033741063891200095
+          },
+          {
+            "pos": 9,
+            "id": "d05",
+            "similitud": -0.16002038909687294
+          },
+          {
+            "pos": 10,
+            "id": "d06",
+            "similitud": -0.26136569169095575
+          }
+        ]
+      },
+      "q3": {
+        "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+        "relevante": "d08",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d08",
+            "similitud": 0.9746239272656918
+          },
+          {
+            "pos": 2,
+            "id": "d02",
+            "similitud": 0.7665154388303942
+          },
+          {
+            "pos": 3,
+            "id": "d06",
+            "similitud": 0.5606217883245711
+          },
+          {
+            "pos": 4,
+            "id": "d10",
+            "similitud": 0.41330397888067416
+          },
+          {
+            "pos": 5,
+            "id": "d01",
+            "similitud": 0.35434335823323476
+          },
+          {
+            "pos": 6,
+            "id": "d04",
+            "similitud": 0.22438785854469448
+          },
+          {
+            "pos": 7,
+            "id": "d03",
+            "similitud": 0.14820782499222948
+          },
+          {
+            "pos": 8,
+            "id": "d05",
+            "similitud": -0.1329764311094453
+          },
+          {
+            "pos": 9,
+            "id": "d07",
+            "similitud": -0.13599590950411974
+          },
+          {
+            "pos": 10,
+            "id": "d09",
+            "similitud": -0.1735393373877528
+          }
+        ]
+      },
+      "q4": {
+        "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+        "relevante": "d05",
+        "rank_relevante": 3,
+        "hit_at_1": 0.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d01",
+            "similitud": 0.9219618094000126
+          },
+          {
+            "pos": 2,
+            "id": "d10",
+            "similitud": 0.9205569108925551
+          },
+          {
+            "pos": 3,
+            "id": "d05",
+            "similitud": 0.8984217134139745
+          },
+          {
+            "pos": 4,
+            "id": "d09",
+            "similitud": 0.8201270985637508
+          },
+          {
+            "pos": 5,
+            "id": "d04",
+            "similitud": 0.7523786823059023
+          },
+          {
+            "pos": 6,
+            "id": "d03",
+            "similitud": 0.2875415099375266
+          },
+          {
+            "pos": 7,
+            "id": "d08",
+            "similitud": 0.2695002757697376
+          },
+          {
+            "pos": 8,
+            "id": "d02",
+            "similitud": 0.12236796902644502
+          },
+          {
+            "pos": 9,
+            "id": "d06",
+            "similitud": 0.05001260690762395
+          },
+          {
+            "pos": 10,
+            "id": "d07",
+            "similitud": -0.2581150056915103
+          }
+        ]
+      },
+      "q5": {
+        "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "relevante": "d09",
+        "rank_relevante": 6,
+        "hit_at_1": 0.0,
+        "hit_at_3": 0.0,
+        "reciprocal_rank": 0.16666666666666666,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d04",
+            "similitud": 0.942735953468203
+          },
+          {
+            "pos": 2,
+            "id": "d01",
+            "similitud": 0.8066012329018127
+          },
+          {
+            "pos": 3,
+            "id": "d03",
+            "similitud": 0.6140509840251355
+          },
+          {
+            "pos": 4,
+            "id": "d06",
+            "similitud": 0.5655795641518955
+          },
+          {
+            "pos": 5,
+            "id": "d10",
+            "similitud": 0.5629897534965798
+          },
+          {
+            "pos": 6,
+            "id": "d09",
+            "similitud": 0.4998855168034818
+          },
+          {
+            "pos": 7,
+            "id": "d07",
+            "similitud": 0.43375161039146887
+          },
+          {
+            "pos": 8,
+            "id": "d08",
+            "similitud": 0.4046979346963289
+          },
+          {
+            "pos": 9,
+            "id": "d05",
+            "similitud": 0.2737753303946281
+          },
+          {
+            "pos": 10,
+            "id": "d02",
+            "similitud": 0.17339640145553714
+          }
+        ]
+      },
+      "q6": {
+        "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+        "relevante": "d02",
+        "rank_relevante": 1,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "reciprocal_rank": 1.0,
+        "ranking": [
+          {
+            "pos": 1,
+            "id": "d02",
+            "similitud": 0.9530957100505448
+          },
+          {
+            "pos": 2,
+            "id": "d08",
+            "similitud": 0.9523406024377646
+          },
+          {
+            "pos": 3,
+            "id": "d10",
+            "similitud": 0.34842799295196997
+          },
+          {
+            "pos": 4,
+            "id": "d03",
+            "similitud": 0.33015611410498374
+          },
+          {
+            "pos": 5,
+            "id": "d06",
+            "similitud": 0.21635859777818808
+          },
+          {
+            "pos": 6,
+            "id": "d01",
+            "similitud": 0.04002492044137359
+          },
+          {
+            "pos": 7,
+            "id": "d07",
+            "similitud": 0.00519430109323769
+          },
+          {
+            "pos": 8,
+            "id": "d04",
+            "similitud": -0.011801219300027801
+          },
+          {
+            "pos": 9,
+            "id": "d09",
+            "similitud": -0.1871841946211961
+          },
+          {
+            "pos": 10,
+            "id": "d05",
+            "similitud": -0.3256721709816622
+          }
+        ]
+      }
+    }
+  },
+  "svd": {
+    "n_components": 4,
+    "random_state": 0,
+    "varianza_explicada_ratio": [
+      0.034211619796853276,
+      0.12657480443196817,
+      0.11600387824885837,
+      0.11855186843101549
+    ],
+    "varianza_explicada_total": 0.39534217090869533
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "descripcion": "Comparacion del menor sigma^2 (SVD directa de X) con el menor lambda(X.T @ X); ambas secuencias ordenadas de mayor a menor",
+  "tolerancia_diferencia_relativa": 0.01,
+  "criterio_coincidencia": "coinciden si diferencia_relativa < tolerancia_diferencia_relativa",
+  "casos": {
+    "A": {
+      "separacion": 0.01,
+      "dtype": "float32",
+      "X": [
+        [
+          1.0,
+          1.0099999904632568
+        ],
+        [
+          1.0,
+          0.9900000095367432
+        ]
+      ],
+      "G_XtX": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.000200033187866
+        ]
+      ],
+      "valores_singulares_svd": [
+        2.0000250339508057,
+        0.009999865666031837
+      ],
+      "sigma_cuadrado_svd_desc": [
+        4.000100135803223,
+        9.999731264542788e-05
+      ],
+      "autovalores_XtX_desc": [
+        4.000100135803223,
+        0.00010001409100368619
+      ],
+      "menor_sigma_cuadrado_svd": 9.999731264542788e-05,
+      "menor_autovalor_XtX": 0.00010001409100368619,
+      "diferencia_relativa": 0.00016775994352324398,
+      "coinciden": true
+    },
+    "B": {
+      "separacion": 0.0001,
+      "dtype": "float32",
+      "X": [
+        [
+          1.0,
+          1.000100016593933
+        ],
+        [
+          1.0,
+          0.9998999834060669
+        ]
+      ],
+      "G_XtX": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.0
+        ]
+      ],
+      "valores_singulares_svd": [
+        2.0,
+        0.00010001659393310547
+      ],
+      "sigma_cuadrado_svd_desc": [
+        4.0,
+        1.000331906197971e-08
+      ],
+      "autovalores_XtX_desc": [
+        4.0,
+        0.0
+      ],
+      "menor_sigma_cuadrado_svd": 1.000331906197971e-08,
+      "menor_autovalor_XtX": 0.0,
+      "diferencia_relativa": 1.0,
+      "coinciden": false
+    },
+    "C": {
+      "separacion": 0.0001,
+      "dtype": "float64",
+      "X": [
+        [
+          1.0,
+          1.0001
+        ],
+        [
+          1.0,
+          0.9999
+        ]
+      ],
+      "G_XtX": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.00000002
+        ]
+      ],
+      "valores_singulares_svd": [
+        2.0000000024999998,
+        9.999999987490938e-05
+      ],
+      "sigma_cuadrado_svd_desc": [
+        4.000000009999999,
+        9.999999974981876e-09
+      ],
+      "autovalores_XtX_desc": [
+        4.00000001,
+        9.99999993922529e-09
+      ],
+      "menor_sigma_cuadrado_svd": 9.999999974981876e-09,
+      "menor_autovalor_XtX": 9.99999993922529e-09,
+      "diferencia_relativa": 3.575658605912275e-09,
+      "coinciden": true
+    }
+  }
+}

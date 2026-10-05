@@ -1,0 +1,42 @@
+{"ts": 1791224265.894, "kind": "start", "pdf": "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/taller-03-v2-solver-multiagente/solver-v2/enunciados/tarea-a-generativo-discriminativo.pdf", "output": "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/corridas/sin_grafo/tarea-A", "ablations": {"no_graph": true, "no_critic": false}}
+{"ts": 1791224266.234, "kind": "node", "node": "reader", "source": "tarea-a-generativo-discriminativo.pdf", "pages": 1, "sections": ["Tarea A — Generativo contra discriminativo con pocos datos", "Parte 1 — Datos", "Parte 2 — Dos clasificadores", "Parte 3 — La curva de aprendizaje", "Parte 4 — Discusión", "El reporte"], "tables": 0}
+{"ts": 1791224268.055, "kind": "node", "node": "indexer", "sections": 6, "entities": 0, "communities": 0, "depends_on": [["parte-3", "parte-1"], ["el-reporte", "parte-2"], ["el-reporte", "parte-3"]]}
+{"ts": 1791224282.419, "kind": "llm_call", "agent": "planner", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 1192, "tokens_out": 2033, "latency_s": 14.36, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224282.419, "kind": "node", "node": "planner", "attempt": 1, "errors": []}
+{"ts": 1791224282.421, "kind": "node", "node": "plan_validator", "valid": true, "errors": []}
+{"ts": 1791224282.421, "kind": "node", "node": "queue", "current": "s1", "pending": 4}
+{"ts": 1791224284.686, "kind": "node", "node": "researcher", "subtask": "s1", "citations": ["tarea-a-generativo-discriminativo.pdf · p. 1", "tarea-a-generativo-discriminativo.pdf · p. 1", "s2-rag-y-vector-search.md · 3.3 IVF — Inverted File Index", "s2-rag-y-vector-search.md · 4.2 Estrategias", "s2-rag-y-vector-search.md · 2.2 Cómo se entrenan"], "chars": 4526}
+{"ts": 1791224298.394, "kind": "llm_call", "agent": "programmer", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 1908, "tokens_out": 2139, "latency_s": 13.71, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224298.395, "kind": "node", "node": "programmer", "subtask": "s1", "attempt": 1, "lines": 101}
+{"ts": 1791224298.398, "kind": "node", "node": "guard", "subtask": "s1", "attempt": 1, "allowed": true, "problems": [], "downloads": [], "allow_network": false}
+{"ts": 1791224299.205, "kind": "execution", "subtask": "s1", "attempt": 1, "returncode": 0, "duration_s": 0.81, "files": ["resultados.json"], "timed_out": false, "stderr_tail": ""}
+{"ts": 1791224303.983, "kind": "llm_call", "agent": "critic", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 2407, "tokens_out": 557, "latency_s": 4.78, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224303.983, "kind": "node", "node": "critic", "subtask": "s1", "attempt": 1, "approved": true, "decided_by": "LLM critic", "problems": []}
+{"ts": 1791224303.984, "kind": "node", "node": "queue", "current": "s2", "pending": 3}
+{"ts": 1791224307.035, "kind": "node", "node": "researcher", "subtask": "s2", "citations": ["tarea-a-generativo-discriminativo.pdf · p. 1", "tarea-a-generativo-discriminativo.pdf · p. 1", "s2-rag-y-vector-search.md · 3.3 IVF — Inverted File Index", "s1-transformers-y-foundation-models.md · 3.4 Estructura completa de un bloque transformer", "s1-transformers-y-foundation-models.md · 2.1 La pregunta generativa"], "chars": 5058}
+{"ts": 1791224341.586, "kind": "llm_call", "agent": "programmer", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 2147, "tokens_out": 4911, "latency_s": 34.55, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224341.586, "kind": "node", "node": "programmer", "subtask": "s2", "attempt": 1, "lines": 125}
+{"ts": 1791224341.589, "kind": "node", "node": "guard", "subtask": "s2", "attempt": 1, "allowed": true, "problems": [], "downloads": [], "allow_network": false}
+{"ts": 1791224343.12, "kind": "execution", "subtask": "s2", "attempt": 1, "returncode": 0, "duration_s": 1.53, "files": ["resultados.json", "tabla_parte2.png"], "timed_out": false, "stderr_tail": ""}
+{"ts": 1791224364.009, "kind": "llm_call", "agent": "critic", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 2998, "tokens_out": 2895, "latency_s": 20.89, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224364.009, "kind": "node", "node": "critic", "subtask": "s2", "attempt": 1, "approved": true, "decided_by": "LLM critic", "problems": []}
+{"ts": 1791224364.01, "kind": "node", "node": "queue", "current": "s3", "pending": 2}
+{"ts": 1791224368.404, "kind": "node", "node": "researcher", "subtask": "s3", "citations": ["tarea-a-generativo-discriminativo.pdf · p. 1", "tarea-a-generativo-discriminativo.pdf · p. 1", "s2-rag-y-vector-search.md · 2.2 Cómo se entrenan", "s2-rag-y-vector-search.md · 3.3 IVF — Inverted File Index", "s1-transformers-y-foundation-models.md · 4.1 Pretraining"], "chars": 5213}
+{"ts": 1791224411.384, "kind": "llm_call", "agent": "programmer", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 2344, "tokens_out": 5971, "latency_s": 42.98, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224411.385, "kind": "node", "node": "programmer", "subtask": "s3", "attempt": 1, "lines": 139}
+{"ts": 1791224411.388, "kind": "node", "node": "guard", "subtask": "s3", "attempt": 1, "allowed": true, "problems": [], "downloads": [], "allow_network": false}
+{"ts": 1791224412.984, "kind": "execution", "subtask": "s3", "attempt": 1, "returncode": 0, "duration_s": 1.59, "files": ["curva_aprendizaje.png", "resultados.json"], "timed_out": false, "stderr_tail": ""}
+{"ts": 1791224412.986, "kind": "node", "node": "critic", "subtask": "s3", "attempt": 1, "approved": false, "decided_by": "code checks", "problems": ["implausible metrics (>= 0.999 on a noisy problem): ['fracciones[4]=1.0', 'tabla_exactitudes[4].fraccion=1.0'] — is the model evaluated on its training data?"]}
+{"ts": 1791224480.03, "kind": "llm_call", "agent": "programmer", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 3832, "tokens_out": 10004, "latency_s": 67.04, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224480.03, "kind": "node", "node": "programmer", "subtask": "s3", "attempt": 2, "lines": 149}
+{"ts": 1791224480.033, "kind": "node", "node": "guard", "subtask": "s3", "attempt": 2, "allowed": true, "problems": [], "downloads": [], "allow_network": false}
+{"ts": 1791224481.754, "kind": "execution", "subtask": "s3", "attempt": 2, "returncode": 0, "duration_s": 1.72, "files": ["curva_aprendizaje.png", "resultados.json"], "timed_out": false, "stderr_tail": ""}
+{"ts": 1791224493.985, "kind": "llm_call", "agent": "critic", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 4267, "tokens_out": 1694, "latency_s": 12.23, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224493.985, "kind": "node", "node": "critic", "subtask": "s3", "attempt": 2, "approved": true, "decided_by": "LLM critic", "problems": []}
+{"ts": 1791224493.986, "kind": "node", "node": "queue", "current": "s4", "pending": 1}
+{"ts": 1791224497.425, "kind": "node", "node": "researcher", "subtask": "s4", "citations": ["tarea-a-generativo-discriminativo.pdf · p. 1", "tarea-a-generativo-discriminativo.pdf · p. 1", "s1-transformers-y-foundation-models.md · 2.1 La pregunta generativa", "s2-rag-y-vector-search.md · 2.2 Cómo se entrenan", "s4-llmops-y-finetuning.md · 2.2 LLM-as-Judge"], "chars": 8412}
+{"ts": 1791224497.427, "kind": "node", "node": "queue", "current": null, "pending": 0}
+{"ts": 1791224572.949, "kind": "llm_call", "agent": "writer", "model": "zai-org/GLM-5.3-Flash", "tokens_in": 7659, "tokens_out": 11778, "latency_s": 75.52, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791224572.95, "kind": "node", "node": "writer", "attempt": 1, "file": "reporte.md", "words": 981}
+{"ts": 1791224572.957, "kind": "node", "node": "publisher", "attempt": 1, "ok": true, "problems": []}
+{"ts": 1791224572.957, "kind": "finish", "status": "completado", "plan_errors": [], "subtasks": {"s1": "approved", "s2": "approved", "s3": "approved", "s4": "done"}, "usage_by_agent": {"planner": {"calls": 1, "tokens_in": 1192, "tokens_out": 2033}, "programmer": {"calls": 4, "tokens_in": 10231, "tokens_out": 23025}, "critic": {"calls": 3, "tokens_in": 9672, "tokens_out": 5146}, "writer": {"calls": 1, "tokens_in": 7659, "tokens_out": 11778}}, "tokens_in": 28754, "tokens_out": 41982}

@@ -1,0 +1,66 @@
+{
+  "deliverable": {
+    "format": "ipynb",
+    "filename": "notebook.ipynb",
+    "sections": [
+      "Control de Lectura 3 — Verificación numérica de gradientes",
+      "Predicción previa (P0)",
+      "Implementación de diferencia_central",
+      "Evidencia numérica (w=2.0; h=1e-1, 1e-5, 1e-16)",
+      "Preguntas de interpretación (P1–P3)",
+      "Entrega: resultados_control_3.csv y estado"
+    ],
+    "max_words": null,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "code",
+      "section": "tareas",
+      "depends_on": [],
+      "description": "Script Python con floats nativos de Python, sin redondear cálculos intermedios. Defina f(w) = w**3 - 2*w y los dos candidatos a derivada gA(w) = 3*w**2 - 2 y gB(w) = 3*w - 2. Complete únicamente la expresión pendiente de diferencia_central(f, w, h), que debe devolver (f(w+h) - f(w-h)) / (2*h) (método de diferencia central); no use la derivada analítica ni los candidatos dentro de la función. Con w = 2.0 y los pasos h = 1e-1, 1e-5 y 1e-16 (mantener los tres casos en la evidencia), calcule para cada caso: la aproximación central, gA(2.0), gB(2.0), las discrepancias absolutas |aprox - gA(2.0)| y |aprox - gB(2.0)|, los puntos perturbados w+h y w-h tal como los representa el float (repr completo, sin redondeo) y su igualdad real (w+h == w, w-h == w y f(w+h) == f(w-h)). Imprima una tabla legible con las tres filas (formatee solo al mostrar). Construya un DataFrame y guárdelo como resultados_control_3.csv con columnas: h, aproximacion, gA, gB, disc_gA, disc_gB, w_mas_h, w_menos_h, igualdad_w_mas_h, igualdad_w_menos_h.",
+      "criteria": [
+        "diferencia_central usa exactamente (f(w+h) - f(w-h)) / (2*h) y no invoca la derivada analítica ni gA/gB",
+        "evalúa los tres pasos h = 1e-1, 1e-5, 1e-16 con w = 2.0 usando float de Python",
+        "gA(2.0) = 10.0 y gB(2.0) = 4.0",
+        "h=1e-1: aproximación ≈ 10.01, discrepancias ≈ 0.01 con gA y ≈ 6.01 con gB",
+        "h=1e-5: aproximación ≈ 10.0000000001 (≈ 10 + h^2), discrepancia con gA ≈ 1e-10 y con gB ≈ 6",
+        "h=1e-16: w+h y w-h son exactamente 2.0 (igualdad real True), aproximación 0.0, discrepancias 10.0 y 4.0",
+        "muestra los puntos perturbados w+h y w-h y su igualdad real para cada caso",
+        "guarda resultados_control_3.csv con una fila por cada h"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "text",
+      "section": "tareas",
+      "depends_on": [],
+      "description": "Redacte la respuesta de P0 como predicción registrada ANTES de ejecutar (así debe presentarse en el notebook y debe conservarse aunque después deba corregirse). P0 pregunta: (a) ¿qué dos cantidades se comparan al verificar un gradiente? — se compara el candidato g(w) evaluado en w contra la aproximación de la derivada de f en w obtenida por diferencias finitas (la pendiente entre f(w+h) y f(w-h)); (b) ¿un h menor siempre mejora la aproximación? Justifique conceptualmente: al reducir h disminuye el error de truncamiento (O(h^2) en diferencias centrales), pero crece el error de redondeo por cancelación cuando w±h se acerca al espaciado de la máquina, por lo que existe un h intermedio óptimo. No cite resultados numéricos: es una predicción previa a la ejecución.",
+      "criteria": [
+        "identifica las dos cantidades comparadas: el candidato g(w) y la aproximación por diferencias finitas de f'(w)",
+        "afirma y justifica que un h menor no siempre mejora la aproximación (truncamiento frente a redondeo/cancelación)",
+        "se presenta como predicción previa a la ejecución y no cita los resultados numéricos"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "text",
+      "section": "preguntas-de-interpretacion",
+      "depends_on": [
+        "s1",
+        "s2"
+      ],
+      "description": "Usando la evidencia numérica de s1 (f(w) = w^3 - 2w; gA(w) = 3w^2 - 2 con gA(2) = 10; gB(w) = 3w - 2 con gB(2) = 4; w = 2.0; aproximaciones ≈ 10.01, ≈ 10.0000000001 y 0.0 para h = 1e-1, 1e-5, 1e-16; discrepancias ≈ (0.01, 6.01), (≈1e-10, ≈6) y (10, 4); con h = 1e-16 los puntos perturbados w+h y w-h valen exactamente 2.0) y la predicción de s2 (P0), responda en prosa: P1 — ¿qué candidato respalda una fila fiable? La fila fiable es h = 1e-5 (aproximación ≈ 10.0000000001, discrepancia ≈ 1e-10 con gA y ≈ 6 con gB), por lo que la evidencia respalda a gA; cite explícitamente h, la aproximación y ambas discrepancias. P2 — compare el menor h (1e-16) con el intermedio (1e-5): aproximación, w+h y w-h; con h = 1e-16 el paso se absorbe por debajo de la precisión del float (ulp(2) ≈ 4.4e-16), w±h coinciden exactamente con w, el numerador se anula y la aproximación colapsa a 0.0 con discrepancias 10 y 4; explique la causa (pérdida de significancia/cancelación catastrófica) y contraste con la predicción de P0. P3 — argumente que coincidir en w = 2 no demuestra corrección para cualquier entrada (dos funciones distintas pueden coincidir en puntos aislados) y proponga otra comprobación sin programarla (p. ej., repetir el contraste en otros puntos como w = 0, w = -1 o w = 3, o barrer varios valores de h y verificar la consistencia).",
+      "criteria": [
+        "P1 elige la fila h = 1e-5 y cita la aproximación (≈ 10.0000000001) y ambas discrepancias (≈ 1e-10 con gA, ≈ 6 con gB), concluyendo que gA es el candidato compatible",
+        "P2 compara la aproximación, w+h y w-h de h = 1e-16 frente a h = 1e-5 y explica la absorción del paso por la precisión float (ulp(2) ≈ 4.4e-16) y la cancelación",
+        "P2 contrasta explícitamente su explicación con la predicción registrada en P0",
+        "P3 sostiene que la coincidencia en un solo punto no demuestra corrección general y propone una comprobación adicional concreta sin programarla"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "deliverable": {
+    "format": "ipynb",
+    "filename": "notebook.ipynb",
+    "sections": [
+      "Contexto y objetivo",
+      "Predicción previa (P1)",
+      "Experimento numérico: casos A, B y C",
+      "Tabla comparativa de resultados",
+      "Preguntas de interpretación (P1–P5)"
+    ],
+    "max_words": null,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "text",
+      "section": "tareas",
+      "depends_on": [],
+      "description": "Redactar la predicción P1 exigida ANTES de ejecutar cualquier código. Dada la matriz de prueba X = [[1, 1+separacion], [1, 1-separacion]] y los tres casos del experimento (A: separacion=1e-2 con np.float32; B: separacion=1e-4 con np.float32; C: separacion=1e-4 con np.float64), indicar cuál caso predice que tendrá mayor dificultad para conservar el valor pequeño (la segunda dirección, asociada al menor valor singular al cuadrado) y por qué, razonando en términos de la similitud entre columnas y de la precisión finita del tipo numérico. No incluir ningún número calculado del experimento: es una predicción a priori.",
+      "criteria": [
+        "Identifica un único caso como el de mayor dificultad para conservar el valor pequeño (el esperado es B: separacion=1e-4 en float32)",
+        "Justifica la predicción con la casi-colinealidad de las columnas cuando separacion=1e-4 y la gruesa malla de representación de float32 cerca de 1",
+        "No contiene resultados numéricos del experimento (predicción registrada antes de ejecutar)"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "code",
+      "section": "tareas",
+      "depends_on": [],
+      "description": "Escribir desde cero un script Python autocontenido que importe únicamente NumPy y se ejecute sin errores (sin aleatoriedad). Construir la matriz X = [[1, 1+separacion], [1, 1-separacion]] para los tres casos: A (separacion=1e-2, dtype np.float32), B (separacion=1e-4, dtype np.float32) y C (separacion=1e-4, dtype np.float64). Para cada caso: (1) calcular los valores singulares con np.linalg.svd(X, compute_uv=False), elevarlos al cuadrado y ordenarlos de mayor a menor; (2) formar G = X.T @ X respetando el dtype del caso, calcular sus autovalores con np.linalg.eigvalsh y ordenarlos de mayor a menor, de modo que ambas secuencias queden en el mismo orden. Imprimir la tabla comparativa completa con columnas: Caso, separación, tipo, Menor σ² (SVD), Menor λ(X^T X), ¿Coinciden?, mostrando los valores con al menos diez cifras significativas o en notación científica (p. ej. np.format_float_scientific con precision>=10 o formato '.10e'). Para la columna ¿Coinciden? usar igualdad de los valores impresos o diferencia relativa por debajo de una tolerancia declarada, e imprimir también la diferencia relativa como evidencia.",
+      "criteria": [
+        "Construye X = [[1, 1+separacion],[1, 1-separacion]] con los dtypes exactos de la tabla: A 1e-2/float32, B 1e-4/float32, C 1e-4/float64",
+        "Usa np.linalg.svd(X, compute_uv=False) elevando los valores al cuadrado y np.linalg.eigvalsh sobre X.T @ X, ambas secuencias ordenadas de mayor a menor",
+        "Imprime la tabla de los casos A, B y C con el menor valor de cada procedimiento con al menos 10 cifras significativas o notación científica, más la columna ¿Coinciden? y la diferencia relativa",
+        "El patrón mostrado es el esperado: en B (float32) el menor autovalor de X.T@X colapsa a 0 mientras la SVD directa conserva un valor pequeño positivo; en C (float64) ambos procedimientos coinciden en un valor pequeño no nulo",
+        "El script se ejecuta sin errores e importa únicamente NumPy"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "text",
+      "section": "preguntas-de-interpretacion",
+      "depends_on": [
+        "s1",
+        "s2"
+      ],
+      "description": "Redactar las respuestas a P1–P5 en prosa propia, citando valores concretos de la tabla calculada en s2 (matriz X = [[1, 1+sep],[1, 1-sep]]; casos A: sep=1e-2/float32, B: sep=1e-4/float32, C: sep=1e-4/float64; menor σ² obtenido por SVD directa frente a menor autovalor de X.T@X). P1: retomar la predicción a priori de s1 e indicar si los resultados la respaldan. P2: comparar A y B — qué cambió en las columnas y qué ocurrió con el menor valor obtenido mediante la SVD directa — y explicar qué evidencia aporta esto sobre el condicionamiento del problema. P3: comparar B y C — misma separación nominal, distinto tipo numérico — identificar qué procedimiento pierde la dirección pequeña en float32 y qué sucede en float64, y explicar qué evidencia aporta esto sobre la estabilidad numérica del procedimiento. P4: aceptar o rechazar la afirmación «como los autovalores de X.T @ X incluyen un cero en el caso B, la matriz tiene exactamente una sola dirección y la SVD directa está equivocada», justificar con los valores calculados y recomendar el procedimiento que se usaría para detectar direcciones pequeñas. P5: dos conclusiones breves: (a) el condicionamiento se observa en este experimento cuando...; (b) la estabilidad del procedimiento se observa cuando...",
+      "criteria": [
+        "Cada respuesta P1–P5 cita valores concretos de la tabla (p. ej. el menor σ² de la SVD y el menor autovalor de X.T@X en los casos B y C)",
+        "P1 contrasta la predicción registrada en s1 con los resultados obtenidos y declara si se respalda",
+        "P2 atribuye la caída del menor valor al pasar de A (~1e-4) a B (~1e-8) al condicionamiento del problema (columnas casi idénticas), señalando que la SVD directa aún resuelve un valor pequeño no nulo",
+        "P3 identifica que en float32 el procedimiento que pierde la dirección pequeña es la formación de X.T@X seguida de eigvalsh (autovalor 0), mientras que en float64 ambos procedimientos coinciden, y lo enmarca como estabilidad del procedimiento y no del problema",
+        "P4 rechaza la afirmación del estudiante explicando el error de redondeo al formar X.T@X en float32 y recomienda la SVD directa (sus valores singulares al cuadrado) para detectar direcciones pequeñas",
+        "P5 presenta las dos conclusiones: (a) condicionamiento ligado a la comparación A vs B y (b) estabilidad ligada a la comparación B vs C",
+        "Ninguna respuesta se limita a definiciones genéricas: cada afirmación se apoya en evidencia numérica del experimento"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

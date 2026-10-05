@@ -1,0 +1,35 @@
+{
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "n_ejemplos_total": 569,
+  "n_atributos": 30,
+  "clases": {
+    "malignos": 212,
+    "benignos": 357,
+    "pct_malignos": 37.25834797891037,
+    "pct_benignos": 62.74165202108963
+  },
+  "parametros_split": {
+    "test_size": 0.3,
+    "stratify": "y",
+    "random_state": 42
+  },
+  "n_entrenamiento": 398,
+  "n_prueba": 171,
+  "distribucion_entrenamiento": {
+    "malignos": 148,
+    "benignos": 250,
+    "pct_malignos": 37.185929648241206,
+    "pct_benignos": 62.814070351758794
+  },
+  "distribucion_prueba": {
+    "malignos": 64,
+    "benignos": 107,
+    "pct_malignos": 37.42690058479532,
+    "pct_benignos": 62.57309941520468
+  },
+  "verificacion_estratificacion": {
+    "diff_pct_malignos_train_test": 0.24097093655411328,
+    "diff_pct_benignos_train_test": 0.24097093655411328,
+    "estratificacion_ok": true
+  }
+}

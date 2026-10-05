@@ -1,0 +1,80 @@
+{
+  "deliverable": {
+    "format": "pdf",
+    "filename": "reporte.pdf",
+    "sections": [
+      "Objetivo",
+      "Método",
+      "Resultados",
+      "Discusión"
+    ],
+    "max_words": null,
+    "max_pages": 2
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "code",
+      "section": "parte-1",
+      "depends_on": [],
+      "description": "Script autocontenido (no descarga nada, no lee archivos externos). Define en el código el corpus y las consultas con los textos exactos del enunciado. CORPUS: d01='El mecanismo de atención pondera cada token según su similitud con la consulta; la atención escalada divide por la raíz de la dimensión.'; d02='Los transformadores apilan capas de autoatención y redes feed-forward, con conexiones residuales y normalización.'; d03='La recuperación aumentada con generación busca fragmentos relevantes y los añade al prompt del modelo.'; d04='BM25 es una función de ranking léxica que pondera la frecuencia de términos y la longitud del documento.'; d05='Los embeddings densos representan textos como vectores; la similitud coseno compara su orientación.'; d06='Un agente con herramientas decide en cada paso qué función llamar y observa el resultado.'; d07='ReAct intercala razonamiento y acciones; Reflexion añade una autocrítica verbal entre intentos.'; d08='El ajuste fino con LoRA entrena matrices de bajo rango y congela los pesos originales.'; d09='La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.'; d10='La cuantización reduce la precisión de los pesos a 8 o 4 bits para ahorrar memoria.'. CONSULTAS Y JUICIOS: q1='¿Qué función de ranking léxica pondera la frecuencia de términos?'→d04; q2='¿Cómo se añaden fragmentos recuperados al prompt?'→d03; q3='¿Qué técnica entrena matrices de bajo rango?'→d08; q4='¿Cómo se compara la orientación de dos vectores de texto?'→d05; q5='¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?'→d09; q6='¿Qué arquitectura combina autoatención con capas feed-forward?'→d02. Vectoriza el corpus con TfidfVectorizer() de scikit-learn con parámetros por defecto, transforma las consultas con el mismo vectorizador, calcula similitud coseno (cosine_similarity) consulta-documento y ordena los 10 documentos por similitud descendente para cada consulta. Calcula Hit@1, Hit@3 y MRR sobre las 6 consultas (Hit@k = proporción de consultas con el relevante en el top-k; MRR = media de 1/rank del relevante). Imprime, por consulta, el ranking completo (ids y similitudes) y la posición del relevante; al final, las tres métricas globales de la línea base léxica.",
+      "criteria": [
+        "El script define el corpus d01–d10 y las consultas q1–q6 con textos y juicios exactos del enunciado",
+        "Usa TfidfVectorizer con parámetros por defecto y cosine_similarity",
+        "Imprime el ranking de los 10 documentos por consulta y el rank del documento relevante",
+        "Reporta Hit@1, Hit@3 y MRR sobre las 6 consultas"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "code",
+      "section": "parte-2",
+      "depends_on": [
+        "s1"
+      ],
+      "description": "Script autocontenido: no lee archivos ni resultados de otros subtasks, todo se recalcula aquí con los mismos datos. Define el mismo corpus d01–d10 y las mismas consultas q1–q6 con juicios (q1→d04, q2→d03, q3→d08, q4→d05, q5→d09, q6→d02) y textos exactos del enunciado (los diez documentos de atención/transformadores/RAG/BM25/embeddings/agentes/ReAct-Reflexion/LoRA/temperatura/cuantización). Recalcula el baseline TF-IDF (TfidfVectorizer() por defecto + cosine_similarity) y sus Hit@1, Hit@3, MRR. Después aplica LSA: TruncatedSVD(n_components=4, random_state=0) ajustado (fit) sobre la matriz TF-IDF del corpus y aplicado (transform) a las consultas; normaliza L2 los vectores latentes de documentos y consultas (sklearn.preprocessing.normalize) y calcula similitud coseno; ordena los 10 documentos por consulta y evalúa Hit@1, Hit@3 y MRR con los mismos juicios. Imprime una única tabla comparativa con filas 'TF-IDF' y 'LSA (SVD 4)' y columnas Hit@1, Hit@3, MRR, más el ranking por consulta de LSA con la posición del relevante.",
+      "criteria": [
+        "Usa TruncatedSVD(n_components=4, random_state=0) sobre la matriz TF-IDF y transforma las consultas con el mismo SVD",
+        "Normaliza L2 los vectores latentes antes de la similitud coseno",
+        "Imprime una sola tabla con Hit@1, Hit@3 y MRR de TF-IDF y de LSA",
+        "Los valores de la fila TF-IDF coinciden con una recalculación con los parámetros por defecto de la Parte 1"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "code",
+      "section": "parte-3",
+      "depends_on": [
+        "s1",
+        "s2"
+      ],
+      "description": "Script autocontenido: recalcula aquí ambos métodos con los mismos datos y parámetros (no lee archivos de otros subtasks). Define el mismo corpus d01–d10 y consultas q1–q6 con juicios (q1→d04, q2→d03, q3→d08, q4→d05, q5→d09, q6→d02) y textos exactos del enunciado. Recalcula el ranking TF-IDF (TfidfVectorizer() por defecto + cosine_similarity) y el ranking LSA (TruncatedSVD(n_components=4, random_state=0) + normalización L2 + coseno). Para cada método y consulta determina si el documento relevante queda fuera del top 3 e imprime una tabla por consulta con: rank del relevante bajo TF-IDF, rank bajo LSA, indicador de fallo (relevante fuera del top 3) por método. Además, para cada consulta imprime los términos compartidos entre la consulta y su documento relevante (intersección de tokens en minúsculas, usando el tokenizador por defecto de TfidfVectorizer) y en cuántos documentos del corpus aparece cada término compartido (frecuencia documental), para explicar las confusiones. Cierra listando explícitamente en qué consultas falla TF-IDF y en cuáles falla LSA.",
+      "criteria": [
+        "Recalcula los rankings TF-IDF y LSA con los mismos parámetros (TfidfVectorizer por defecto; TruncatedSVD(4, random_state=0) + normalización)",
+        "Marca por consulta y método si el relevante está fuera del top 3 e imprime su rank",
+        "Lista los términos compartidos entre cada consulta y su documento relevante, con su frecuencia documental",
+        "Identifica explícitamente las consultas donde falla cada método"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s4",
+      "type": "text",
+      "section": "parte-4",
+      "depends_on": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "description": "Respuesta conceptual en prosa, sin código, para la Discusión del reporte. Pregunta: ¿por qué un recuperador denso (embeddings de un modelo entrenado) resolvería la consulta q5 ('¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?') mejor que TF-IDF y LSA, siendo d09 ('La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.') su documento relevante, y qué costo tiene frente a TF-IDF? Explica: (1) el hueco léxico — q5 y d09 casi no comparten términos ('determinista', 'palabra' vs 'temperatura', 'logits', 'softmax', 'probabilidad') — y por eso TF-IDF y LSA (entrenados sobre solo 10 documentos) no asocian la consulta con d09; (2) por qué un encoder entrenado a gran escala captura esa relación semántica (sinonimia y paráfrasis) sin solapamiento de términos; (3) los costos frente a TF-IDF: requiere un modelo preentrenado y cómputo de inferencia por consulta (GPU/CPU, latencia), memoria para almacenar el índice de embeddings, y es menos interpretable, frente a TF-IDF que no necesita entrenamiento, es ligero y explicable. Cita los ranks observados de q5 bajo TF-IDF y LSA de los subtasks s1–s3.",
+      "criteria": [
+        "Explica por qué la falta de solapamiento léxico entre q5 y d09 perjudica a TF-IDF y LSA y por qué un encoder entrenado lo resuelve",
+        "Menciona al menos dos costos del recuperador denso frente a TF-IDF (modelo entrenado, cómputo de inferencia, memoria del índice, interpretabilidad)",
+        "Cita los resultados observados de q5 (rank bajo TF-IDF y bajo LSA) obtenidos en s1–s3"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

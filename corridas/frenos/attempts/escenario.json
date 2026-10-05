@@ -1,0 +1,43 @@
+{
+  "brake": "attempts",
+  "description": "The programmer returns the same leaky script for s1 every time: the critic rejects it once, the repetition detector refuses the identical copies, and at 3 attempts s1 fails while s2 still runs.",
+  "overrides": {},
+  "result": {
+    "status": "parcial",
+    "entregables": [
+      "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/corridas/frenos/attempts/reporte.md"
+    ],
+    "subtareas": [
+      {
+        "id": "s1",
+        "tipo": "code",
+        "status": "failed",
+        "intentos": 3
+      },
+      {
+        "id": "s2",
+        "tipo": "code",
+        "status": "approved",
+        "intentos": 1
+      },
+      {
+        "id": "s3",
+        "tipo": "text",
+        "status": "done",
+        "intentos": 0
+      },
+      {
+        "id": "s4",
+        "tipo": "text",
+        "status": "done",
+        "intentos": 0
+      }
+    ],
+    "usage": {
+      "tokens_entrada": 3820,
+      "tokens_salida": 3870
+    },
+    "model": "scripted",
+    "trace": "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/corridas/frenos/attempts/traza.jsonl"
+  }
+}

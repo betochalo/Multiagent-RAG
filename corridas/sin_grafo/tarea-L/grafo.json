@@ -1,0 +1,112 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {
+    "source": "control-lectura-2-condicionamiento.pdf"
+  },
+  "nodes": [
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "CONTROL DE LECTURA 2",
+      "level": 0,
+      "page": 1,
+      "text": "",
+      "order": 0,
+      "id": "preambulo"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Condicionamiento numérico y estabilidad",
+      "level": 2,
+      "page": 1,
+      "text": "Duración: 20 minutos  |  Modalidad: individual  |  Entrega: script (.py) o notebook (.ipynb)\n\n|  |  |  |\n|---|---|---|\n|  | Objetivo. Analizar experimentalmente cómo la similitud entre columnas y la precisión numérica afectan una |  |\n|  | dirección pequeña, y distinguir el condicionamiento del problema de la estabilidad del procedimiento de |  |\n|  | cálculo. |  |\n|  |  |  |",
+      "order": 1,
+      "id": "condicionamiento-numerico-y-estabilidad"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Contexto",
+      "level": 1,
+      "page": 1,
+      "text": "En M05 se comprobó que los valores singulares de una matriz X se relacionan con los autovalores de X! X. En aritmética exacta, para cada dirección debe cumplirse la siguiente igualdad:\n\nσ\"(X)# = λ\"(X! X)\n\nUna computadora almacena los números con precisión finita. Por ello, dos procedimientos matemáticamente equivalentes pueden conservar de manera diferente una cantidad muy pequeña. En este control se comparará la SVD directa con el procedimiento que primero forma X.T @ X.\n\nLa matriz de prueba tiene dos columnas. Cuando separacion disminuye, las columnas se vuelven casi iguales y la segunda dirección resulta más difícil de distinguir.\n\n1 1 1 1 + separacion 1 1 − separacion ,\n\nX = (",
+      "order": 2,
+      "id": "contexto"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Tareas",
+      "level": 1,
+      "page": 1,
+      "text": "1. Registrar una predicción Antes de ejecutar el programa, responda P1. La predicción debe indicar cuál caso podría tener mayor dificultad para conservar el valor pequeño y por qué.\n\n2. Crear los tres casos de prueba\n\nEscriba desde cero un script o notebook que importe NumPy y construya la matriz X para cada caso. No se proporciona código inicial.\n\n|  |  |  |  |  |  |  |  |  |\n|---|---|---|---|---|---|---|---|---|\n|  | Caso |  |  | separacion |  |  | Tipo numérico |  |\n|  |  |  |  |  |  |  |  |  |\n| A |  |  | 1e-2 |  |  | np.float32 |  |  |\n| B |  |  | 1e-4 |  |  | np.float32 |  |  |\n| C |  |  | 1e-4 |  |  | np.float64 |  |  |\n\n3. Aplicar los dos procedimientos\n\nPara cada caso, calcule los valores singulares con np.linalg.svd(X, compute_uv=False) y eleve esos valores al cuadrado. Luego construya X.T @ X, calcule sus autovalores con np.linalg.eigvalsh y ordénelos de mayor a menor. Ambas secuencias deben quedar en el mismo orden para poder compararlas.\n\n4. Presentar la evidencia numérica\n\nMuestre los resultados con al menos diez cifras significativas o en notación científica. Complete una tabla como la siguiente. Las cifras pueden variar ligeramente entre computadores; se evaluará el patrón observado.\n\n|  |  |  |  |  |  |  |  |  |  |\n|---|---|---|---|---|---|---|---|---|---|\n| Caso | separación | tipo |  | Menor |  |  | Menor |  | ¿Coinciden? |\n|  |  |  |  | σ# (SVD) |  |  | λ(X! X) |  |  |\n|  |  |  |  |  |  |  |  |  |  |\n| A | 1e-2 | float32 |  |  |  |  |  |  |  |\n| B | 1e-4 | float32 |  |  |  |  |  |  |  |\n| C | 1e-4 | float64 |  |  |  |  |  |  |  |",
+      "order": 3,
+      "id": "tareas"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Preguntas de interpretación",
+      "level": 1,
+      "page": 2,
+      "text": "Responda con sus propias palabras y utilice valores concretos de la tabla. Una definición general sin evidencia del experimento no es suficiente.\n\nP1. Antes de ejecutar, ¿qué caso predice que tendrá mayor dificultad para conservar el valor pequeño? Después de ejecutar, indique si los resultados respaldan su predicción.\n\nP2. Compare A y B. ¿Qué cambió en las columnas y qué ocurrió con el menor valor obtenido mediante la SVD directa? Explique qué evidencia aporta esto sobre el condicionamiento del problema.\n\nP3. Compare B y C. La separación nominal es la misma, pero cambia el tipo numérico. ¿Qué procedimiento pierde la dirección pequeña en float32 y qué sucede en float64? Explique qué evidencia aporta esto sobre la estabilidad numérica del procedimiento.\n\nP4. Un estudiante afirma: «Como los autovalores de X.T @ X incluyen un cero en el caso B, la matriz tiene exactamente una sola dirección y la SVD directa está equivocada». Acepte o rechace la afirmación, justifique con resultados y recomiende el procedimiento que usaría para detectar direcciones pequeñas.\n\nP5. Complete dos conclusiones breves: (a) el condicionamiento se observa en este experimento cuando...; (b) la estabilidad del procedimiento se observa cuando...",
+      "order": 4,
+      "id": "preguntas-de-interpretacion"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Entrega",
+      "level": 1,
+      "page": 2,
+      "text": "• Un script (.py) o notebook (.ipynb) que se ejecute sin errores. • Los resultados de los casos A, B y C y la tabla comparativa completa. • Las respuestas P1 a P5, identificadas claramente y respaldadas con evidencia numérica.",
+      "order": 5,
+      "id": "entrega"
+    }
+  ],
+  "edges": [
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "condicionamiento-numerico-y-estabilidad",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "contexto",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "tareas",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "preguntas-de-interpretacion",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "entrega",
+      "target": "preambulo"
+    }
+  ]
+}

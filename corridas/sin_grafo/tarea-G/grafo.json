@@ -1,0 +1,112 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {
+    "source": "control-lectura-3-gradientes.pdf"
+  },
+  "nodes": [
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "CONTROL DE LECTURA 3",
+      "level": 0,
+      "page": 1,
+      "text": "",
+      "order": 0,
+      "id": "preambulo"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Verificación numérica de gradientes mediante diferencias finitas",
+      "level": 2,
+      "page": 1,
+      "text": "Duración: 20 minutos  |  Modalidad: individual  |  Entrega: notebook (.ipynb) o script (.py)\n\nObjetivo. Contrastar dos gradientes candidatos con diferencias centrales e interpretar el efecto del paso y de la precisión numérica.",
+      "order": 1,
+      "id": "verificacion-numerica-de-gradientes-mediante-diferencias-finitas"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Contexto",
+      "level": 1,
+      "page": 1,
+      "text": "Se proporcionan una función y dos candidatos a su derivada. Determine cuál es compatible con la evidencia numérica en w = 2, sin derivar a mano ni entrenar.\n\n3− 2w ; gA(w) = 3w 2− 2; gB(w) = 3w − 2\n\nf (w) =w",
+      "order": 2,
+      "id": "contexto"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Tareas",
+      "level": 1,
+      "page": 1,
+      "text": "1 Registrar una predicción\n\nResponda P0 antes de ejecutar y conserve su predicción aunque después deba corregirla.\n\n2 Completar una función\n\nComplete solo la expresión pendiente de diferencia_central(f, w, h), usando el método central estudiado. No use la derivada analítica ni los candidatos. El resto está proporcionado.\n\n3 Ejecutar y observar\n\nEjecute estos casos con flo at de Python, sin redondear cálculos. Observe las aproximaciones, candidatos y discrepancias absolutas, además de los puntos perturbados y su igualdad real.\n\nUse w = 2.0 y los pasos h = 1e-1, 1e-5 y 1e-16. Mantenga los tres casos en su evidencia.",
+      "order": 3,
+      "id": "tareas"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Preguntas de interpretación",
+      "level": 1,
+      "page": 1,
+      "text": "P0. Antes de ejecutar: ¿qué dos cantidades se comparan al verific ar un gradiente? ¿Un h menor siempre mejora la aproximación? Justifique y conserve su predicción.\n\nP1. ¿Qué candidato respalda una fila fiable? Cite h, la aproximación y ambas discrepancias para justific ar su elección.\n\nP2. Compare el menor h con el intermedio: aproximación, w + h y w - h. Explique la causa del cambio y contraste con P0.\n\nP3. ¿Coincidir en w = 2 demuestra corrección para cualquier entrada? Justifique y proponga otra comprobación, sin programarla.",
+      "order": 4,
+      "id": "preguntas-de-interpretacion"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Entrega",
+      "level": 1,
+      "page": 1,
+      "text": "Entregue el notebook ejecutado o el script, con nombre, función y respuestas P0 a P3, junto con resultados_control_3.csv. Si no termina, conserve lo realizado y señale lo pendiente.\n\nEvaluación: implementación 30%, evidencia 30% e interpretación 40%. Prepare el entorno y realice la lectura antes del control.",
+      "order": 5,
+      "id": "entrega"
+    }
+  ],
+  "edges": [
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "verificacion-numerica-de-gradientes-mediante-diferencias-finitas",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "contexto",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "tareas",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "preguntas-de-interpretacion",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "entrega",
+      "target": "preambulo"
+    }
+  ]
+}

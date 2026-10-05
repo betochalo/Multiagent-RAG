@@ -1,0 +1,1214 @@
+{
+  "subtarea": "s3 - Parte 3: análisis de fallos por consulta",
+  "parametros": {
+    "tfidf": "TfidfVectorizer() por defecto (lowercase=True, token_pattern='(?u)\\\\b\\\\w\\\\w+\\\\b', norm='l2') + similitud coseno",
+    "lsa": "TruncatedSVD(n_components=4, random_state=0) ajustado sobre la matriz TF-IDF del corpus + Normalizer(L2) + similitud coseno",
+    "criterio_de_fallo": "el documento relevante queda fuera del top-3",
+    "nota_stop_words": "El TfidfVectorizer por defecto NO elimina stop words; la lista stop_words_de_referencia se usa solo para clasificar el solape como vacío, solo stop words o con términos de contenido.",
+    "stop_words_de_referencia": [
+      "a",
+      "al",
+      "algo",
+      "alguna",
+      "algunas",
+      "alguno",
+      "algunos",
+      "ante",
+      "antes",
+      "aqui",
+      "aquí",
+      "asi",
+      "así",
+      "aun",
+      "bien",
+      "cada",
+      "como",
+      "con",
+      "contra",
+      "cual",
+      "cuales",
+      "cuando",
+      "de",
+      "del",
+      "desde",
+      "donde",
+      "dos",
+      "el",
+      "ella",
+      "ellas",
+      "ello",
+      "ellos",
+      "en",
+      "entre",
+      "era",
+      "eran",
+      "es",
+      "esa",
+      "esas",
+      "ese",
+      "eso",
+      "esta",
+      "estaba",
+      "estan",
+      "estar",
+      "estas",
+      "este",
+      "esto",
+      "estos",
+      "está",
+      "están",
+      "fue",
+      "fueron",
+      "ha",
+      "habia",
+      "han",
+      "hasta",
+      "hay",
+      "la",
+      "las",
+      "le",
+      "les",
+      "lo",
+      "los",
+      "mas",
+      "me",
+      "mi",
+      "mis",
+      "mucho",
+      "muy",
+      "más",
+      "nada",
+      "ni",
+      "no",
+      "nos",
+      "nuestra",
+      "nuestro",
+      "o",
+      "otra",
+      "otras",
+      "otro",
+      "otros",
+      "para",
+      "pero",
+      "poco",
+      "por",
+      "porque",
+      "que",
+      "quien",
+      "quienes",
+      "qué",
+      "se",
+      "segun",
+      "según",
+      "ser",
+      "si",
+      "sin",
+      "sobre",
+      "solo",
+      "son",
+      "su",
+      "sus",
+      "tal",
+      "tambien",
+      "también",
+      "tan",
+      "tanto",
+      "te",
+      "tiene",
+      "tienen",
+      "toda",
+      "todas",
+      "todo",
+      "todos",
+      "tu",
+      "tus",
+      "un",
+      "una",
+      "unas",
+      "unos",
+      "usted",
+      "ustedes",
+      "va",
+      "van",
+      "ya",
+      "yo"
+    ]
+  },
+  "tfidf": {
+    "metodo": "tfidf",
+    "similitudes_coseno": {
+      "q1": {
+        "d01": 0.24104429689047807,
+        "d02": 0.07453421603164365,
+        "d03": 0.03016827206490786,
+        "d04": 0.6890762406943801,
+        "d05": 0.030417830241207696,
+        "d06": 0.1717621952637738,
+        "d07": 0.0,
+        "d08": 0.07361653787213336,
+        "d09": 0.06091203978803964,
+        "d10": 0.14558189772995916
+      },
+      "q2": {
+        "d01": 0.0,
+        "d02": 0.0,
+        "d03": 0.5174387367568429,
+        "d04": 0.0,
+        "d05": 0.0,
+        "d06": 0.0,
+        "d07": 0.0,
+        "d08": 0.0,
+        "d09": 0.0,
+        "d10": 0.0
+      },
+      "q3": {
+        "d01": 0.06381465584320169,
+        "d02": 0.045968561989839445,
+        "d03": 0.0,
+        "d04": 0.08065431281941934,
+        "d05": 0.0,
+        "d06": 0.12298847552390196,
+        "d07": 0.0,
+        "d08": 0.5604292724229948,
+        "d09": 0.0,
+        "d10": 0.049407824941549196
+      },
+      "q4": {
+        "d01": 0.2475499384806802,
+        "d02": 0.09812652932690283,
+        "d03": 0.03971743436950299,
+        "d04": 0.2425213194749823,
+        "d05": 0.4569245353145954,
+        "d06": 0.0,
+        "d07": 0.0,
+        "d08": 0.09691837852548278,
+        "d09": 0.08019252602167251,
+        "d10": 0.19166293170642718
+      },
+      "q5": {
+        "d01": 0.16230333908296432,
+        "d02": 0.0,
+        "d03": 0.3106758887220714,
+        "d04": 0.18955976285205214,
+        "d05": 0.0394516330072182,
+        "d06": 0.20085134590621825,
+        "d07": 0.0,
+        "d08": 0.07488610920109687,
+        "d09": 0.07900232923856972,
+        "d10": 0.08491551831191194
+      },
+      "q6": {
+        "d01": 0.03190732792160084,
+        "d02": 0.5674153888326815,
+        "d03": 0.04553295699284447,
+        "d04": 0.0,
+        "d05": 0.0,
+        "d06": 0.16635706514893975,
+        "d07": 0.0,
+        "d08": 0.04540258910371878,
+        "d09": 0.0,
+        "d10": 0.0
+      }
+    },
+    "ranking": {
+      "q1": [
+        "d04",
+        "d01",
+        "d06",
+        "d10",
+        "d02",
+        "d08",
+        "d09",
+        "d05",
+        "d03",
+        "d07"
+      ],
+      "q2": [
+        "d03",
+        "d01",
+        "d02",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10"
+      ],
+      "q3": [
+        "d08",
+        "d06",
+        "d04",
+        "d01",
+        "d10",
+        "d02",
+        "d03",
+        "d05",
+        "d07",
+        "d09"
+      ],
+      "q4": [
+        "d05",
+        "d01",
+        "d04",
+        "d10",
+        "d02",
+        "d08",
+        "d09",
+        "d03",
+        "d06",
+        "d07"
+      ],
+      "q5": [
+        "d03",
+        "d06",
+        "d04",
+        "d01",
+        "d10",
+        "d09",
+        "d08",
+        "d05",
+        "d02",
+        "d07"
+      ],
+      "q6": [
+        "d02",
+        "d06",
+        "d03",
+        "d08",
+        "d01",
+        "d04",
+        "d05",
+        "d07",
+        "d09",
+        "d10"
+      ]
+    },
+    "rango_del_relevante": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 1,
+      "q5": 6,
+      "q6": 1
+    },
+    "hit_at_1": 0.8333333333333334,
+    "hit_at_3": 0.8333333333333334,
+    "mrr": 0.8611111111111112,
+    "consultas_fallidas": [
+      "q5"
+    ]
+  },
+  "lsa": {
+    "metodo": "lsa",
+    "similitudes_coseno": {
+      "q1": {
+        "d01": 0.9261673642870467,
+        "d02": 0.0030220873496788893,
+        "d03": 0.37388789812767936,
+        "d04": 0.9542338764603773,
+        "d05": 0.4657521761946783,
+        "d06": 0.6302861368690815,
+        "d07": 0.19343780781776565,
+        "d08": 0.3245207546801595,
+        "d09": 0.5060238963860739,
+        "d10": 0.5834748914843834
+      },
+      "q2": {
+        "d01": 0.03374106389120009,
+        "d02": 0.4022930576303041,
+        "d03": 0.9753616198616087,
+        "d04": 0.38269812995796804,
+        "d05": -0.16002038909687297,
+        "d06": -0.2613656916909557,
+        "d07": 0.8023847351500059,
+        "d08": 0.14626163623898786,
+        "d09": 0.47086791359665203,
+        "d10": 0.2942380763214501
+      },
+      "q3": {
+        "d01": 0.35434335823323476,
+        "d02": 0.7665154388303942,
+        "d03": 0.14820782499222948,
+        "d04": 0.22438785854469448,
+        "d05": -0.1329764311094453,
+        "d06": 0.5606217883245711,
+        "d07": -0.13599590950411974,
+        "d08": 0.9746239272656917,
+        "d09": -0.1735393373877528,
+        "d10": 0.41330397888067416
+      },
+      "q4": {
+        "d01": 0.9219618094000126,
+        "d02": 0.12236796902644502,
+        "d03": 0.28754150993752653,
+        "d04": 0.7523786823059023,
+        "d05": 0.8984217134139745,
+        "d06": 0.05001260690762395,
+        "d07": -0.2581150056915103,
+        "d08": 0.26950027576973756,
+        "d09": 0.8201270985637508,
+        "d10": 0.9205569108925551
+      },
+      "q5": {
+        "d01": 0.8066012329018126,
+        "d02": 0.17339640145553714,
+        "d03": 0.6140509840251352,
+        "d04": 0.9427359534682029,
+        "d05": 0.27377533039462815,
+        "d06": 0.5655795641518955,
+        "d07": 0.4337516103914688,
+        "d08": 0.4046979346963287,
+        "d09": 0.4998855168034817,
+        "d10": 0.5629897534965798
+      },
+      "q6": {
+        "d01": 0.04002492044137359,
+        "d02": 0.9530957100505448,
+        "d03": 0.3301561141049837,
+        "d04": -0.011801219300027801,
+        "d05": -0.3256721709816622,
+        "d06": 0.21635859777818808,
+        "d07": 0.00519430109323769,
+        "d08": 0.9523406024377644,
+        "d09": -0.1871841946211961,
+        "d10": 0.34842799295196997
+      }
+    },
+    "ranking": {
+      "q1": [
+        "d04",
+        "d01",
+        "d06",
+        "d10",
+        "d09",
+        "d05",
+        "d03",
+        "d08",
+        "d07",
+        "d02"
+      ],
+      "q2": [
+        "d03",
+        "d07",
+        "d09",
+        "d02",
+        "d04",
+        "d10",
+        "d08",
+        "d01",
+        "d05",
+        "d06"
+      ],
+      "q3": [
+        "d08",
+        "d02",
+        "d06",
+        "d10",
+        "d01",
+        "d04",
+        "d03",
+        "d05",
+        "d07",
+        "d09"
+      ],
+      "q4": [
+        "d01",
+        "d10",
+        "d05",
+        "d09",
+        "d04",
+        "d03",
+        "d08",
+        "d02",
+        "d06",
+        "d07"
+      ],
+      "q5": [
+        "d04",
+        "d01",
+        "d03",
+        "d06",
+        "d10",
+        "d09",
+        "d07",
+        "d08",
+        "d05",
+        "d02"
+      ],
+      "q6": [
+        "d02",
+        "d08",
+        "d10",
+        "d03",
+        "d06",
+        "d01",
+        "d07",
+        "d04",
+        "d09",
+        "d05"
+      ]
+    },
+    "rango_del_relevante": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 3,
+      "q5": 6,
+      "q6": 1
+    },
+    "hit_at_1": 0.6666666666666666,
+    "hit_at_3": 0.8333333333333334,
+    "mrr": 0.75,
+    "consultas_fallidas": [
+      "q5"
+    ],
+    "varianza_explicada": [
+      0.034211619796853276,
+      0.12657480443196817,
+      0.11600387824885837,
+      0.11855186843101549
+    ]
+  },
+  "tokens": {
+    "consultas": {
+      "q1": [
+        "qué",
+        "función",
+        "de",
+        "ranking",
+        "léxica",
+        "pondera",
+        "la",
+        "frecuencia",
+        "de",
+        "términos"
+      ],
+      "q2": [
+        "cómo",
+        "se",
+        "añaden",
+        "fragmentos",
+        "recuperados",
+        "al",
+        "prompt"
+      ],
+      "q3": [
+        "qué",
+        "técnica",
+        "entrena",
+        "matrices",
+        "de",
+        "bajo",
+        "rango"
+      ],
+      "q4": [
+        "cómo",
+        "se",
+        "compara",
+        "la",
+        "orientación",
+        "de",
+        "dos",
+        "vectores",
+        "de",
+        "texto"
+      ],
+      "q5": [
+        "qué",
+        "hace",
+        "que",
+        "el",
+        "modelo",
+        "sea",
+        "más",
+        "determinista",
+        "al",
+        "elegir",
+        "la",
+        "siguiente",
+        "palabra"
+      ],
+      "q6": [
+        "qué",
+        "arquitectura",
+        "combina",
+        "autoatención",
+        "con",
+        "capas",
+        "feed",
+        "forward"
+      ]
+    },
+    "documentos": {
+      "d01": [
+        "el",
+        "mecanismo",
+        "de",
+        "atención",
+        "pondera",
+        "cada",
+        "token",
+        "según",
+        "su",
+        "similitud",
+        "con",
+        "la",
+        "consulta",
+        "la",
+        "atención",
+        "escalada",
+        "divide",
+        "por",
+        "la",
+        "raíz",
+        "de",
+        "la",
+        "dimensión"
+      ],
+      "d02": [
+        "los",
+        "transformadores",
+        "apilan",
+        "capas",
+        "de",
+        "autoatención",
+        "redes",
+        "feed",
+        "forward",
+        "con",
+        "conexiones",
+        "residuales",
+        "normalización"
+      ],
+      "d03": [
+        "la",
+        "recuperación",
+        "aumentada",
+        "con",
+        "generación",
+        "busca",
+        "fragmentos",
+        "relevantes",
+        "los",
+        "añade",
+        "al",
+        "prompt",
+        "del",
+        "modelo"
+      ],
+      "d04": [
+        "bm25",
+        "es",
+        "una",
+        "función",
+        "de",
+        "ranking",
+        "léxica",
+        "que",
+        "pondera",
+        "la",
+        "frecuencia",
+        "de",
+        "términos",
+        "la",
+        "longitud",
+        "del",
+        "documento"
+      ],
+      "d05": [
+        "los",
+        "embeddings",
+        "densos",
+        "representan",
+        "textos",
+        "como",
+        "vectores",
+        "la",
+        "similitud",
+        "coseno",
+        "compara",
+        "su",
+        "orientación"
+      ],
+      "d06": [
+        "un",
+        "agente",
+        "con",
+        "herramientas",
+        "decide",
+        "en",
+        "cada",
+        "paso",
+        "qué",
+        "función",
+        "llamar",
+        "observa",
+        "el",
+        "resultado"
+      ],
+      "d07": [
+        "react",
+        "intercala",
+        "razonamiento",
+        "acciones",
+        "reflexion",
+        "añade",
+        "una",
+        "autocrítica",
+        "verbal",
+        "entre",
+        "intentos"
+      ],
+      "d08": [
+        "el",
+        "ajuste",
+        "fino",
+        "con",
+        "lora",
+        "entrena",
+        "matrices",
+        "de",
+        "bajo",
+        "rango",
+        "congela",
+        "los",
+        "pesos",
+        "originales"
+      ],
+      "d09": [
+        "la",
+        "temperatura",
+        "reescala",
+        "los",
+        "logits",
+        "antes",
+        "del",
+        "softmax",
+        "valores",
+        "bajos",
+        "concentran",
+        "la",
+        "probabilidad"
+      ],
+      "d10": [
+        "la",
+        "cuantización",
+        "reduce",
+        "la",
+        "precisión",
+        "de",
+        "los",
+        "pesos",
+        "bits",
+        "para",
+        "ahorrar",
+        "memoria"
+      ]
+    }
+  },
+  "terminos_compartidos_consulta_relevante": {
+    "q1": [
+      {
+        "termino": "de",
+        "es_stop_word": true,
+        "peso_tfidf_consulta": 0.41616626604586404,
+        "peso_tfidf_documento": 0.31423567671878266
+      },
+      {
+        "termino": "frecuencia",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.3504139910334365,
+        "peso_tfidf_documento": 0.2645879461839569
+      },
+      {
+        "termino": "función",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.29788390619311367,
+        "peso_tfidf_documento": 0.22492392700544242
+      },
+      {
+        "termino": "la",
+        "es_stop_word": true,
+        "peso_tfidf_consulta": 0.1881121216397302,
+        "peso_tfidf_documento": 0.2840765562480844
+      },
+      {
+        "termino": "léxica",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.3504139910334365,
+        "peso_tfidf_documento": 0.2645879461839569
+      },
+      {
+        "termino": "pondera",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.29788390619311367,
+        "peso_tfidf_documento": 0.22492392700544242
+      },
+      {
+        "termino": "ranking",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.3504139910334365,
+        "peso_tfidf_documento": 0.2645879461839569
+      },
+      {
+        "termino": "términos",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.3504139910334365,
+        "peso_tfidf_documento": 0.2645879461839569
+      }
+    ],
+    "q2": [
+      {
+        "termino": "al",
+        "es_stop_word": true,
+        "peso_tfidf_consulta": 0.5773502691896257,
+        "peso_tfidf_documento": 0.29874339395570315
+      },
+      {
+        "termino": "fragmentos",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.5773502691896257,
+        "peso_tfidf_documento": 0.29874339395570315
+      },
+      {
+        "termino": "prompt",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.5773502691896257,
+        "peso_tfidf_documento": 0.29874339395570315
+      }
+    ],
+    "q3": [
+      {
+        "termino": "bajo",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.43223174876056586,
+        "peso_tfidf_documento": 0.29788804547336384
+      },
+      {
+        "termino": "de",
+        "es_stop_word": true,
+        "peso_tfidf_consulta": 0.2566682232316953,
+        "peso_tfidf_documento": 0.17689213153095973
+      },
+      {
+        "termino": "entrena",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.43223174876056586,
+        "peso_tfidf_documento": 0.29788804547336384
+      },
+      {
+        "termino": "matrices",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.43223174876056586,
+        "peso_tfidf_documento": 0.29788804547336384
+      },
+      {
+        "termino": "rango",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.43223174876056586,
+        "peso_tfidf_documento": 0.29788804547336384
+      }
+    ],
+    "q4": [
+      {
+        "termino": "compara",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.4613305217177221,
+        "peso_tfidf_documento": 0.30121466100132
+      },
+      {
+        "termino": "la",
+        "es_stop_word": true,
+        "peso_tfidf_consulta": 0.24765524618908155,
+        "peso_tfidf_documento": 0.161700532512538
+      },
+      {
+        "termino": "orientación",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.4613305217177221,
+        "peso_tfidf_documento": 0.30121466100132
+      },
+      {
+        "termino": "vectores",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.4613305217177221,
+        "peso_tfidf_documento": 0.30121466100132
+      }
+    ],
+    "q5": [
+      {
+        "termino": "la",
+        "es_stop_word": true,
+        "peso_tfidf_consulta": 0.24397961091537643,
+        "peso_tfidf_documento": 0.32380709577396377
+      }
+    ],
+    "q6": [
+      {
+        "termino": "autoatención",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.43223174876056586,
+        "peso_tfidf_documento": 0.30160141425178877
+      },
+      {
+        "termino": "capas",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.43223174876056586,
+        "peso_tfidf_documento": 0.30160141425178877
+      },
+      {
+        "termino": "con",
+        "es_stop_word": true,
+        "peso_tfidf_consulta": 0.2566682232316953,
+        "peso_tfidf_documento": 0.1790972073248953
+      },
+      {
+        "termino": "feed",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.43223174876056586,
+        "peso_tfidf_documento": 0.30160141425178877
+      },
+      {
+        "termino": "forward",
+        "es_stop_word": false,
+        "peso_tfidf_consulta": 0.43223174876056586,
+        "peso_tfidf_documento": 0.30160141425178877
+      }
+    ]
+  },
+  "analisis_de_fallos": {
+    "tfidf": {
+      "q5": {
+        "consulta": "q5",
+        "texto_consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "documento_relevante": "d09",
+        "texto_documento_relevante": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.",
+        "rango_del_relevante": 6,
+        "top3_recuperado_en_su_lugar": [
+          "d03",
+          "d06",
+          "d04"
+        ],
+        "tokens_consulta": [
+          "qué",
+          "hace",
+          "que",
+          "el",
+          "modelo",
+          "sea",
+          "más",
+          "determinista",
+          "al",
+          "elegir",
+          "la",
+          "siguiente",
+          "palabra"
+        ],
+        "tokens_documento_relevante": [
+          "la",
+          "temperatura",
+          "reescala",
+          "los",
+          "logits",
+          "antes",
+          "del",
+          "softmax",
+          "valores",
+          "bajos",
+          "concentran",
+          "la",
+          "probabilidad"
+        ],
+        "terminos_compartidos": [
+          {
+            "termino": "la",
+            "es_stop_word": true,
+            "peso_tfidf_consulta": 0.24397961091537643,
+            "peso_tfidf_documento": 0.32380709577396377
+          }
+        ],
+        "estado_del_solape": "solo_stop_words",
+        "similitud_coseno_consulta_relevante": 0.07900232923856972,
+        "explicacion": "El solape está formado solo por stop words (la), términos muy frecuentes en el corpus y con poco poder discriminativo; sin términos de contenido compartidos, el relevante no alcanza el top-3."
+      }
+    },
+    "lsa": {
+      "q5": {
+        "consulta": "q5",
+        "texto_consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "documento_relevante": "d09",
+        "texto_documento_relevante": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.",
+        "rango_del_relevante": 6,
+        "top3_recuperado_en_su_lugar": [
+          "d04",
+          "d01",
+          "d03"
+        ],
+        "tokens_consulta": [
+          "qué",
+          "hace",
+          "que",
+          "el",
+          "modelo",
+          "sea",
+          "más",
+          "determinista",
+          "al",
+          "elegir",
+          "la",
+          "siguiente",
+          "palabra"
+        ],
+        "tokens_documento_relevante": [
+          "la",
+          "temperatura",
+          "reescala",
+          "los",
+          "logits",
+          "antes",
+          "del",
+          "softmax",
+          "valores",
+          "bajos",
+          "concentran",
+          "la",
+          "probabilidad"
+        ],
+        "terminos_compartidos": [
+          {
+            "termino": "la",
+            "es_stop_word": true,
+            "peso_tfidf_consulta": 0.24397961091537643,
+            "peso_tfidf_documento": 0.32380709577396377
+          }
+        ],
+        "estado_del_solape": "solo_stop_words",
+        "similitud_coseno_consulta_relevante": 0.4998855168034817,
+        "explicacion": "El solape está formado solo por stop words (la), términos muy frecuentes en el corpus y con poco poder discriminativo; sin términos de contenido compartidos, el relevante no alcanza el top-3. La proyección latente a 4 dimensiones funde temas distintos y no llega a situar el relevante entre los tres primeros."
+      }
+    }
+  },
+  "tabla_resumen": [
+    {
+      "consulta": "q1",
+      "metodo": "tfidf",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d04",
+        "d01",
+        "d06"
+      ],
+      "terminos_compartidos": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q1",
+      "metodo": "lsa",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d04",
+        "d01",
+        "d06"
+      ],
+      "terminos_compartidos": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q2",
+      "metodo": "tfidf",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d03",
+        "d01",
+        "d02"
+      ],
+      "terminos_compartidos": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q2",
+      "metodo": "lsa",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d03",
+        "d07",
+        "d09"
+      ],
+      "terminos_compartidos": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q3",
+      "metodo": "tfidf",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d08",
+        "d06",
+        "d04"
+      ],
+      "terminos_compartidos": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q3",
+      "metodo": "lsa",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d08",
+        "d02",
+        "d06"
+      ],
+      "terminos_compartidos": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q4",
+      "metodo": "tfidf",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d05",
+        "d01",
+        "d04"
+      ],
+      "terminos_compartidos": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q4",
+      "metodo": "lsa",
+      "rango_del_relevante": 3,
+      "relevante_en_top3": true,
+      "top3": [
+        "d01",
+        "d10",
+        "d05"
+      ],
+      "terminos_compartidos": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q5",
+      "metodo": "tfidf",
+      "rango_del_relevante": 6,
+      "relevante_en_top3": false,
+      "top3": [
+        "d03",
+        "d06",
+        "d04"
+      ],
+      "terminos_compartidos": [
+        "la"
+      ],
+      "estado_del_solape": "solo_stop_words"
+    },
+    {
+      "consulta": "q5",
+      "metodo": "lsa",
+      "rango_del_relevante": 6,
+      "relevante_en_top3": false,
+      "top3": [
+        "d04",
+        "d01",
+        "d03"
+      ],
+      "terminos_compartidos": [
+        "la"
+      ],
+      "estado_del_solape": "solo_stop_words"
+    },
+    {
+      "consulta": "q6",
+      "metodo": "tfidf",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d02",
+        "d06",
+        "d03"
+      ],
+      "terminos_compartidos": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    },
+    {
+      "consulta": "q6",
+      "metodo": "lsa",
+      "rango_del_relevante": 1,
+      "relevante_en_top3": true,
+      "top3": [
+        "d02",
+        "d08",
+        "d10"
+      ],
+      "terminos_compartidos": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ],
+      "estado_del_solape": "con_terminos_de_contenido"
+    }
+  ]
+}

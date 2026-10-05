@@ -1,0 +1,373 @@
+{
+  "metodo": "TF-IDF (TfidfVectorizer por defecto) + similitud coseno",
+  "n_documentos": 10,
+  "n_consultas": 6,
+  "n_vocabulario": 105,
+  "hit_at_1": 0.8333333333333334,
+  "hit_at_3": 0.8333333333333334,
+  "mrr": 0.8611111111111112,
+  "aciertos_hit1": 5,
+  "aciertos_hit3": 5,
+  "por_consulta": {
+    "q1": {
+      "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "ranking": [
+        {
+          "pos": 1,
+          "doc": "d04",
+          "similitud_coseno": 0.6890762406943802
+        },
+        {
+          "pos": 2,
+          "doc": "d01",
+          "similitud_coseno": 0.24104429689047813
+        },
+        {
+          "pos": 3,
+          "doc": "d06",
+          "similitud_coseno": 0.17176219526377373
+        },
+        {
+          "pos": 4,
+          "doc": "d10",
+          "similitud_coseno": 0.14558189772995922
+        },
+        {
+          "pos": 5,
+          "doc": "d02",
+          "similitud_coseno": 0.07453421603164366
+        },
+        {
+          "pos": 6,
+          "doc": "d08",
+          "similitud_coseno": 0.07361653787213339
+        },
+        {
+          "pos": 7,
+          "doc": "d09",
+          "similitud_coseno": 0.06091203978803966
+        },
+        {
+          "pos": 8,
+          "doc": "d05",
+          "similitud_coseno": 0.0304178302412077
+        },
+        {
+          "pos": 9,
+          "doc": "d03",
+          "similitud_coseno": 0.030168272064907867
+        },
+        {
+          "pos": 10,
+          "doc": "d07",
+          "similitud_coseno": 0.0
+        }
+      ]
+    },
+    "q2": {
+      "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "ranking": [
+        {
+          "pos": 1,
+          "doc": "d03",
+          "similitud_coseno": 0.5174387367568429
+        },
+        {
+          "pos": 2,
+          "doc": "d01",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 3,
+          "doc": "d02",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 4,
+          "doc": "d04",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 5,
+          "doc": "d05",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 6,
+          "doc": "d06",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 7,
+          "doc": "d07",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 8,
+          "doc": "d08",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 9,
+          "doc": "d09",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 10,
+          "doc": "d10",
+          "similitud_coseno": 0.0
+        }
+      ]
+    },
+    "q3": {
+      "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "ranking": [
+        {
+          "pos": 1,
+          "doc": "d08",
+          "similitud_coseno": 0.5604292724229949
+        },
+        {
+          "pos": 2,
+          "doc": "d06",
+          "similitud_coseno": 0.12298847552390194
+        },
+        {
+          "pos": 3,
+          "doc": "d04",
+          "similitud_coseno": 0.08065431281941934
+        },
+        {
+          "pos": 4,
+          "doc": "d01",
+          "similitud_coseno": 0.06381465584320169
+        },
+        {
+          "pos": 5,
+          "doc": "d10",
+          "similitud_coseno": 0.0494078249415492
+        },
+        {
+          "pos": 6,
+          "doc": "d02",
+          "similitud_coseno": 0.045968561989839445
+        },
+        {
+          "pos": 7,
+          "doc": "d03",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 8,
+          "doc": "d05",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 9,
+          "doc": "d07",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 10,
+          "doc": "d09",
+          "similitud_coseno": 0.0
+        }
+      ]
+    },
+    "q4": {
+      "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "ranking": [
+        {
+          "pos": 1,
+          "doc": "d05",
+          "similitud_coseno": 0.4569245353145955
+        },
+        {
+          "pos": 2,
+          "doc": "d01",
+          "similitud_coseno": 0.24754993848068024
+        },
+        {
+          "pos": 3,
+          "doc": "d04",
+          "similitud_coseno": 0.24252131947498234
+        },
+        {
+          "pos": 4,
+          "doc": "d10",
+          "similitud_coseno": 0.19166293170642723
+        },
+        {
+          "pos": 5,
+          "doc": "d02",
+          "similitud_coseno": 0.09812652932690284
+        },
+        {
+          "pos": 6,
+          "doc": "d08",
+          "similitud_coseno": 0.09691837852548282
+        },
+        {
+          "pos": 7,
+          "doc": "d09",
+          "similitud_coseno": 0.08019252602167252
+        },
+        {
+          "pos": 8,
+          "doc": "d03",
+          "similitud_coseno": 0.039717434369503
+        },
+        {
+          "pos": 9,
+          "doc": "d06",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 10,
+          "doc": "d07",
+          "similitud_coseno": 0.0
+        }
+      ]
+    },
+    "q5": {
+      "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "rank_relevante": 6,
+      "reciprocal_rank": 0.16666666666666666,
+      "hit_at_1": false,
+      "hit_at_3": false,
+      "ranking": [
+        {
+          "pos": 1,
+          "doc": "d03",
+          "similitud_coseno": 0.3106758887220715
+        },
+        {
+          "pos": 2,
+          "doc": "d06",
+          "similitud_coseno": 0.20085134590621823
+        },
+        {
+          "pos": 3,
+          "doc": "d04",
+          "similitud_coseno": 0.18955976285205217
+        },
+        {
+          "pos": 4,
+          "doc": "d01",
+          "similitud_coseno": 0.16230333908296432
+        },
+        {
+          "pos": 5,
+          "doc": "d10",
+          "similitud_coseno": 0.08491551831191196
+        },
+        {
+          "pos": 6,
+          "doc": "d09",
+          "similitud_coseno": 0.07900232923856973
+        },
+        {
+          "pos": 7,
+          "doc": "d08",
+          "similitud_coseno": 0.0748861092010969
+        },
+        {
+          "pos": 8,
+          "doc": "d05",
+          "similitud_coseno": 0.0394516330072182
+        },
+        {
+          "pos": 9,
+          "doc": "d02",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 10,
+          "doc": "d07",
+          "similitud_coseno": 0.0
+        }
+      ]
+    },
+    "q6": {
+      "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "ranking": [
+        {
+          "pos": 1,
+          "doc": "d02",
+          "similitud_coseno": 0.5674153888326815
+        },
+        {
+          "pos": 2,
+          "doc": "d06",
+          "similitud_coseno": 0.16635706514893972
+        },
+        {
+          "pos": 3,
+          "doc": "d03",
+          "similitud_coseno": 0.04553295699284448
+        },
+        {
+          "pos": 4,
+          "doc": "d08",
+          "similitud_coseno": 0.045402589103718784
+        },
+        {
+          "pos": 5,
+          "doc": "d01",
+          "similitud_coseno": 0.03190732792160084
+        },
+        {
+          "pos": 6,
+          "doc": "d04",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 7,
+          "doc": "d05",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 8,
+          "doc": "d07",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 9,
+          "doc": "d09",
+          "similitud_coseno": 0.0
+        },
+        {
+          "pos": 10,
+          "doc": "d10",
+          "similitud_coseno": 0.0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "deliverable": {
+    "format": "ipynb",
+    "filename": "notebook.ipynb",
+    "sections": [
+      "preambulo",
+      "verificacion-numerica-de-gradientes-mediante-diferencias-finitas",
+      "contexto",
+      "tareas",
+      "preguntas-de-interpretacion",
+      "entrega"
+    ],
+    "max_words": null,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "text",
+      "section": "preguntas-de-interpretacion",
+      "depends_on": [],
+      "description": "Responder P0 ANTES de ejecutar cualquier cálculo, como predicción que debe conservarse aunque luego se corrija. (a) Explicar qué dos cantidades se comparan al verificar numéricamente un gradiente: la aproximación de f'(w) por diferencias centrales, (f(w+h)-f(w-h))/(2h), y el valor del candidato g(w) proporcionado. (b) Responder si un h menor siempre mejora la aproximación, con justificación conceptual: el error de truncamiento disminuye con h, pero con h demasiado pequeño la resta f(w+h)-f(w-h) sufre cancelación/absorción en aritmética de punto flotante y el error puede crecer, existiendo un h óptimo intermedio. No usar ni anticipar resultados numéricos del experimento.",
+      "criteria": [
+        "Identifica las dos cantidades comparadas: aproximación por diferencias centrales vs. valor del candidato g(w)",
+        "Responde que un h menor NO siempre mejora y lo justifica (cancelación en punto flotante para h demasiado pequeño)",
+        "Presentado explícitamente como predicción previa a la ejecución, sin números del experimento"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "code",
+      "section": "tareas",
+      "depends_on": [],
+      "description": "Script autocontenido de la verificación numérica. Definir f(w) = w**3 - 2*w, gA(w) = 3*w**2 - 2 y gB(w) = 3*w - 2. Completar la función diferencia_central(f, w, h) que devuelve (f(w+h) - f(w-h)) / (2*h) por método central; no usar la derivada analítica ni los candidatos dentro de la función. Con w = 2.0 y h en [1e-1, 1e-5, 1e-16], todo en float de Python y sin redondear cálculos (solo formatear la impresión), calcular por caso: la aproximación central, gA(2.0), gB(2.0), las discrepancias absolutas |aprox - gA(2.0)| y |aprox - gB(2.0)|, los puntos perturbados w+h y w-h, y su igualdad real en float (w+h == w-h). Imprimir una tabla con las tres filas mostrando todos esos campos (mantener los tres casos en la evidencia). Guardar los resultados en resultados_control_3.csv con columnas: h, aproximacion, gA, gB, disc_abs_gA, disc_abs_gB, w_mas_h, w_menos_h, perturbados_iguales (una fila por h).",
+      "criteria": [
+        "diferencia_central implementa (f(w+h)-f(w-h))/(2*h) sin derivada analítica ni candidatos",
+        "Usa w=2.0 y h=1e-1, 1e-5, 1e-16 en float de Python",
+        "Reporta por fila: aproximación, gA(2), gB(2), |aprox-gA|, |aprox-gB|, w+h, w-h y si w+h==w-h",
+        "Para h=1e-5 la aproximación es ≈10.0000000001, la discrepancia con gA es del orden de 1e-10 y con gB ≈6",
+        "Para h=1e-16, w+h y w-h valen ambos 2.0 (perturbados_iguales True), la aproximación es 0.0 y las discrepancias son 10 y 4",
+        "Escribe resultados_control_3.csv con una fila por h y las columnas indicadas",
+        "No redondea los cálculos intermedios"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "text",
+      "section": "preguntas-de-interpretacion",
+      "depends_on": [
+        "s1",
+        "s2"
+      ],
+      "description": "Responder P1, P2 y P3 usando la evidencia numérica de s2 (tabla y resultados_control_3.csv) y contrastando con la predicción P0 de s1. P1: indicar qué candidato respalda una fila fiable citando el h, la aproximación y ambas discrepancias absolutas (se espera h=1e-5, aproximación ≈10.0000000001, discrepancia con gA ≈1e-10 y con gB ≈6, lo que respalda a gA). P2: comparar el menor h (1e-16) con el intermedio (1e-5): aproximación (0.0 vs ≈10.0000000001) y puntos perturbados (para h=1e-16, w+h = w-h = 2.0 porque 1e-16 se absorbe al sumarse a 2.0 en doble precisión; para h=1e-5 los puntos sí difieren); explicar la causa (cancelación/absorción en punto flotante: con h por debajo del épsilon de máquina relativo a w el error de redondeo domina) y contrastar con la respuesta de P0. P3: argumentar que coincidir en w=2 no demuestra corrección para cualquier entrada (un solo punto no verifica la forma funcional; gB podría coincidir en puntos aislados) y proponer otra comprobación sin programarla, p. ej. repetir el contraste en otros puntos (w=0, w=-1, w=0.5) o con otra f, o comparar contra la derivada simbólica en varios puntos. Cerrar indicando si la predicción P0 se confirmó o se corrigió.",
+      "criteria": [
+        "P1 cita h, la aproximación y ambas discrepancias de la evidencia y elige gA",
+        "P2 compara h=1e-16 con h=1e-5 (aproximación, w+h, w-h) y explica la absorción/cancelación en float",
+        "P2 contrasta explícitamente con la predicción P0",
+        "P3 sostiene que un solo punto no demuestra corrección general y propone una comprobación adicional concreta sin programarla",
+        "Indica si la predicción P0 se confirmó o corrigió",
+        "Solo usa números producidos por s2"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s4",
+      "type": "text",
+      "section": "entrega",
+      "depends_on": [
+        "s2",
+        "s3"
+      ],
+      "description": "Redactar la nota de entrega del control: enumerar los entregables (notebook ejecutado con nombre y la función diferencia_central completada, la evidencia de los tres casos w=2.0 con h=1e-1, 1e-5 y 1e-16, las respuestas P0 a P3 y el archivo resultados_control_3.csv) y señalar el estado de completitud, indicando si queda algo pendiente o que todo fue realizado. No introducir números nuevos.",
+      "criteria": [
+        "Enumera el notebook y resultados_control_3.csv como entregables",
+        "Señala el estado de completitud (pendientes, si los hay)",
+        "No introduce números nuevos"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

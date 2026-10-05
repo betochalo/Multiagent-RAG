@@ -1,0 +1,79 @@
+{
+  "deliverable": {
+    "format": "ipynb",
+    "filename": "notebook.ipynb",
+    "sections": [
+      "parte-1",
+      "parte-2",
+      "parte-3",
+      "parte-4"
+    ],
+    "max_words": null,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "code",
+      "section": "parte-1",
+      "depends_on": [],
+      "description": "Vocabulary of six tokens t0..t5 with logits z = [2.0, 1.0, 0.5, 0.2, -1.0, -3.0]. Implement in NumPy a numerically stable softmax with temperature, p_i = exp(z_i/T) / Σ_j exp(z_j/T), subtracting max(z) from the logits before exponentiating to avoid overflow. Compute the distribution for T = 0.5, T = 1.0 and T = 2.0, and the Shannon entropy in bits H = -Σ p_i log2(p_i) of each. Print a single table showing the three distributions (rows or columns per temperature) and the three entropies, all values rounded to 4 decimals. Verify each distribution sums to 1.",
+      "criteria": [
+        "softmax implemented in NumPy with max-subtraction for numerical stability",
+        "distributions computed for T = 0.5, 1.0 and 2.0 and each sums to 1",
+        "entropies computed in bits (log base 2)",
+        "table presents the three distributions and three entropies with 4 decimals",
+        "no hard-coded results: all numbers derived from the logits"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "code",
+      "section": "parte-2",
+      "depends_on": [
+        "s1"
+      ],
+      "description": "Recompute from scratch (same parameters as Parte 1): logits z = [2.0, 1.0, 0.5, 0.2, -1.0, -3.0] for tokens t0..t5 and the stable temperature softmax at T = 1.0. Apply nucleus (top-p) sampling with p = 0.9: sort the tokens by probability in descending order, keep the minimal set of tokens whose cumulative probability reaches 0.9 (include the token that crosses the threshold), and renormalize their probabilities to sum to 1. Report which tokens survive and the renormalized distribution, rounded to 4 decimals.",
+      "criteria": [
+        "recomputes the T = 1.0 softmax from the given logits",
+        "sorts tokens by descending probability and accumulates until reaching 0.9, including the crossing token",
+        "renormalizes the surviving probabilities to sum to 1",
+        "reports the surviving token set and the renormalized distribution with 4 decimals"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "code",
+      "section": "parte-3",
+      "depends_on": [
+        "s2"
+      ],
+      "description": "Recompute from scratch the renormalized top-p distribution of Parte 2: logits z = [2.0, 1.0, 0.5, 0.2, -1.0, -3.0], stable softmax at T = 1.0, top-p with p = 0.9 (descending order, minimal set reaching 0.9, renormalized). Draw 10,000 samples from this renormalized distribution using numpy.random.default_rng(0) (e.g., rng.choice over the surviving tokens with their renormalized probabilities). Compute the observed empirical frequencies of each token. Produce a bar chart comparing, per token, the observed frequency against the theoretical (renormalized) probability. Compute the KL divergence in bits of the empirical distribution with respect to the theoretical one, D_KL(emp || theo) = Σ_i q_i log2(q_i / p_i) over tokens with q_i > 0, and report the value.",
+      "criteria": [
+        "uses numpy.random.default_rng(0) with 10,000 samples drawn from the renormalized top-p distribution",
+        "bar chart shows observed frequencies and theoretical probabilities side by side per token",
+        "KL divergence computed in bits (log base 2) of empirical with respect to theoretical",
+        "reported KL is small (order 1e-2 or smaller), consistent with sampling from the same distribution"
+      ],
+      "expects_figure": true
+    },
+    {
+      "id": "s4",
+      "type": "text",
+      "section": "parte-4",
+      "depends_on": [
+        "s1"
+      ],
+      "description": "Conceptual answer in prose (a Markdown cell in the notebook). Explain what happens to the output distribution as T → 0 and as T → ∞, using the logits z = [2.0, 1.0, 0.5, 0.2, -1.0, -3.0] and the entropies computed in Parte 1 (H at T = 0.5, 1, 2) as evidence. As T → 0 the softmax concentrates all probability mass on the token with the highest logit (t0), the entropy tends to 0, and sampling from it coincides with greedy decoding because the argmax/mode of the distribution is the only outcome with non-negligible probability. As T → ∞ the logits' differences are scaled toward 0, the distribution approaches the uniform over the 6 tokens, and the entropy tends to log2(6) ≈ 2.585 bits. Cite the Parte 1 entropies as the trend confirming both limits.",
+      "criteria": [
+        "explains that T → 0 concentrates all mass on the argmax token (t0) and entropy tends to 0",
+        "explains that T → ∞ approaches the uniform distribution over 6 tokens with entropy tending to log2(6) ≈ 2.585 bits",
+        "uses the Parte 1 entropies (monotonically increasing with T) as empirical evidence",
+        "justifies why T → 0 is equivalent to greedy decoding (argmax of logits = mode of the temperature softmax)"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "descripcion": "Verificacion numerica de gradientes por diferencias centrales",
+  "f": "w**3 - 2*w",
+  "gA": "3*w**2 - 2",
+  "gB": "3*w - 2",
+  "w": 2.0,
+  "casos": [
+    {
+      "h": 0.1,
+      "aproximacion": 10.010000000000007,
+      "gA": 10.0,
+      "gB": 4.0,
+      "disc_abs_gA": 0.010000000000006892,
+      "disc_abs_gB": 6.010000000000007,
+      "w_mas_h": 2.1,
+      "w_menos_h": 1.9,
+      "perturbados_iguales": false
+    },
+    {
+      "h": 1e-05,
+      "aproximacion": 10.000000000198739,
+      "gA": 10.0,
+      "gB": 4.0,
+      "disc_abs_gA": 1.9873880319210002e-10,
+      "disc_abs_gB": 6.000000000198739,
+      "w_mas_h": 2.00001,
+      "w_menos_h": 1.99999,
+      "perturbados_iguales": false
+    },
+    {
+      "h": 1e-16,
+      "aproximacion": 0.0,
+      "gA": 10.0,
+      "gB": 4.0,
+      "disc_abs_gA": 10.0,
+      "disc_abs_gB": 4.0,
+      "w_mas_h": 2.0,
+      "w_menos_h": 2.0,
+      "perturbados_iguales": true
+    }
+  ]
+}

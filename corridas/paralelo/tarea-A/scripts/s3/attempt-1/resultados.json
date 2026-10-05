@@ -1,0 +1,72 @@
+{
+  "subtask": "s3 - Parte 3: curva de aprendizaje",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "split": {
+    "test_size": 0.3,
+    "stratify": true,
+    "random_state": 42,
+    "n_train": 398,
+    "n_test": 171
+  },
+  "fractions": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "n_train_per_fraction": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "accuracy_gaussian_nb": [
+    0.9415204678362573,
+    0.9473684210526315,
+    0.935672514619883,
+    0.9239766081871345,
+    0.935672514619883
+  ],
+  "accuracy_logistic_regression": [
+    0.9298245614035088,
+    0.935672514619883,
+    0.9415204678362573,
+    0.9766081871345029,
+    0.9883040935672515
+  ],
+  "table": [
+    {
+      "fraction": 0.05,
+      "n_train": 19,
+      "accuracy_gaussian_nb": 0.9415204678362573,
+      "accuracy_logistic_regression": 0.9298245614035088
+    },
+    {
+      "fraction": 0.1,
+      "n_train": 39,
+      "accuracy_gaussian_nb": 0.9473684210526315,
+      "accuracy_logistic_regression": 0.935672514619883
+    },
+    {
+      "fraction": 0.25,
+      "n_train": 99,
+      "accuracy_gaussian_nb": 0.935672514619883,
+      "accuracy_logistic_regression": 0.9415204678362573
+    },
+    {
+      "fraction": 0.5,
+      "n_train": 199,
+      "accuracy_gaussian_nb": 0.9239766081871345,
+      "accuracy_logistic_regression": 0.9766081871345029
+    },
+    {
+      "fraction": 1.0,
+      "n_train": 398,
+      "accuracy_gaussian_nb": 0.935672514619883,
+      "accuracy_logistic_regression": 0.9883040935672515
+    }
+  ],
+  "figure": "curva_aprendizaje.png"
+}

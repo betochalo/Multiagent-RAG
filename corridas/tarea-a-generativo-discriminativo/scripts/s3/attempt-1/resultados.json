@@ -1,0 +1,127 @@
+{
+  "subtarea": "s3 - Parte 3: curva de aprendizaje",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "division_parte1": {
+    "test_size": 0.3,
+    "stratify": "y",
+    "random_state": 42,
+    "n_entrenamiento": 398,
+    "n_prueba": 171,
+    "clases_entrenamiento": {
+      "malignant": 148,
+      "benign": 250
+    },
+    "clases_prueba": {
+      "malignant": 64,
+      "benign": 107
+    }
+  },
+  "fracciones": [
+    "5%",
+    "10%",
+    "25%",
+    "50%",
+    "100%"
+  ],
+  "metodo_submuestreo": "train_test_split(X_train, y_train, train_size=fraccion, stratify=y_train, random_state=42); 100% usa el train completo",
+  "conjunto_evaluacion": "mismo conjunto de prueba completo (30 %) para todos los modelos",
+  "curva_aprendizaje": {
+    "GaussianNB": {
+      "5%": {
+        "n_ejemplos_entrenamiento": 19,
+        "accuracy_prueba": 0.9415204678362573
+      },
+      "10%": {
+        "n_ejemplos_entrenamiento": 39,
+        "accuracy_prueba": 0.9473684210526315
+      },
+      "25%": {
+        "n_ejemplos_entrenamiento": 99,
+        "accuracy_prueba": 0.9473684210526315
+      },
+      "50%": {
+        "n_ejemplos_entrenamiento": 199,
+        "accuracy_prueba": 0.935672514619883
+      },
+      "100%": {
+        "n_ejemplos_entrenamiento": 398,
+        "accuracy_prueba": 0.9473684210526315
+      }
+    },
+    "LogisticRegression": {
+      "5%": {
+        "n_ejemplos_entrenamiento": 19,
+        "accuracy_prueba": 0.9298245614035088
+      },
+      "10%": {
+        "n_ejemplos_entrenamiento": 39,
+        "accuracy_prueba": 0.935672514619883
+      },
+      "25%": {
+        "n_ejemplos_entrenamiento": 99,
+        "accuracy_prueba": 0.9415204678362573
+      },
+      "50%": {
+        "n_ejemplos_entrenamiento": 199,
+        "accuracy_prueba": 0.9766081871345029
+      },
+      "100%": {
+        "n_ejemplos_entrenamiento": 398,
+        "accuracy_prueba": 0.9883040935672515
+      }
+    }
+  },
+  "tabla_accuracy": [
+    {
+      "fraccion": "5%",
+      "n_ejemplos_entrenamiento": 19,
+      "clases_en_submuestra": {
+        "malignant": 7,
+        "benign": 12
+      },
+      "accuracy_gaussian_nb": 0.9415204678362573,
+      "accuracy_logistic_regression": 0.9298245614035088
+    },
+    {
+      "fraccion": "10%",
+      "n_ejemplos_entrenamiento": 39,
+      "clases_en_submuestra": {
+        "malignant": 15,
+        "benign": 24
+      },
+      "accuracy_gaussian_nb": 0.9473684210526315,
+      "accuracy_logistic_regression": 0.935672514619883
+    },
+    {
+      "fraccion": "25%",
+      "n_ejemplos_entrenamiento": 99,
+      "clases_en_submuestra": {
+        "malignant": 37,
+        "benign": 62
+      },
+      "accuracy_gaussian_nb": 0.9473684210526315,
+      "accuracy_logistic_regression": 0.9415204678362573
+    },
+    {
+      "fraccion": "50%",
+      "n_ejemplos_entrenamiento": 199,
+      "clases_en_submuestra": {
+        "malignant": 74,
+        "benign": 125
+      },
+      "accuracy_gaussian_nb": 0.935672514619883,
+      "accuracy_logistic_regression": 0.9766081871345029
+    },
+    {
+      "fraccion": "100%",
+      "n_ejemplos_entrenamiento": 398,
+      "clases_en_submuestra": {
+        "malignant": 148,
+        "benign": 250
+      },
+      "accuracy_gaussian_nb": 0.9473684210526315,
+      "accuracy_logistic_regression": 0.9883040935672515
+    }
+  ],
+  "figura": "curva_aprendizaje.png"
+}

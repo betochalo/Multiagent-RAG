@@ -1,0 +1,65 @@
+{
+  "deliverable": {
+    "format": "ipynb",
+    "filename": "notebook.ipynb",
+    "sections": [
+      "preambulo",
+      "contexto",
+      "tareas",
+      "preguntas-de-interpretacion",
+      "entrega"
+    ],
+    "max_words": null,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "text",
+      "section": "preguntas-de-interpretacion",
+      "depends_on": [],
+      "description": "Redactar la predicción previa de P1 (parte 'antes de ejecutar'). Experimento que se realizará después: para la matriz X = [[1, 1+separacion], [1, 1-separacion]] se compararán, en tres casos — A: separacion=1e-2 con np.float32; B: separacion=1e-4 con np.float32; C: separacion=1e-4 con np.float64 — el cuadrado del menor valor singular de X (vía np.linalg.svd) contra el menor autovalor de X.T @ X (vía np.linalg.eigvalsh), siendo la identidad teórica σ_i²(X) = λ_i(X.T X). La predicción debe indicar qué caso tendrá mayor dificultad para conservar el valor pequeño y por qué, razonando sobre la similitud creciente de las columnas cuando separacion disminuye (se vuelven casi iguales y la segunda dirección se hace pequeña) y sobre la precisión finita de float32 (~7 cifras significativas, eps≈1.19e-7) frente a float64 (~16 cifras). No debe citar ningún número producido por el experimento: es una predicción a priori que se ubicará en el notebook antes de los resultados.",
+      "criteria": [
+        "Identifica claramente un caso predicho como el de mayor dificultad para conservar el valor pequeño (razonablemente B: menor separación y float32)",
+        "Justifica la predicción conceptualmente: columnas casi iguales al reducir la separación y precisión limitada de float32 frente a float64",
+        "No cita valores numéricos calculados del experimento (predicción genuinamente a priori)",
+        "Queda identificada como la respuesta P1 (predicción) y pensada para colocarse antes de los resultados en el notebook"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "code",
+      "section": "tareas",
+      "depends_on": [],
+      "description": "Script escrito desde cero (importa únicamente NumPy) que genera la evidencia numérica de las tareas 2 a 4. Construir la matriz X = [[1, 1+separacion], [1, 1-separacion]] para tres casos: A (separacion=1e-2, dtype np.float32), B (separacion=1e-4, dtype np.float32) y C (separacion=1e-4, dtype np.float64). Para cada caso, manteniendo todas las operaciones en el dtype del caso (sin promover A y B a float64): (1) calcular los valores singulares con np.linalg.svd(X, compute_uv=False) y elevarlos al cuadrado; (2) formar X.T @ X y calcular sus autovalores con np.linalg.eigvalsh, ordenándolos de mayor a menor, de modo que ambas secuencias queden en el mismo orden (descendente). Imprimir una tabla comparativa con columnas: Caso, separación, tipo, menor σ²(SVD), menor λ(XᵀX), ¿Coinciden?; mostrar los valores con al menos diez cifras significativas o en notación científica (p. ej. f'{v:.10e}' o np.format_float_scientific). Imprimir también ambas secuencias completas ordenadas y la diferencia relativa |σ²_min − λ_min| / σ²_min como base del veredicto de coincidencia. El script debe ejecutarse sin errores.",
+      "criteria": [
+        "Construye X = [[1, 1+separacion], [1, 1-separacion]] con dtype float32 para A (separacion=1e-2) y B (separacion=1e-4), y float64 para C (separacion=1e-4)",
+        "Calcula σ² con np.linalg.svd(X, compute_uv=False)**2 y λ con np.linalg.eigvalsh(X.T @ X) ordenado de mayor a menor, sin upcasting silencioso de los casos float32",
+        "Imprime el menor σ²(SVD) y el menor λ(XᵀX) de cada caso con al menos diez cifras significativas o en notación científica",
+        "Incluye el veredicto ¿Coinciden? por caso (p. ej., vía diferencia relativa) y muestra el patrón esperado: A ambos ≈1e-4; en B el menor λ(XᵀX) se pierde en float32 (0 o del orden de eps de float32) mientras el menor σ²(SVD) se conserva ≈1e-8; en C ambos ≈1e-8 y coinciden",
+        "El script se ejecuta sin errores e importa únicamente NumPy"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "text",
+      "section": "preguntas-de-interpretacion",
+      "depends_on": [
+        "s1",
+        "s2"
+      ],
+      "description": "Redactar las respuestas finales P1 (confirmación tras ejecutar) a P5, con palabras propias y citando valores concretos de la tabla producida en s2. Recordatorio del experimento: X = [[1, 1+s],[1, 1−s]]; casos A (s=1e-2, float32), B (s=1e-4, float32), C (s=1e-4, float64); se compara el menor σ² de la SVD directa con el menor autovalor de X.T @ X. Contenido mínimo: P1 — indicar si los resultados respaldan o matizan la predicción de s1. P2 — comparar A y B: qué cambió en las columnas (al pasar la separación de 1e-2 a 1e-4 se vuelven casi iguales) y qué ocurrió con el menor valor de la SVD directa (bajó de ≈1e-4 a ≈1e-8), explicando que esta evidencia muestra el condicionamiento del problema (la segunda dirección se hace pequeña y difícil de distinguir al reducir la separación). P3 — comparar B y C: misma separación nominal, distinto tipo numérico; señalar que el procedimiento que pierde la dirección pequeña en float32 es formar X.T @ X y aplicar eigvalsh (λ_min ≈ 0), mientras que en float64 el valor se conserva (≈1e-8) y coincide con la SVD; explicar que esto evidencia la (in)estabilidad del procedimiento de cálculo, no del problema. P4 — aceptar o rechazar la afirmación del estudiante «como los autovalores de X.T @ X incluyen un cero en el caso B, la matriz tiene exactamente una sola dirección y la SVD directa está equivocada»: se espera rechazarla, argumentando con los resultados que el cero es un artefacto numérico del procedimiento en float32 (el valor ≈1e-8 está por debajo de la precisión de float32 para entradas de magnitud ≈2–4) y que la SVD directa sí recupera ≈1e-8; recomendar el procedimiento que se usaría para detectar direcciones pequeñas (SVD directa, idealmente en float64). P5 — dos conclusiones breves: (a) el condicionamiento se observa en este experimento cuando... (anclada en la comparación A–B) y (b) la estabilidad del procedimiento se observa cuando... (anclada en la comparación B–C).",
+      "criteria": [
+        "Responde P1, P2, P3, P4 y P5, cada una claramente identificada",
+        "P1 contrasta la predicción de s1 con los resultados observados (respaldada o matizada, con valores)",
+        "P2 y P3 citan valores concretos de la tabla (p. ej., σ²_min ≈1e-4 en A y ≈1e-8 en B; λ_min ≈0 en B float32 frente a ≈1e-8 en C float64)",
+        "P4 rechaza la afirmación del estudiante con evidencia numérica (el cero es un artefacto de X.T @ X en float32; la SVD recupera ≈1e-8) y recomienda la SVD directa, preferiblemente en float64, para detectar direcciones pequeñas",
+        "P5 presenta las dos conclusiones: (a) condicionamiento anclado en la comparación A–B y (b) estabilidad anclada en la comparación B–C",
+        "Todas las respuestas usan evidencia numérica concreta de la tabla, sin limitarse a definiciones generales"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

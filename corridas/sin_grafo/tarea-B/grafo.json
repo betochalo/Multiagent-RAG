@@ -1,0 +1,133 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {
+    "source": "tarea-b-temperatura-top-p.pdf"
+  },
+  "nodes": [
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Tarea B — Temperatura, top-p y entropía de la distribución de salida",
+      "level": 0,
+      "page": 1,
+      "text": "MMIA 6013 · Tarea de práctica para el solver del Taller 03 v2 Entrega: un notebook de Jupyter (.ipynb) ejecutado, con las salidas visibles.\n\nUn modelo de lenguaje produce, para el siguiente token, un vector de logits. Considera un vocabulario de seis tokens, t0 a t5, con estos logits:\n\n| Token | t0 | t1 | t2 | t3 | t4 | t5 |\n|---|---|---|---|---|---|---|\n| Logit | 2.0 | 1.0 | 0.5 | 0.2 | -1.0 | -3.0 |",
+      "order": 0,
+      "id": "preambulo"
+    },
+    {
+      "kind": "section",
+      "section_kind": "parte",
+      "number": "1",
+      "title": "Parte 1 — Softmax con temperatura",
+      "level": 1,
+      "page": 1,
+      "text": "Implementa en NumPy la función softmax con temperatura p_i = exp(z_i/T) / Σ_j exp(z_j/T), numéricamente estable. Calcula la distribución para T = 0.5, T = 1 y T = 2, y la entropía en bits de cada una. Presenta las tres distribuciones y las tres entropías en una tabla, con cuatro decimales.",
+      "order": 1,
+      "id": "parte-1"
+    },
+    {
+      "kind": "section",
+      "section_kind": "parte",
+      "number": "2",
+      "title": "Parte 2 — Muestreo de núcleo (top-p)",
+      "level": 1,
+      "page": 1,
+      "text": "Con la distribución de T = 1 de la Parte 1, aplica top-p con p = 0.9: ordena los tokens por probabilidad, conserva el conjunto mínimo cuya probabilidad acumulada alcanza 0.9 y renormaliza. Reporta qué tokens sobreviven y la distribución renormalizada.",
+      "order": 2,
+      "id": "parte-2"
+    },
+    {
+      "kind": "section",
+      "section_kind": "parte",
+      "number": "3",
+      "title": "Parte 3 — Comprobación empírica",
+      "level": 1,
+      "page": 1,
+      "text": "Toma 10 000 muestras de la distribución renormalizada de la Parte 2 con numpy.random.default_rng(0). Compara las frecuencias observadas con las probabilidades teóricas en un gráfico de barras y calcula la divergencia KL (en bits) de la distribución empírica respecto de la teórica.",
+      "order": 3,
+      "id": "parte-3"
+    },
+    {
+      "kind": "section",
+      "section_kind": "parte",
+      "number": "4",
+      "title": "Parte 4 — Pregunta conceptual",
+      "level": 1,
+      "page": 1,
+      "text": "Explica qué le pasa a la distribución cuando T → 0 y cuando T → ∞, y por qué T → 0 equivale a la decodificación voraz (greedy). Usa las entropías de la Parte 1 como evidencia.",
+      "order": 4,
+      "id": "parte-4"
+    },
+    {
+      "kind": "section",
+      "section_kind": null,
+      "number": null,
+      "title": "Formato",
+      "level": 1,
+      "page": 1,
+      "text": "Un solo notebook, ejecutado de principio a fin sin errores, con una celda de Markdown que encabece cada parte. Las cifras se calculan en el notebook, no se escriben a mano.",
+      "order": 5,
+      "id": "formato"
+    }
+  ],
+  "edges": [
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "parte-1",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "reference",
+      "evidence": "Con la distribución de T = 1 de la Parte 1, aplica top-p con p = 0.9: ordena los t",
+      "source": "parte-2",
+      "target": "parte-1"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "parte-2",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "reference",
+      "evidence": "de la distribución renormalizada de la Parte 2 con numpy.random.default_rng(0). Compar",
+      "source": "parte-3",
+      "target": "parte-2"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "parte-3",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "reference",
+      "evidence": "voraz (greedy). Usa las entropías de la Parte 1 como evidencia.",
+      "source": "parte-4",
+      "target": "parte-1"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "parte-4",
+      "target": "preambulo"
+    },
+    {
+      "kind": "depende_de",
+      "rule": "preamble",
+      "evidence": "shared data before the first section",
+      "source": "formato",
+      "target": "preambulo"
+    }
+  ]
+}

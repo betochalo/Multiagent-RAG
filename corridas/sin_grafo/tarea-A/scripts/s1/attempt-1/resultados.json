@@ -1,0 +1,39 @@
+{
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "n_total_examples": 569,
+  "n_attributes": 30,
+  "class_counts_full": {
+    "malignant": 212,
+    "benign": 357
+  },
+  "class_proportions_full": {
+    "malignant": 0.37258347978910367,
+    "benign": 0.6274165202108963
+  },
+  "split_parameters": {
+    "test_size": 0.3,
+    "stratify": true,
+    "random_state": 42
+  },
+  "train_size": 398,
+  "test_size": 171,
+  "train_class_counts": {
+    "malignant": 148,
+    "benign": 250
+  },
+  "test_class_counts": {
+    "malignant": 64,
+    "benign": 107
+  },
+  "train_class_proportions": {
+    "malignant": 0.37185929648241206,
+    "benign": 0.628140703517588
+  },
+  "test_class_proportions": {
+    "malignant": 0.3742690058479532,
+    "benign": 0.6257309941520468
+  },
+  "max_proportion_difference_train": 0.0007241833066916614,
+  "max_proportion_difference_test": 0.001685526058849529,
+  "stratification_preserved": true
+}

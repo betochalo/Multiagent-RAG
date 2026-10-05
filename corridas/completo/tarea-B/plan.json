@@ -1,0 +1,83 @@
+{
+  "deliverable": {
+    "format": "ipynb",
+    "filename": "notebook.ipynb",
+    "sections": [
+      "preambulo",
+      "parte-1",
+      "parte-2",
+      "parte-3",
+      "parte-4"
+    ],
+    "max_words": null,
+    "max_pages": null
+  },
+  "subtasks": [
+    {
+      "id": "s1",
+      "type": "code",
+      "section": "parte-1",
+      "depends_on": [],
+      "description": "En NumPy, implementa la función softmax con temperatura p_i = exp(z_i/T) / Σ_j exp(z_j/T) de forma numéricamente estable (restar el máximo de los logits antes de exponenciar). Vocabulario de seis tokens t0..t5 con logits z = [2.0, 1.0, 0.5, 0.2, -1.0, -3.0]. Calcula la distribución para T = 0.5, T = 1 y T = 2 y la entropía en bits de cada una (H = -Σ p_i log2 p_i). Presenta las tres distribuciones y las tres entropías en una tabla con cuatro decimales (por ejemplo con pandas o formato de cadena).",
+      "criteria": [
+        "Usa los logits [2.0, 1.0, 0.5, 0.2, -1.0, -3.0] para los tokens t0..t5",
+        "Implementa softmax con temperatura numéricamente estable (resta el máximo antes de exp)",
+        "Calcula distribuciones para T = 0.5, T = 1 y T = 2",
+        "Calcula la entropía en bits (log base 2) de cada distribución",
+        "Muestra una tabla con las tres distribuciones y las tres entropías con cuatro decimales",
+        "Las filas de cada distribución suman 1.0"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s2",
+      "type": "code",
+      "section": "parte-2",
+      "depends_on": [
+        "s1"
+      ],
+      "description": "Recomputa en este script la distribución de T = 1: logits z = [2.0, 1.0, 0.5, 0.2, -1.0, -3.0] para los tokens t0..t5, softmax con temperatura numéricamente estable p_i = exp((z_i - max)/T) / Σ_j exp((z_j - max)/T) con T = 1. Aplica muestreo de núcleo (top-p) con p = 0.9: ordena los tokens por probabilidad descendente, conserva el conjunto mínimo de tokens cuya probabilidad acumulada alcanza o supera 0.9, y renormaliza sus probabilidades para que sumen 1. Reporta qué tokens sobreviven al núcleo, sus probabilidades originales y la distribución renormalizada (con cuatro decimales).",
+      "criteria": [
+        "Recomputa la distribución softmax con T = 1 a partir de los mismos logits [2.0, 1.0, 0.5, 0.2, -1.0, -3.0]",
+        "Ordena los tokens por probabilidad descendente",
+        "Conserva el conjunto mínimo de tokens cuya probabilidad acumulada alcanza 0.9",
+        "Renormaliza las probabilidades del núcleo para que sumen 1",
+        "Reporta explícitamente qué tokens sobreviven y la distribución renormalizada"
+      ],
+      "expects_figure": false
+    },
+    {
+      "id": "s3",
+      "type": "code",
+      "section": "parte-3",
+      "depends_on": [
+        "s2"
+      ],
+      "description": "Recomputa en este script la distribución renormalizada de la Parte 2: logits z = [2.0, 1.0, 0.5, 0.2, -1.0, -3.0], softmax estable con T = 1, top-p con p = 0.9 (conjunto mínimo de tokens con probabilidad acumulada ≥ 0.9, renormalizado). Toma 10 000 muestras de esa distribución renormalizada con numpy.random.default_rng(0) (por ejemplo rng.choice sobre los tokens del núcleo con las probabilidades renormalizadas). Compara las frecuencias observadas con las probabilidades teóricas en un gráfico de barras agrupadas (frecuencia relativa observada junto a probabilidad teórica, con etiquetas de tokens y leyenda) y calcula la divergencia KL en bits de la distribución empírica respecto de la teórica: KL(empírica || teórica) = Σ p_teorica * log2(p_teorica / p_observada) sobre los tokens del núcleo.",
+      "criteria": [
+        "Recomputa la distribución renormalizada top-p (T = 1, p = 0.9) con los mismos logits",
+        "Genera exactamente 10 000 muestras con numpy.random.default_rng(0)",
+        "Produce un gráfico de barras que compara frecuencias observadas con probabilidades teóricas",
+        "Calcula la divergencia KL en bits de la empírica respecto de la teórica y la reporta",
+        "La KL es pequeña (del orden de 1e-3 bits o menos), consistente con 10 000 muestras"
+      ],
+      "expects_figure": true
+    },
+    {
+      "id": "s4",
+      "type": "text",
+      "section": "parte-4",
+      "depends_on": [
+        "s1"
+      ],
+      "description": "Pregunta conceptual en prosa (celda de Markdown): explica qué le pasa a la distribución de salida cuando T → 0 y cuando T → ∞, y por qué T → 0 equivale a la decodificación voraz (greedy). Usa como evidencia las entropías calculadas en la Parte 1 para T = 0.5, T = 1 y T = 2 (la entropía disminuye al bajar T y aumenta al subirlo), mencionando el efecto de la temperatura sobre el ratio entre logits (exp(z_i/T)) y sobre la concentración de la masa de probabilidad.",
+      "criteria": [
+        "Explica que T → 0 concentra toda la masa en el token de mayor logit (t0) y la entropía tiende a 0",
+        "Explica que T → ∞ aplana la distribución hacia la uniforme (1/6 por token) y la entropía tiende a log2(6) ≈ 2.585 bits",
+        "Justifica por qué T → 0 equivale a greedy: el argmax del softmax coincide con el argmax de los logits",
+        "Cita las entropías de la Parte 1 como evidencia de la tendencia monótona con T"
+      ],
+      "expects_figure": false
+    }
+  ]
+}

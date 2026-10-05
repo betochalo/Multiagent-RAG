@@ -1,0 +1,98 @@
+{
+  "subtask": "s3_curva_de_aprendizaje",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "split": {
+    "test_size": 0.3,
+    "stratify": true,
+    "random_state": 42,
+    "n_train": 398,
+    "n_test": 171,
+    "train_class_counts": {
+      "0": 148,
+      "1": 250
+    },
+    "test_class_counts": {
+      "0": 64,
+      "1": 107
+    }
+  },
+  "nota_evaluacion": "Ambos modelos se evaluan siempre sobre el mismo conjunto de prueba fijo de la division 70/30 (nunca sobre los datos de entrenamiento). El StandardScaler de cada iteracion se ajusta solo con la submuestra de entrenamiento correspondiente y se aplica al conjunto de prueba.",
+  "fracciones_porcentaje": [
+    5,
+    10,
+    25,
+    50,
+    100
+  ],
+  "fracciones_etiquetas": [
+    "5%",
+    "10%",
+    "25%",
+    "50%",
+    "100%"
+  ],
+  "tamanos_entrenamiento": [
+    20,
+    40,
+    100,
+    199,
+    398
+  ],
+  "n_ejemplos_prueba_fijo": 171,
+  "tabla_exactitudes": [
+    {
+      "fraccion_porcentaje": 5,
+      "fraccion": "5%",
+      "n_entrenamiento": 20,
+      "n_prueba_fijo": 171,
+      "exactitud_gaussian_nb": 0.9415204678362573,
+      "exactitud_regresion_logistica": 0.9298245614035088
+    },
+    {
+      "fraccion_porcentaje": 10,
+      "fraccion": "10%",
+      "n_entrenamiento": 40,
+      "n_prueba_fijo": 171,
+      "exactitud_gaussian_nb": 0.9415204678362573,
+      "exactitud_regresion_logistica": 0.935672514619883
+    },
+    {
+      "fraccion_porcentaje": 25,
+      "fraccion": "25%",
+      "n_entrenamiento": 100,
+      "n_prueba_fijo": 171,
+      "exactitud_gaussian_nb": 0.935672514619883,
+      "exactitud_regresion_logistica": 0.9415204678362573
+    },
+    {
+      "fraccion_porcentaje": 50,
+      "fraccion": "50%",
+      "n_entrenamiento": 199,
+      "n_prueba_fijo": 171,
+      "exactitud_gaussian_nb": 0.9239766081871345,
+      "exactitud_regresion_logistica": 0.9766081871345029
+    },
+    {
+      "fraccion_porcentaje": 100,
+      "fraccion": "100%",
+      "n_entrenamiento": 398,
+      "n_prueba_fijo": 171,
+      "exactitud_gaussian_nb": 0.935672514619883,
+      "exactitud_regresion_logistica": 0.9883040935672515
+    }
+  ],
+  "exactitud_gaussian_nb": [
+    0.9415204678362573,
+    0.9415204678362573,
+    0.935672514619883,
+    0.9239766081871345,
+    0.935672514619883
+  ],
+  "exactitud_regresion_logistica": [
+    0.9298245614035088,
+    0.935672514619883,
+    0.9415204678362573,
+    0.9766081871345029,
+    0.9883040935672515
+  ]
+}

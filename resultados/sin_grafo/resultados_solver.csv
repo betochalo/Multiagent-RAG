@@ -1,0 +1,41 @@
+tarea,check,tipo,ok,detalle
+A,A01,archivo,1,1 archivo(s) con reporte.md
+A,A02,archivo,1,5 archivo(s) con **/*.png
+A,A03,secciones,1,"todas, en orden"
+A,A04,palabras_max,1,981 palabras
+A,A05,cifra_presente,1,verdad=569 ±0; hallada
+A,A06,cifra,1,verdad=0.947368 ±0.006; hallada
+A,A07,cifra,1,verdad=0.988304 ±0.012; hallada
+A,A08,procedencia,1,32/32 cifras respaldadas (1.00)
+B,B01,archivo,1,1 archivo(s) con *.ipynb
+B,B02,ipynb_ejecutado,1,"3 celdas de código, 0 sin ejecutar, 0 con error"
+B,B03,cifra_presente,1,verdad=0.914682 ±0.00051; hallada
+B,B04,cifra_presente,1,verdad=1.79984 ±0.00051; hallada
+B,B05,cifra_presente,1,verdad=2.28883 ±0.00051; hallada
+B,B06,cifra_presente,1,verdad=0.569376 ±0.00051; hallada
+B,B07,contiene,1,todos presentes
+B,B08,archivo,1,2 archivo(s) con **/*.png
+B,B09,procedencia,1,sin cifras con dos o más decimales
+C,C01,archivo,1,1 archivo(s) con reporte.pdf
+C,C02,paginas_max,1,2 páginas
+C,C03,secciones,1,"todas, en orden"
+C,C04,cifra,1,verdad=0.861111 ±0.006; hallada
+C,C05,cifra,1,verdad=0.833333 ±0.006; hallada
+C,C06,cifra,1,verdad=0.75 ±0.006; hallada
+C,C07,contiene,1,todos presentes
+C,C08,procedencia,1,15/15 cifras respaldadas (1.00)
+L,L01,archivo,1,1 archivo(s) con *.ipynb
+L,L02,ipynb_ejecutado,0,"0 celdas de código, 0 sin ejecutar, 0 con error"
+L,L03,contiene,0,"faltan ['P1', 'P2', 'P3', 'P4', 'P5']"
+L,L04,cifra_presente,0,verdad=1e-08 ±5e-18; no hallada
+L,L05,cifra_presente,0,verdad=1.00033e-08 ±5e-14; no hallada
+L,L06,cifra_presente,0,verdad=9.98957e-05 ±5e-12; no hallada
+L,L07,procedencia,1,sin cifras con dos o más decimales
+G,G01,archivo,1,1 archivo(s) con *.ipynb
+G,G02,ipynb_ejecutado,1,"1 celdas de código, 0 sin ejecutar, 0 con error"
+G,G03,archivo,1,2 archivo(s) con **/resultados_control_3.csv
+G,G04,contiene,1,todos presentes
+G,G05,cifra_presente,1,verdad=10 ±1e-10; hallada
+G,G06,cifra_presente,1,verdad=10.01 ±1e-06; hallada
+G,G07,cifra,1,verdad=0 ±0; hallada
+G,G08,procedencia,1,4/4 cifras respaldadas (1.00)

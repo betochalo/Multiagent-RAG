@@ -1,0 +1,128 @@
+{"ts": 1791233647.076, "kind": "start", "pdf": "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/taller-03-v2-solver-multiagente/solver-v2/enunciados/tarea-a-generativo-discriminativo.pdf", "output": "/home/chalosky/maestria-ia/ig-agentes/investigation_agent/corridas/frenos/timeout", "ablations": {"no_graph": false, "no_critic": false}}
+{"ts": 1791233647.103, "kind": "node", "node": "reader", "source": "tarea-a-generativo-discriminativo.pdf", "pages": 1, "sections": ["Tarea A — Generativo contra discriminativo con pocos datos", "Parte 1 — Datos", "Parte 2 — Dos clasificadores", "Parte 3 — La curva de aprendizaje", "Parte 4 — Discusión", "El reporte"], "tables": 0}
+{"ts": 1791233647.104, "kind": "llm_call", "agent": "indexer", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.104, "kind": "llm_call", "agent": "indexer", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.104, "kind": "llm_call", "agent": "indexer", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.105, "kind": "llm_call", "agent": "indexer", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.105, "kind": "llm_call", "agent": "indexer", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.105, "kind": "llm_call", "agent": "indexer", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.107, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.107, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.108, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.109, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.109, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.11, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.11, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.11, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.11, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.111, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.11, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.11, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.11, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.112, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.112, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.112, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.111, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.111, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.111, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.111, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.113, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.113, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.113, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.112, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.112, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.113, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.114, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.114, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.114, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.113, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.114, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.114, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.113, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.116, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.116, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.115, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.115, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.115, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.115, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.115, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.117, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.115, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.117, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.117, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.116, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.116, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.118, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.118, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.119, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.119, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.118, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.118, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.118, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.118, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.12, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.12, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.12, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.119, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.119, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.121, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.119, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.121, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.121, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.12, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.12, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.121, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.12, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.122, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.123, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.123, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.121, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.123, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.122, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.122, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.124, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.123, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.124, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.124, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.124, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.124, "kind": "llm_call", "agent": "indexer_course", "model": "scripted", "tokens_in": 20, "tokens_out": 20, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.124, "kind": "course_cache", "sections": 80, "extracted_now": 80, "missing": 0}
+{"ts": 1791233647.125, "kind": "node", "node": "indexer", "sections": 6, "entities": 0, "communities": 0, "depends_on": [["parte-3", "parte-1"], ["el-reporte", "parte-2"], ["el-reporte", "parte-3"]]}
+{"ts": 1791233647.125, "kind": "llm_call", "agent": "planner", "model": "scripted", "tokens_in": 400, "tokens_out": 300, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.125, "kind": "node", "node": "planner", "attempt": 1, "errors": []}
+{"ts": 1791233647.126, "kind": "node", "node": "plan_validator", "valid": true, "errors": []}
+{"ts": 1791233647.126, "kind": "node", "node": "queue", "current": "s1", "pending": 4}
+{"ts": 1791233647.126, "kind": "node", "node": "researcher", "subtask": "s1", "citations": ["tarea-a-generativo-discriminativo.pdf · Tarea A — Generativo contra discriminativo con pocos datos · p. 1", "tarea-a-generativo-discriminativo.pdf · Parte 1 — Datos · p. 1"], "chars": 969}
+{"ts": 1791233647.127, "kind": "llm_call", "agent": "programmer", "model": "scripted", "tokens_in": 300, "tokens_out": 400, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233647.127, "kind": "node", "node": "programmer", "subtask": "s1", "attempt": 1, "lines": 5}
+{"ts": 1791233647.127, "kind": "node", "node": "guard", "subtask": "s1", "attempt": 1, "allowed": true, "problems": [], "downloads": [], "allow_network": false}
+{"ts": 1791233650.132, "kind": "execution", "subtask": "s1", "attempt": 1, "returncode": null, "duration_s": 3.0, "files": [], "timed_out": true, "stderr_tail": "\n[sandbox] killed after 3 s (process group 1149564)"}
+{"ts": 1791233650.132, "kind": "node", "node": "critic", "subtask": "s1", "attempt": 1, "approved": false, "decided_by": "code checks", "problems": ["the script exceeded the sandbox timeout and was killed", "no resultados.json: every script must write its numbers there"]}
+{"ts": 1791233650.133, "kind": "llm_call", "agent": "programmer", "model": "scripted", "tokens_in": 300, "tokens_out": 400, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233650.133, "kind": "node", "node": "programmer", "subtask": "s1", "attempt": 2, "lines": 10}
+{"ts": 1791233650.133, "kind": "node", "node": "guard", "subtask": "s1", "attempt": 2, "allowed": true, "problems": [], "downloads": [], "allow_network": false}
+{"ts": 1791233650.621, "kind": "execution", "subtask": "s1", "attempt": 2, "returncode": 0, "duration_s": 0.49, "files": ["resultados.json"], "timed_out": false, "stderr_tail": ""}
+{"ts": 1791233650.622, "kind": "llm_call", "agent": "critic", "model": "scripted", "tokens_in": 200, "tokens_out": 50, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233650.622, "kind": "node", "node": "critic", "subtask": "s1", "attempt": 2, "approved": true, "decided_by": "LLM critic", "problems": []}
+{"ts": 1791233650.622, "kind": "node", "node": "queue", "current": "s2", "pending": 3}
+{"ts": 1791233650.622, "kind": "node", "node": "researcher", "subtask": "s2", "citations": ["tarea-a-generativo-discriminativo.pdf · Tarea A — Generativo contra discriminativo con pocos datos · p. 1", "tarea-a-generativo-discriminativo.pdf · Parte 2 — Dos clasificadores · p. 1"], "chars": 818}
+{"ts": 1791233650.623, "kind": "llm_call", "agent": "programmer", "model": "scripted", "tokens_in": 300, "tokens_out": 400, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233650.623, "kind": "node", "node": "programmer", "subtask": "s2", "attempt": 1, "lines": 10}
+{"ts": 1791233650.623, "kind": "node", "node": "guard", "subtask": "s2", "attempt": 1, "allowed": true, "problems": [], "downloads": [], "allow_network": false}
+{"ts": 1791233653.631, "kind": "execution", "subtask": "s2", "attempt": 1, "returncode": null, "duration_s": 3.01, "files": [], "timed_out": true, "stderr_tail": "\n[sandbox] killed after 3 s (process group 1149771)"}
+{"ts": 1791233653.631, "kind": "node", "node": "critic", "subtask": "s2", "attempt": 1, "approved": false, "decided_by": "code checks", "problems": ["the script exceeded the sandbox timeout and was killed"]}
+{"ts": 1791233653.632, "kind": "llm_call", "agent": "programmer", "model": "scripted", "tokens_in": 300, "tokens_out": 400, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233653.632, "kind": "node", "node": "programmer", "subtask": "s2", "attempt": 2, "lines": 10}
+{"ts": 1791233653.632, "kind": "node", "node": "guard", "subtask": "s2", "attempt": 2, "allowed": false, "problems": ["this script is identical to one already rejected: it is not run again; change the approach"], "downloads": [], "allow_network": false}
+{"ts": 1791233653.632, "kind": "llm_call", "agent": "programmer", "model": "scripted", "tokens_in": 300, "tokens_out": 400, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233653.632, "kind": "node", "node": "programmer", "subtask": "s2", "attempt": 3, "lines": 10}
+{"ts": 1791233653.632, "kind": "node", "node": "guard", "subtask": "s2", "attempt": 3, "allowed": false, "problems": ["this script is identical to one already rejected: it is not run again; change the approach"], "downloads": [], "allow_network": false}
+{"ts": 1791233653.633, "kind": "node", "node": "queue", "current": "s3", "pending": 2}
+{"ts": 1791233653.633, "kind": "node", "node": "researcher", "subtask": "s3", "citations": ["tarea-a-generativo-discriminativo.pdf · Tarea A — Generativo contra discriminativo con pocos datos · p. 1", "tarea-a-generativo-discriminativo.pdf · Parte 1 — Datos · p. 1", "tarea-a-generativo-discriminativo.pdf · Parte 3 — La curva de aprendizaje · p. 1"], "chars": 1413}
+{"ts": 1791233653.633, "kind": "node", "node": "queue", "current": "s4", "pending": 1}
+{"ts": 1791233653.633, "kind": "node", "node": "researcher", "subtask": "s4", "citations": ["tarea-a-generativo-discriminativo.pdf · Tarea A — Generativo contra discriminativo con pocos datos · p. 1", "tarea-a-generativo-discriminativo.pdf · Parte 4 — Discusión · p. 1"], "chars": 792}
+{"ts": 1791233653.634, "kind": "node", "node": "queue", "current": null, "pending": 0}
+{"ts": 1791233653.634, "kind": "llm_call", "agent": "writer", "model": "scripted", "tokens_in": 300, "tokens_out": 200, "latency_s": 0.0, "error": null, "finish_reason": "stop", "max_tokens": 16384}
+{"ts": 1791233653.634, "kind": "node", "node": "writer", "attempt": 1, "file": "reporte.md", "words": 50}
+{"ts": 1791233653.635, "kind": "node", "node": "publisher", "attempt": 1, "ok": true, "problems": []}
+{"ts": 1791233653.635, "kind": "finish", "status": "parcial", "plan_errors": [], "subtasks": {"s1": "approved", "s2": "failed", "s3": "done", "s4": "done"}, "usage_by_agent": {"indexer": {"calls": 6, "tokens_in": 120, "tokens_out": 120}, "indexer_course": {"calls": 80, "tokens_in": 1600, "tokens_out": 1600}, "planner": {"calls": 1, "tokens_in": 400, "tokens_out": 300}, "programmer": {"calls": 5, "tokens_in": 1500, "tokens_out": 2000}, "critic": {"calls": 1, "tokens_in": 200, "tokens_out": 50}, "writer": {"calls": 1, "tokens_in": 300, "tokens_out": 200}}, "tokens_in": 4120, "tokens_out": 4270}
