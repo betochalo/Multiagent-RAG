@@ -1,0 +1,5 @@
+Medido ejecutando el código (sklearn, semilla 42):
+   NB accuracy    0.9474
+   NB F1 macro    0.9429
+   LR accuracy    0.9883
+   LR F1 macro    0.9875

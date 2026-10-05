@@ -1,0 +1,47 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	read(read)
+	index(index)
+	plan(plan)
+	validate_plan(validate_plan)
+	next_subtask(next_subtask)
+	research(research)
+	program(program)
+	guard(guard)
+	execute(execute)
+	critic(critic)
+	write(write)
+	check_deliverable(check_deliverable)
+	finish(finish)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> read;
+	check_deliverable -.-> finish;
+	check_deliverable -.-> write;
+	critic -.-> next_subtask;
+	critic -.-> program;
+	execute --> critic;
+	guard -.-> execute;
+	guard -.-> next_subtask;
+	guard -.-> program;
+	index --> plan;
+	next_subtask -.-> research;
+	next_subtask -.-> write;
+	plan --> validate_plan;
+	program -.-> guard;
+	program -.-> next_subtask;
+	read --> index;
+	research -.-> next_subtask;
+	research -.-> program;
+	validate_plan -.-> finish;
+	validate_plan -.-> next_subtask;
+	validate_plan -.-> plan;
+	write --> check_deliverable;
+	finish --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

@@ -1,0 +1,9 @@
+Total: 569 | Malignos: 212 | Benignos: 357
+Train: 398 ( 148 malignos ) | Test: 171
+Naive Bayes gaussiano | acc: 0.9357 | F1 macro: 0.9307
+Regresión logística | acc: 0.9883 | F1 macro: 0.9875
+n = 20 {'Naive Bayes gaussiano': 0.9415, 'Regresión logística': 0.9298}
+n = 40 {'Naive Bayes gaussiano': 0.9415, 'Regresión logística': 0.9357}
+n = 100 {'Naive Bayes gaussiano': 0.9357, 'Regresión logística': 0.9415}
+n = 199 {'Naive Bayes gaussiano': 0.924, 'Regresión logística': 0.9766}
+n = 398 {'Naive Bayes gaussiano': 0.9357, 'Regresión logística': 0.9883}
