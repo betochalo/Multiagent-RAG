@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets
+.env
+.env.*
+
+# Solver caches (course-notes graph, community summaries)
+.cache/
+
+# Local tooling
+.claude/
+.DS_Store
+
+# Course material not needed to reproduce (public paper, assignment statement)
+taller-03-v2-solver-multiagente/papers/
+taller-03-v2-solver-multiagente.pdf

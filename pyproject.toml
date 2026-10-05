@@ -1,0 +1,35 @@
+[project]
+name = "investigation-agent"
+version = "0.1.0"
+description = "Multi-agent solver with GraphRAG: from a PDF assignment to a measured deliverable"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ipykernel>=7.4.0",
+    "langchain>=1.4.3",
+    "langchain-openai>=1.6.7",
+    "langchain-qdrant>=1.1.0",
+    "langgraph>=1.2.12",
+    "markdown-it-py>=4.2.0",
+    "matplotlib>=3.11.2",
+    "nbconvert>=7.17.1",
+    "nbformat>=5.11.1",
+    "networkx>=3.6.1",
+    "numpy>=2.5.3",
+    "pydantic-settings>=2.15.0",
+    "pymupdf>=1.28.2",
+    "qdrant-client>=1.19.1",
+    "scikit-learn>=1.9.1",
+]
+
+[project.scripts]
+investigation-agent = "investigation_agent:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
