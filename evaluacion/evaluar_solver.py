@@ -280,7 +280,7 @@ def comprobar(check: dict, salida: Path, tarea: dict, texto_enunciado: str,
             for m in re.finditer(check["etiqueta"], plano):
                 candidatos += numeros(plano[m.end(): m.end() + 160])
         ok = any(coincide(v, verdad, tol) for v, _ in candidatos)
-        return ok, f"verdad={verdad:.6g} ±{tol}; {'hallada' if ok else 'no hallada'}"
+        return ok, f"verdad={verdad:.6g} ±{tol}; {'hallada' if ok else 'no hallada'}"  # [cambio 4]
     if tipo == "procedencia":
         dados = {v for v, _ in numeros(texto_enunciado)}
         propios = [(v, d) for v, d in numeros(sin_codigo(texto_de(principal, con_salidas=False)))

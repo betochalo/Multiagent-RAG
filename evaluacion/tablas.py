@@ -75,7 +75,7 @@ def main() -> None:
                    f"{t['duracion_s'] / 60:.1f} |")
 
     # ---------------------------------------------------------------- por agente
-    out += ["", "## Tokens por agente (entrada + salida, suma de las 5 tareas)", "",
+    out += ["", "## Tokens por agente (entrada / salida, suma de las 5 tareas)", "",
             "| Agente | " + " | ".join(VARIANTES.values()) + " |",
             "|---|" + "---:|" * len(VARIANTES)]
     por_agente = {v: defaultdict(lambda: [0, 0, 0]) for v in VARIANTES}
@@ -92,10 +92,10 @@ def main() -> None:
         celdas = []
         for variante in VARIANTES:
             calls, tin, tout = por_agente[variante].get(agente, [0, 0, 0])
-            celdas.append(f"{miles(tin + tout)} ({calls} llamadas)" if calls else "—")
+            celdas.append(f"{miles(tin)} / {miles(tout)} ({calls} llamadas)" if calls else "—")
         out.append(f"| {agente} | " + " | ".join(celdas) + " |")
 
-    out += ["", "## Tokens por agente y tarea (entrada + salida)", ""]
+    out += ["", "## Tokens por agente y tarea (entrada / salida)", ""]
     for variante, nombre in VARIANTES.items():
         _, resumen = leer(variante)
         out += [f"**{nombre}**", "", "| Tarea | " + " | ".join(AGENTES) + " |",
@@ -104,7 +104,7 @@ def main() -> None:
             fin = next(e for e in reversed(traza(variante, r["tarea"])) if e["kind"] == "finish")
             uso = fin["usage_by_agent"]
             out.append(f"| {r['tarea']} | " + " | ".join(
-                miles(uso[a]["tokens_in"] + uso[a]["tokens_out"]) if a in uso else "—"
+                f"{miles(uso[a]['tokens_in'])} / {miles(uso[a]['tokens_out'])}" if a in uso else "—"
                 for a in AGENTES) + " |")
         out.append("")
 

@@ -199,7 +199,7 @@ ya podía rechazar.
 El modelo razona siempre y lo cobra del mismo cupo de salida. Si devuelve `content` vacío con
 `finish_reason=length`, el cliente no lo trata como una respuesta: reintenta duplicando `max_tokens`
 hasta un tope de 40 000 tokens y, si aun así no responde, lanza un error que queda en la traza
-([`nodes.py:640`](../src/investigation_agent/graph/nodes.py#L640)).
+([`nodes.py:667`](../src/investigation_agent/graph/nodes.py#L667)).
 
 ### 1.2 Arquitectura: roles y quién decide
 
@@ -208,7 +208,7 @@ Ninguna arista la decide el modelo: cada bifurcación es una función de Python 
 
 | Rol del enunciado | Nodo(s) | LLM | Lo comprueba el código |
 |---|---|---|---|
-| Lector | `read` → [`PdfReaderService`](../src/investigation_agent/services/pdf_reader.py#L60) | no | ligaduras (NFKC), texto justificado y cortes con guion, tablas reconstruidas a Markdown, encabezados por tamaño de letra; rechaza un PDF con menos de 100 caracteres (escaneado) |
+| Lector | `read` → [`PdfReaderService`](../src/investigation_agent/services/pdf_reader.py#L56) | no | ligaduras (NFKC), texto justificado y cortes con guion, tablas reconstruidas a Markdown, encabezados por tamaño de letra; rechaza un PDF con menos de 100 caracteres (escaneado) |
 | Indexador (GraphRAG) | `index` → [`KnowledgeGraphService`](../src/investigation_agent/services/knowledge_graph.py), [`RagService`](../src/investigation_agent/services/rag.py) | sí (entidades, comunidades) | el esqueleto de secciones y aristas `depende_de` es determinista |
 | Planificador | `plan` + `validate_plan` | sí | DAG, ids únicos, dependencias existentes, cobertura de cada sección, formato del entregable |
 | Investigador | `research` | no | la sección literal y el cierre de sus dependencias van siempre, antes que cualquier búsqueda por similitud |
@@ -258,8 +258,8 @@ Están las aristas que pide el enunciado:
 - la salida a **redactar** por fin de la cola o por presupuesto.
 
 Las funciones de ruta están en
-[`orchestrator.py`](../src/investigation_agent/graph/orchestrator.py) (líneas 40–81), y
-`build_graph` en la línea 85.
+[`orchestrator.py`](../src/investigation_agent/graph/orchestrator.py) (líneas 42–86), y
+`build_graph` en la línea 138.
 
 ### 1.4 Las seis correcciones, señaladas en el código
 
@@ -268,12 +268,12 @@ modelo (`uv run pytest`).
 
 | # | Corrección | Dónde | Prueba |
 |---|---|---|---|
-| 1 | El plan es un grafo validado por código: ids únicos, dependencias existentes y sin ciclos, cada sección de trabajo cubierta. Un plan inválido vuelve al planificador con la lista de problemas (tope: 3) | [`validate_plan_structure`](../src/investigation_agent/graph/nodes.py#L75), [`validate_plan`](../src/investigation_agent/graph/nodes.py#L312) | [`test_plan_validator.py`](../tests/test_plan_validator.py), `test_invalid_plans_end_in_failure_after_the_cap` |
-| 2 | GraphRAG con esqueleto determinista: las secciones son nodos y cada «Parte N» es una arista `depende_de` extraída por regex. Encima van las entidades del LLM fusionadas con las de las notas por nombre normalizado, las comunidades de Louvain con resumen y la búsqueda híbrida con cita | [`build_skeleton`](../src/investigation_agent/services/knowledge_graph.py#L47), [`section_context`](../src/investigation_agent/services/knowledge_graph.py#L85), [`add_entities`](../src/investigation_agent/services/knowledge_graph.py#L101), [`research`](../src/investigation_agent/graph/nodes.py#L343) | [`test_knowledge_graph.py`](../tests/test_knowledge_graph.py) |
+| 1 | El plan es un grafo validado por código: ids únicos, dependencias existentes y sin ciclos, cada sección de trabajo cubierta. Un plan inválido vuelve al planificador con la lista de problemas (tope: 3) | [`validate_plan_structure`](../src/investigation_agent/graph/nodes.py#L75), [`validate_plan`](../src/investigation_agent/graph/nodes.py#L323) | [`test_plan_validator.py`](../tests/test_plan_validator.py), `test_invalid_plans_end_in_failure_after_the_cap` |
+| 2 | GraphRAG con esqueleto determinista: las secciones son nodos y cada «Parte N» es una arista `depende_de` extraída por regex. Encima van las entidades del LLM fusionadas con las de las notas por nombre normalizado, las comunidades de Louvain con resumen y la búsqueda híbrida con cita | [`build_skeleton`](../src/investigation_agent/services/knowledge_graph.py#L47), [`section_context`](../src/investigation_agent/services/knowledge_graph.py#L85), [`add_entities`](../src/investigation_agent/services/knowledge_graph.py#L101), [`research`](../src/investigation_agent/graph/nodes.py#L370) | [`test_knowledge_graph.py`](../tests/test_knowledge_graph.py) |
 | 3 | Sandbox: guarda estática sobre el AST antes de que exista un proceso, más un proceso con entorno vacío, `stdin` cerrado, carpeta propia, `unshare -rn` (sin red) y un timeout que mata al **grupo** de procesos | [`Sandbox.guard`](../src/investigation_agent/services/sandbox.py#L65), [`Sandbox.run`](../src/investigation_agent/services/sandbox.py#L104) | [`test_sandbox.py`](../tests/test_sandbox.py) |
-| 4 | Contrato de resultados (`resultados.json`) y un crítico que corre primero las comprobaciones de código; solo si pasan pregunta al LLM | [`critic`](../src/investigation_agent/graph/nodes.py#L461), [`check_execution`](../src/investigation_agent/services/checks.py#L32), [`leakage`](../src/investigation_agent/services/checks.py#L72) | [`test_checks.py`](../tests/test_checks.py) |
-| 5 | Procedencia: antes de publicar, cada cifra con ≥2 decimales del entregable tiene que aparecer en algo que escribió una ejecución o en el enunciado. Las que no, vuelven al redactor por su nombre | [`check_deliverable`](../src/investigation_agent/graph/nodes.py#L604), [`unsupported_numbers`](../src/investigation_agent/services/checks.py#L162) | `test_provenance_*` |
-| 6 | La traza se escribe en todo camino. Cada evento se agrega a `traza.jsonl` en el momento en que ocurre, y una excepción también devuelve el contrato con `status="fallido"` | [`Tracer`](../src/investigation_agent/services/trace.py#L16), [`Solver.solve`](../src/investigation_agent/graph/orchestrator.py#L136) | `test_failed_run_still_returns_the_contract_and_the_trace` |
+| 4 | Contrato de resultados (`resultados.json`) y un crítico que corre primero las comprobaciones de código; solo si pasan pregunta al LLM | [`critic`](../src/investigation_agent/graph/nodes.py#L488), [`check_execution`](../src/investigation_agent/services/checks.py#L34), [`leakage`](../src/investigation_agent/services/checks.py#L76) | [`test_checks.py`](../tests/test_checks.py) |
+| 5 | Procedencia: antes de publicar, cada cifra con ≥2 decimales del entregable tiene que aparecer en algo que escribió una ejecución o en el enunciado. Las que no, vuelven al redactor por su nombre | [`check_deliverable`](../src/investigation_agent/graph/nodes.py#L631), [`unsupported_numbers`](../src/investigation_agent/services/checks.py#L174) | `test_provenance_*` |
+| 6 | La traza se escribe en todo camino. Cada evento se agrega a `traza.jsonl` en el momento en que ocurre, y una excepción también devuelve el contrato con `status="fallido"` | [`Tracer`](../src/investigation_agent/services/trace.py#L16), [`Solver.solve`](../src/investigation_agent/graph/orchestrator.py#L225) | `test_failed_run_still_returns_the_contract_and_the_trace` |
 
 Por cada llamada, la traza registra el agente, el modelo, los tokens de entrada y salida, la latencia,
 el `finish_reason` y el error. Por cada ejecución, el código de salida, la duración, `timed_out` y los
@@ -505,7 +505,8 @@ kit. A eso se suman las tareas reales:
 
 En total son 40 comprobaciones en 5 tareas. Hay notebooks (B, L y G), un PDF (C) y tres trampas
 (L y G). El solver recibe solo el PDF de cada control, sin el notebook inicial que se entregaba a
-los estudiantes.
+los estudiantes. Los dos controles son públicos dentro de la maestría y no exigen datos privados ni
+credenciales.
 
 **Tarea L — Condicionamiento numérico y estabilidad.** Compara la menor σ² de la SVD directa con el
 menor autovalor de XᵀX, para X = [[1, 1], [1, 1+s], [1, 1−s]], en tres casos:
@@ -576,7 +577,7 @@ Esta validación encontró un error en nuestro propio cambio al evaluador. La pr
 holgura relativa (`1e-9·|verdad|`) sumaba 1e-8 alrededor de 10, de modo que el notebook con la derivada
 analítica **pasaba** G05. Bajó a `1e-12·|verdad|`, y lo mismo en la procedencia del solver.
 
-**Cuatro cambios al evaluador del kit**
+**Seis cambios al evaluador del kit**
 ([`evaluacion/evaluar_solver.py`](../evaluacion/evaluar_solver.py), marcados `[cambio N]`).
 Diseñar la tarea L destapó un punto ciego compartido por el evaluador del kit y por nuestro solver:
 **ninguno leía la notación científica**. El regex de cifras se detenía en la `e`, así que
@@ -591,6 +592,9 @@ corrección 5. Se corrigió en los dos lados, con `test_provenance_reads_scienti
    cercano a 1e-08.
 3. El golden por defecto es el propio.
 4. La verdad se imprime con 6 cifras significativas.
+5. La carpeta del CSV se crea si no existe.
+6. Con `--solo-evaluar`, el resumen (status, intentos, tokens y duración) se reconstruye desde la
+   traza, sin volver a correr el solver.
 
 ```bash
 # desde la raíz del repositorio
@@ -642,16 +646,20 @@ La tarea G se agregó al golden después de lanzar la variante completa. Por eso
 | Completo | **37/40** | 1 | 14 | 996 539 | 53,6 min |
 | Sin grafo | **35/40** | 1 | 15 | 979 931 | 93,9 min |
 
-**Tokens por agente** (entrada + salida, suma de las 5 tareas)
+**Tokens por agente** (suma de las 5 tareas)
 
-| Agente | Completo | Sin grafo |
-|---|---:|---:|
-| indexer (entidades del enunciado) | 127 505 (29 llamadas) | — |
-| indexer_community | 81 062 (39 llamadas) | — |
-| planner | 38 594 (5) | 37 857 (5) |
-| programmer | **462 244 (21)** | **518 174 (24)** |
-| critic | 65 104 (10) | 59 664 (10) |
-| writer | 222 030 (10) | 364 236 (13) |
+| Agente | Llamadas (completo / sin grafo) | Entrada, completo | Salida, completo | Entrada, sin grafo | Salida, sin grafo |
+|---|---:|---:|---:|---:|---:|
+| indexer (entidades del enunciado) | 29 / — | 16 682 | 110 823 | — | — |
+| indexer_community | 39 / — | 50 506 | 30 556 | — | — |
+| planner | 5 / 5 | 6 997 | 31 597 | 6 997 | 30 860 |
+| programmer | 21 / 24 | 87 842 | **374 402** | 68 233 | **449 941** |
+| critic | 10 / 10 | 38 638 | 26 466 | 38 455 | 21 209 |
+| writer | 10 / 13 | 75 202 | 146 828 | 96 353 | 267 883 |
+
+En el indexador, el planificador, el programador y el redactor domina la salida, porque incluye el
+razonamiento, que el modelo cobra del mismo cupo. En el crítico y en los resúmenes de comunidad
+pesa más la entrada (el script y sus resultados, o los miembros de la comunidad). El programador recibe unos 4 000 tokens por llamada y devuelve hasta 40 000.
 
 El desglose por agente y tarea está en [`resultados/tablas.md`](../resultados/tablas.md). Las notas
 del curso ya estaban en caché, así que `indexer_course` no gastó nada en ninguna de las dos variantes.
@@ -823,10 +831,10 @@ entregable.
 
 | Freno | Dónde | Escenario | Resultado |
 |---|---|---|---|
-| Presupuesto con reserva para el redactor | [`_ask`](../src/investigation_agent/graph/nodes.py#L640), [`next_subtask`](../src/investigation_agent/graph/nodes.py#L327) | presupuesto 20 000, reserva 8 000; cada llamada del programador cuesta 6 000 | `parcial`: s1 y s2 aprobadas, s3 y s4 `skipped`; el reporte se entrega y lista lo no hecho |
-| Tope de intentos y detector de repetición | [`guard`](../src/investigation_agent/graph/nodes.py#L405), [`critic`](../src/investigation_agent/graph/nodes.py#L461) | el programador devuelve siempre el script con fuga de la 0.c | `parcial`: s1 `failed(3)` con **1 sola ejecución**; s2 sigue y se aprueba |
+| Presupuesto con reserva para el redactor | [`_ask`](../src/investigation_agent/graph/nodes.py#L667), [`next_subtask`](../src/investigation_agent/graph/nodes.py#L338) | presupuesto 20 000, reserva 8 000; cada llamada del programador cuesta 6 000 | `parcial`: s1 y s2 aprobadas, s3 y s4 `skipped`; el reporte se entrega y lista lo no hecho |
+| Tope de intentos y detector de repetición | [`guard`](../src/investigation_agent/graph/nodes.py#L432), [`critic`](../src/investigation_agent/graph/nodes.py#L488) | el programador devuelve siempre el script con fuga de la 0.c | `parcial`: s1 `failed(3)` con **1 sola ejecución**; s2 sigue y se aprueba |
 | Timeout del sandbox | [`Sandbox.run`](../src/investigation_agent/services/sandbox.py#L104) | el primer script es un `while True`; timeout de 3 s | el proceso muere a los 3,0 s con su grupo; el segundo intento se aprueba |
-| Confirmación humana antes de la red | [`guard`](../src/investigation_agent/graph/nodes.py#L405), [`_confirm_network`](../src/investigation_agent/graph/nodes.py#L437) | el primer script llama a `fetch_openml` | se pregunta en la terminal, la respuesta es «n» y el script **nunca se ejecuta**; el segundo usa `load_breast_cancer` |
+| Confirmación humana antes de la red | [`guard`](../src/investigation_agent/graph/nodes.py#L432), [`_confirm_network`](../src/investigation_agent/graph/nodes.py#L464) | el primer script llama a `fetch_openml` | se pregunta en la terminal, la respuesta es «n» y el script **nunca se ejecuta**; el segundo usa `load_breast_cancer` |
 
 ### 3.1 Presupuesto de tokens, con reserva para el redactor
 
