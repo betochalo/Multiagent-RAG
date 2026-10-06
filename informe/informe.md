@@ -1124,18 +1124,3 @@ de archivos es el nuestro, y los fallos del kernel mostraron que todo depende de
 | Golden set y evaluador | [`evaluacion/golden_tareas.json`](../evaluacion/golden_tareas.json) (5 tareas, 40 comprobaciones), [`evaluacion/evaluar_solver.py`](../evaluacion/evaluar_solver.py) (copia del kit con 6 cambios marcados), [`evaluacion/tablas.py`](../evaluacion/tablas.py) |
 | CSV crudos | [`resultados/{completo,sin_grafo,paralelo}/`](../resultados/): `resultados_solver.csv` y `resumen_solver.csv` de cada variante; todas las tablas del informe salen de ahí y de las trazas (`resultados/tablas.md`) |
 | Corridas | [`corridas/{completo,sin_grafo,paralelo}/tarea-*/`](../corridas/): `traza.jsonl`, `plan.json`, `grafo.json`, `scripts/<subtarea>/attempt-N/` y el entregable; [`corridas/frenos/`](../corridas/frenos/) (Parte 3); las corridas sueltas de la Parte 1 en `corridas/tarea-*/` |
-
-**Credenciales.** El H200 no usa clave (vLLM no la valida; el código pasa `api_key="local"`, que no
-es una credencial). No hay `.env` en el repositorio y `.env*` está en `.gitignore`. Una búsqueda de
-patrones de clave (`sk-…`, `api_key = "…"`, `Bearer …`, `ghp_…`, `AKIA…`) sobre código, trazas,
-scripts generados, corridas e informe no encuentra ninguna; la única coincidencia es la clave falsa
-de `test_environment_is_empty`, que prueba justamente que el sandbox no la deja pasar a un script.
-Los scripts generados corren con entorno vacío (corrección 3), así que no pueden imprimir una
-variable del entorno en un log.
-
-**Entorno de las corridas.** Python 3.13.14, Linux 7.1.8 (Arch), Qdrant 1.19.1 en Docker, modelo
-`zai-org/GLM-5.3-Flash` en la H200 (réplicas `:12555` y `:12559`), 2026-10-05. Las notas del curso se
-indexan una vez y quedan en `.cache/` (no versionada): la primera corrida en una máquina limpia
-tarda unos 5 minutos y ~285 000 tokens más. Durante las corridas, el kernel registró fallos
-`kernel BUG at arch/x86/kernel/cet.c:133` que mataron o colgaron procesos de Python (Parte 1, 1.9);
-los que afectaron a resultados están señalados donde ocurrieron (Parte 3.3 y Parte 4).
